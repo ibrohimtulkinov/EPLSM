@@ -1,12 +1,14 @@
 import React from "react"
 import { Image } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import searchIcon from '../assets/img/search-icon.png';
+import navLogo from '../assets/img/nav-logo.png'
 
 export default function Navbar() {
     return (
         <nav className="">
-            <Link to="/"><Image src="./img/nav-logo.png" alt="" className="nav--icon ms-5" /></Link>
-            <ul>
+            <Link to="/"><Image src={navLogo} alt="" className="nav--icon ms-5" /></Link>
+            <ul className='navbarCenter'>
                 <li >
                     <Link to="/"  className="navigations">Home</Link>
                 </li>
@@ -25,7 +27,7 @@ export default function Navbar() {
                 <li >
                     <a href="" className="navigations">Contact</a>
                 </li>
-                <img className="search-logo" src="./img/search-icon.png" alt="" />
+                <img className="search-logo" src={searchIcon} alt="" />
             </ul>
         </nav>
     )

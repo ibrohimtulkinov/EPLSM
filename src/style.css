@@ -9,13 +9,17 @@ nav {
 .nav--icon {
   height: 30px;
   margin-right: 7px;
-  margin-right: 400px;
   margin-top: -20px;
+}
+
+.navbarCenter {
+  margin-left: 35%;
 }
 
 .search-logo {
   height: 22.17px;
   width: 22.17px;
+  margin-left: 80%;
 }
 
 nav ul {
@@ -29,7 +33,6 @@ nav ul {
   text-decoration: none;
   margin-right: 40px;
   font-size: 16px;
-  font-family: Poppins;
   color: #000000;
   font-weight: 550;
   font-family: "Poppins", sans-serif;
@@ -42,7 +45,6 @@ nav ul {
 }
 
 .search-logo {
-  margin-left: 650px;
   width: 22.17px;
   height: 22.17px;
 }
@@ -101,7 +103,7 @@ nav ul {
 }
 
 .cardd {
-  background: url(../public/img/main-furniture.png) no-repeat center top;
+  background: url('../src/assets/img/main-furniture.png') no-repeat center top;
   background-size: cover;
   width: 1900px;
   height: 850px;
@@ -159,6 +161,12 @@ section {
   margin-right: 30px;
   margin-bottom: 20px;
 }
+.cardPhotoStyle {
+  width: 93.5%; /* Make image width responsive to the container */
+  height: 300px; /* Set a fixed height, or make it responsive as needed */
+  object-fit: cover; /* This will ensure the image covers the area without stretching */
+}
+
 
 .body-photoss {
   height: 400px;
@@ -642,9 +650,9 @@ section {
 }
 
 .products-background{
-  background: url(../public/img/product-image.png) no-repeat center top;
+  background: url('../src/assets/img/product-image.png') no-repeat center top;
   background-size: cover;
-  width: 1920px;
+  width: 100%;
   height: 430px;
   position: absolute;
   
@@ -652,7 +660,7 @@ section {
 
 .under-background {
   background-color:#F9F1E7;
-  width:1920px;
+  width:100%;
   height:100px;
   margin-top: 430px;
   
@@ -670,6 +678,22 @@ section {
   margin-top: 37px;
   cursor: pointer;
   margin-left: 30px;
+}
+
+.filterOpen {
+  font-size: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #b88e2f;
+}
+
+.filterClosed {
+  font-size: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+  color: black;
 }
 
 .rad-1{
@@ -909,8 +933,11 @@ section {
   font-size: 43px;
 }
 
-.single-product-text{
+  .single-product-text{
   color: rgba(0, 0, 0, 1);
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
+}
+
+.sidebar {
 }

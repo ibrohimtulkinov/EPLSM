@@ -1,4 +1,7 @@
 import React from "react"
+import mainPhoto1 from '../assets/img/main-photo1.png';
+import mainPhoto2 from '../assets/img/main-photo2.png';
+import mainPhoto3 from '../assets/img/main-photo3.png';
 
 export default function Main() {
     return (
@@ -8,10 +11,10 @@ export default function Main() {
           <div className="container">
             <div className="photo---container  ">
 
-            <a href="#" class="photo">
-                 <img src="./img/main-photo1.png" />
-               <div class="glow-wrap">
-                 <i class="glow"></i>
+            <a href="#" className="photo">
+                 <img src={mainPhoto1} alt="#" />
+               <div className="glow-wrap">
+                 <i className="glow" > </i>
                </div>
                </a>
 
@@ -19,10 +22,10 @@ export default function Main() {
             </div>
           <div className="photo---container ">
 
-          <a href="#" class="photo">
-                 <img src="./img/main-photo2.png" />
-               <div class="glow-wrap">
-                 <i class="glow"></i>
+          <a href="#" className="photo">
+                 <img src={mainPhoto2} alt="#" />
+               <div className="glow-wrap">
+                 <i className="glow"> </i>
                </div>
                </a>
 
@@ -30,10 +33,10 @@ export default function Main() {
           </div>
           <div className="photo---container ">
 
-          <a href="#" class="photo">
-                 <img src="./img/main-photo3.png" />
-               <div class="glow-wrap">
-                 <i class="glow"></i>
+          <a href="#" className="photo">
+                 <img src={mainPhoto3} alt="#"/>
+               <div className="glow-wrap">
+                 <i className="glow"> </i>
                </div>
                </a>
 

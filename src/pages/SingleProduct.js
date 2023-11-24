@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import { Image } from 'react-bootstrap';
 import {AiOutlineRight  } from 'react-icons/ai';
+import singleProduct from '../assets/img/single_produc.png';
+import ReactImageMagnify from 'react-image-magnify';
 
 function SingleProduct() {
     return(
@@ -13,9 +14,21 @@ function SingleProduct() {
                 <p className='sofa__sofa'>Asgaard sofa</p>
             </div>
             <div className='row'>
-                <div className='col-md-2'></div>
+                <div className='col-md-2'> </div>
                 <div className='col-md-4'>
-                    <Image src='../img/single_produc.png' className='single_product'/>
+                    <ReactImageMagnify {...{
+                        smallImage: {
+                            alt: 'Product',
+                            src: singleProduct,
+                            width: 500,
+                            height: 400
+                        },
+                        largeImage: {
+                            src: singleProduct,
+                            width: 1000,
+                            height: 1600
+                        }
+                    }} />
                 </div>
                 <div className='col-md-3 mt-5'>
                     <p className='single-product-main'>Asgaard sofa</p>

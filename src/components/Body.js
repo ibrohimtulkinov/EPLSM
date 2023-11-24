@@ -1,6 +1,14 @@
 import { Button } from "react-bootstrap";
 import React from "react"
 import {AiOutlineShareAlt  } from 'react-icons/ai';
+import bodyPhoto1 from '../assets/img/body-photo1.png';
+import bodyPhoto2 from '../assets/img/body-photo2.png';
+import bodyPhoto3 from '../assets/img/body-photo3.png';
+import bodyPhoto4 from '../assets/img/body-photo4.png';
+import bodyPhoto5 from '../assets/img/body-photo5.png';
+import bodyPhoto6 from '../assets/img/body-photo6.png';
+import bodyPhoto7 from '../assets/img/body-photo7.png';
+import bodyPhoto8 from '../assets/img/body-photo8.png';
 
 
 export default function Body() {
@@ -11,7 +19,7 @@ export default function Body() {
         <div className="conter-content">
           <div className="photo-container ">
             <div className="defaultVisible">
-              <img className="body-photos" src="./img/body-photo1.png" alt="Фото 1" />
+              <img className="body-photos" src={bodyPhoto1} alt="Фото 1" />
               <div>
                 <p className="number">-30%</p>
               </div>
@@ -34,7 +42,7 @@ export default function Body() {
         <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photos" src="./img/body-photo2.png" alt="Фото 2" />
+          <img className="body-photos" src={bodyPhoto2} alt="Фото 2" />
           <div className="body-container2">
             <h3 className="body-title">Leviosa</h3>
             <p className="body-text">Stylish cafe chair</p>
@@ -51,7 +59,7 @@ export default function Body() {
         <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photos" src="./img/body-photo3.png" alt="Фото 3" />
+          <img className="body-photos" src={bodyPhoto3} alt="Фото 3" />
           <div>
             <p className="number">-50%</p>
           </div>
@@ -71,7 +79,7 @@ export default function Body() {
         <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photos" src="./img/body-photo4.png" alt="Фото 3" />
+          <img className="body-photos" src={bodyPhoto4} alt="Фото 3" />
           <div>
             <p className="number4">New</p>
           </div>
@@ -94,7 +102,7 @@ export default function Body() {
       <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVision">
-          <img className="body-photoss" src="./img/body-photo5.png" alt="Фото 3" />
+          <img className="body-photoss" src={bodyPhoto5} alt="Фото 3" />
           </div>
           <div className="body-container5">
             <h3 className="body-title">Grifo</h3>
@@ -113,7 +121,7 @@ export default function Body() {
       <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photoss" src="./img/body-photo6.png" alt="Фото 3" />
+          <img className="body-photoss" src={bodyPhoto6} alt="Фото 3" />
           <div>
             <p className="numberNEW">New</p>
           </div>
@@ -133,7 +141,7 @@ export default function Body() {
         <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photoss" src="./img/body-photo7.png" alt="Фото 3" />
+          <img className="body-photoss" src={bodyPhoto7} alt="Фото 3" />
           <div>
             <p className="number7">-50%</p>
           </div>
@@ -153,7 +161,7 @@ export default function Body() {
         <div className="conter-content">
         <div className="photo-container">
         <div className="defaultVisible">
-          <img className="body-photoss" src="./img/body-photo8.png" alt="Фото 3" />
+          <img className="body-photoss" src={bodyPhoto8} alt="Фото 3" />
           <div>
             <p className="numberNEW">New</p>
           </div>
