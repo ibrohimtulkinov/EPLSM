@@ -16,7 +16,7 @@ export default function Main() {
                <div className="glow-wrap">
                  <i className="glow" > </i>
                </div>
-               </a>
+            </a>
 
               <div className="caption">Dining</div>
             </div>

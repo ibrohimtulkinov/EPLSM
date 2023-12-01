@@ -13,9 +13,9 @@ import Navbar from '../components/Navbar'
 import {Button} from "react-bootstrap";
 import End from "../components/End"
 import {Link} from "react-router-dom"
-import bodyPhoto1 from '../assets/img/body-photo4.png';
-import bodyPhoto2 from '../assets/img/body-photo4.png';
-import bodyPhoto3 from '../assets/img/body-photo4.png';
+import bodyPhoto1 from '../assets/img/body-photo1.png';
+import bodyPhoto2 from '../assets/img/body-photo2.png';
+import bodyPhoto3 from '../assets/img/body-photo3.png';
 import bodyPhoto4 from '../assets/img/body-photo4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
@@ -36,7 +36,39 @@ function ProductsPage() {
             id: 1,
             name: "Syltherine",
             description: "Stylish cafe chair",
+            image: bodyPhoto1,
+            discount: "-30%",
+            isNew: false,
+        },
+        {
+            id: 2,
+            name: "Leviosa",
+            description: "Stylish cafe chair",
             image: bodyPhoto2,
+            discount: "",
+            isNew: false
+        },
+        {
+            id: 3,
+            name: "Lolito",
+            description: "Luxury big sofa",
+            image: bodyPhoto3,
+            discount: "-50%",
+            isNew: false
+        },
+        {
+            id: 4,
+            name: "Respira",
+            description: "Outdoor bar table and stool",
+            image: bodyPhoto4,
+            deduction: "New",
+            isNew: false
+        },
+        {
+            id: 1,
+            name: "Syltherine",
+            description: "Stylish cafe chair",
+            image: bodyPhoto1,
             discount: "-30%",
             isNew: false
         },
@@ -44,81 +76,107 @@ function ProductsPage() {
             id: 2,
             name: "Leviosa",
             description: "Stylish cafe chair",
-            image: bodyPhoto1,
+            image: bodyPhoto2,
             discount: "",
             isNew: false
         },
         {
             id: 3,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto4,
-            discount: "",
+            name: "Lolito",
+            description: "Luxury big sofa",
+            image: bodyPhoto3,
+            discount: "-50%",
             isNew: false
         },
         {
             id: 4,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto3,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 5,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto2,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 6,
-            name: "sadfasdfsadf",
-            description: "Stylish asdfsadfasdfsdf chair",
-            image: bodyPhoto1,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 7,
-            name: "Levadsfasdfsadfiosa",
-            description: "Stylish cafe chair",
+            name: "Respira",
+            description: "Outdoor bar table and stool",
             image: bodyPhoto4,
-            discount: "",
+            deduction: "New",
             isNew: false
         },
         {
-            id: 8,
-            name: "dasfsf",
+            id: 1,
+            name: "Syltherine",
+            description: "Stylish cafe chair",
+            image: bodyPhoto1,
+            discount: "-30%",
+            isNew: false
+        },
+        {
+            id: 2,
+            name: "Leviosa",
             description: "Stylish cafe chair",
             image: bodyPhoto2,
             discount: "",
             isNew: false
         },
         {
-            id: 9,
-            name: "asdfdsafadsf",
+            id: 3,
+            name: "Lolito",
+            description: "Luxury big sofa",
+            image: bodyPhoto3,
+            discount: "-50%",
+            isNew: false
+        },
+        {
+            id: 4,
+            name: "Respira",
+            description: "Outdoor bar table and stool",
+            image: bodyPhoto4,
+            deduction: "New",
+            isNew: false
+        },
+        {
+            id: 1,
+            name: "Syltherine",
             description: "Stylish cafe chair",
             image: bodyPhoto1,
+            discount: "-30%",
+            isNew: false
+        },
+        {
+            id: 2,
+            name: "Leviosa",
+            description: "Stylish cafe chair",
+            image: bodyPhoto2,
             discount: "",
+            isNew: false
+        },
+        {
+            id: 3,
+            name: "Lolito",
+            description: "Luxury big sofa",
+            image: bodyPhoto3,
+            discount: "-50%",
+            isNew: false
+        },
+        {
+            id: 4,
+            name: "Respira",
+            description: "Outdoor bar table and stool",
+            image: bodyPhoto4,
+            deduction: "New",
             isNew: false
         },
     ]
 
     return (
         <>
+        
             <Navbar/>
-            <div className="products-background ">
-                <div className="products-main text-start ">
+
+            <div className="bg-image">
+                <div className="products-important text-start ">
                     <h1 className='products--products '>Products</h1>
                     <p>
-                        <c className="home-products ">Home <AiOutlineRight/></c>
-                        <c className="products-products">Products</c>
+                        <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight/></c> </Link> 
+                       <Link to="/products" className="singleProduct_home"><c className="products-products">Products</c></Link> 
                     </p>
                 </div>
             </div>
-            <div className='under-background'>
+            <section className='sofaaa__background'>
                 <div className='d-flex  col-4 col-md-6 col-xl-12 '>
                     <div onClick={toggleSidebar} className={isOpen ? 'filterOpen' : 'filterClosed'}>
                         <FontAwesomeIcon icon={faSlidersH} style={{marginRight: '14px'}} color={isOpen ? 'warning' : 'dark'} /><span className='ml-2'>{isOpen ? 'Filter' : 'Filter'}</span>
@@ -132,12 +190,12 @@ function ProductsPage() {
                     <p className='sortby-text'>Short by</p>
                     <p className='default-text'>Default</p>
                 </div>
-            </div>
+             </section>
             <div className="container-fluid">
                 <div className="col-md-12 d-flex">
                     <div className={`col-md-3 sidebar ${isOpen ? '' : 'd-none'}`}>
                         <ul className="">
-                            <li><h2 className="" href="#">Title</h2></li>
+                            <li><h2 className="menu__itemm" href="#">Title</h2></li>
 
                             <div className="ms-4 me-4">
                                 <input type="search" className="form-control rounded" placeholder="Search"
@@ -145,24 +203,24 @@ function ProductsPage() {
                                        aria-describedby="search-addon"/>
                             </div>
 
-                            <li><h2 className="" href="#">Categories</h2></li>
+                            <li><h2 className="menu__itemm" href="#">Categories</h2></li>
 
 
                             <Link to="/SingleProduct" className="filter-texts">Sofa</Link>
-                            <p className='filter-texts'>Chair</p>
-                            <p className='filter-texts'>Table</p>
-                            <p className='filter-texts'>Sofa</p>
-                            <p className='filter-texts'>Chair</p>
-                            <p className='filter-texts'>Table</p>
+                            <Link to="/#" className="filter-texts">Chair</Link>
+                            <Link to="/#" className="filter-texts">Table</Link>
+                            <Link to="/#" className="filter-texts">Sofa</Link>
+                            <Link to="/#" className="filter-texts">Chair</Link>
+                            <Link to="/#" className="filter-texts">Table</Link>
 
 
-                            <li><h2 className="" href="#">Brand</h2></li>
+                            <li><h2 className="menu__itemm" href="#">Brand</h2></li>
 
-                            <p className='filter-texts'>BMW</p>
-                            <p className='filter-texts'>Mercedes - Benz</p>
-                            <p className='filter-texts'>Audi</p>
-                            <p className='filter-texts'>Toyota</p>
-                            <p className='filter-texts'>BYD</p>
+                            <Link to="/#" className="filter-texts">BMW</Link>
+                            <Link to="/#" className="filter-texts">Mercedes - Benz</Link>
+                            <Link to="/#" className="filter-texts">Audi</Link>
+                            <Link to="/#" className="filter-texts">Toyota</Link>
+                            <Link to="/#" className="filter-texts">BYD</Link>
 
                         </ul>
                     </div>
@@ -170,21 +228,26 @@ function ProductsPage() {
                         <div className="d-inline-flex flex-wrap">
                             {products.map(product => (
                                 <div className={`${productCardClass} conter-content`} key={product.id}>
-                                    <div className="photo-container">
+                                    <div className="photo-container mt-5 ms-5 text-center">
                                         <div className="defaultVisible">
                                             <img className={'cardPhotoStyle'} src={product.image} alt={product.name}/>
-                                            {product.discount && (
+                                            {product.discount &&(
                                                 <div>
-                                                    <p className="number">{product.discount}</p>
+                                                    <p className="numberr">{product.discount}</p>
+                                                </div>
+                                            )}
+                                            {product.deduction &&(
+                                                <div>
+                                                    <p className="numberr4">{product.deduction}</p>
                                                 </div>
                                             )}
                                         </div>
-                                        <div className={`body-container${product.isNew ? '4' : ''}`}>
+                                        <div className={`body-container77${product.isNew ? '4' : ''}`}>
                                             <h3 className="body-title">{product.name}</h3>
                                             <p className="body-text">{product.description}</p>
                                         </div>
-                                        <div className="onHoverVisible position-absolute">
-                                            <Button className="btn btn-light text-warning rounded-0 w-50 rad-0">
+                                        <div className="onHoverVisibleProduct position-absolute">
+                                            <Button className="btn btn-light rounded-0 w-50 rad-0">
                                                 {product.name}
                                             </Button>
                                             <br/>

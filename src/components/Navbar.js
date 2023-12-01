@@ -16,16 +16,16 @@ export default function Navbar() {
                     <Link to="/products" className="navigations">Products</Link>
                 </li>
                 <li >
-                    <a href="" className="navigations">Brands</a>
+                   <Link to="/brands" className="navigations">Brands</Link>
                 </li>
                 <li >
-                    <a href="" className="navigations">Catalogs</a>
+                   <Link to="/catalogs" className="navigations">Catalogs</Link>
                 </li>
                 <li >
-                    <a href="" className="navigations">Blog</a>
+                    <Link to="/blog" className="navigations">Blog</Link>
                 </li>
                 <li >
-                    <a href="" className="navigations">Contact</a>
+                    <Link to="/contact" className="navigations">Contact</Link>
                 </li>
                 <img className="search-logo" src={searchIcon} alt="" />
             </ul>

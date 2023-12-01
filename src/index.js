@@ -3,6 +3,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import ProductsPage from "./pages/ProductsPage";
 import SingleProduct from "./pages/SingleProduct";
+import Brands from "./pages/Brands";
+import Catalogs from "./pages/Catalogs";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import SingleBrand from "./pages/SingleBrand"
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,6 +27,26 @@ const router = createBrowserRouter([
   {
     path: "/SingleProduct",
     element: <SingleProduct />,
+  },
+  {
+    path: "/brands",
+    element: <Brands />,
+  },
+  {
+    path: "/catalogs",
+    element: <Catalogs />,
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
+    path: "/singlebrand",
+    element: <SingleBrand />,
   }
 ]);
 
