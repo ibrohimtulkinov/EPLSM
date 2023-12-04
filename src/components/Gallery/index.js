@@ -21,7 +21,7 @@ export default function Galleries() {
         {
             src: furniture3,
             width: 7,
-            height: 5
+            height: 5,
         },        
         {
             src: furniture1,

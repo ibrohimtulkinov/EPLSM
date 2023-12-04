@@ -18,6 +18,7 @@ import {
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
+    AiOutlineFileText
 } from 'react-icons/ai';
 import End from "../components/End"
 
@@ -40,11 +41,14 @@ function SingleProduct() {
                <div className='col-md-4 ms-5 '>
                     <img src={roche} alt="" />
                 </div>
-                <div className='col-md-5 mt-5'>
+                <div className='col-md-5 mt-5 '>
                     <p className='single-brand-main'>Roche</p>
                     <p className='single-brand-text mt-4'>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the  unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
                     <p className='single-brand-text mt-4'>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. .</p>
+                    <div className='text-start'>
                     <p className='singleBrand_' > Catalog</p>
+                    <p className='pdf mt-4 ms-5 '><AiOutlineFileText className='text-white bg-danger me-2 icon-white'/>catalog_2024.01.01.pdf</p>
+                    </div>
                 </div>
             </div>
          

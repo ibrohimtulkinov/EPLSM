@@ -15,6 +15,7 @@ import {
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
+    AiOutlineFileText 
 } from 'react-icons/ai';
 
 
@@ -36,50 +37,57 @@ function Catalogs() {
             <section>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={vng} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-vng'>VNG</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>VNG</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={pntgree} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-pntgree'>PNTGREE</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>PNTGREE</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={Constructionbrand} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-construction'>MY-CONSTRUCTION</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>MY-CONSTRUCTION</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={loremipsum} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-loremipsum'>HIGH-JOURNEY</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>HIGH-JOURNEY</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={pntgree} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-pntgree'>PNTGREE</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>PNTGREE</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={Constructionbrand} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-construction'>MY-CONSTRUCTION</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>MY-CONSTRUCTION</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-3 ms-5'><img src={loremipsum} alt="" /></div>
-                    <div className='col-md-6 '>
-                      <p className='catalog-loremipsum'>HIGH-JOURNEY</p>
+                    <div className='col-md-6 text-start '>
+                      <p className='catalog-vng ms-5'>HIGH-JOURNEY</p>
+                      <p className='pdf mt-4 ms-5'><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</p>
                       <div className='border-top catalog-border'></div>
                     </div>
                 </div>

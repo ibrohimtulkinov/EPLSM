@@ -198,9 +198,9 @@ function ProductsPage() {
                             <li><h2 className="menu__itemm" href="#">Title</h2></li>
 
                             <div className="ms-4 me-4">
-                                <input type="search" className="form-control rounded" placeholder="Search"
-                                       aria-label="Search"
-                                       aria-describedby="search-addon"/>
+                                <input type="search" className="form-control rounded"      placeholder="Search"
+                                    aria-label="Search"
+                                    aria-describedby="search-addon"/>
                             </div>
 
                             <li><h2 className="menu__itemm" href="#">Categories</h2></li>
@@ -225,7 +225,7 @@ function ProductsPage() {
                         </ul>
                     </div>
                     <div className={productGridClass}>
-                        <div className="d-inline-flex flex-wrap">
+                        <div className="d-inline-flex flex-wrap ">
                             {products.map(product => (
                                 <div className={`${productCardClass} conter-content`} key={product.id}>
                                     <div className="photo-container mt-5 ms-5 text-center">

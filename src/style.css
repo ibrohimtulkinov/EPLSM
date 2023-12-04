@@ -451,10 +451,25 @@ section {
   margin:70px 0;
   background-color:#FCF8F3 ;
   background-size: cover;
-  width: 1907px;
-  height: 650px;
+  width: 100%;
+  height: 500px;
 }
 
+.textof-explore{
+ margin-left: 10%;
+}
+
+.text-explore{
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.explore-text{
+  color: rgba(97, 97, 97, 1);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
 /*.text-start {
   padding-top: 30%;
   margin-left: -90%;;
@@ -1239,7 +1254,6 @@ margin-left: 900px;
 }
 .catalog-vng{
   margin-top: 10%;
-  margin-right: 60%;
   color: rgba(184, 142, 47, 1);
   font-size: 42px;
 }
@@ -1299,8 +1313,119 @@ margin-left: 900px;
   border: 1px solid rgba(159, 159, 159, 1);
 }
 
+
+/*BLOG!*/
+
+
 .input-texts{
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: bold;
+}
+
+.blog-control{
+  border: 1px solid rgba(159, 159, 159, 1);
+  border-radius: 7px;
+  padding: 15px 50px;
+}
+
+.blog_photos{
+  width: 100%;
+}
+
+.categories{
+  margin-left: 10%;
+}
+
+.listof-categories{
+  line-height: 3;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: rgba(159, 159, 159, 1);
+}
+
+.read-more{
+  display: inline-block;
+  font-size: 16px;
+  color: #000;
+}
+
+.blog-icons{
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: rgba(159, 159, 159, 1);
+}
+
+.iconsss{
+  margin-left: 20px;
+}
+
+.blog-text{
+  color: rgba(159, 159, 159, 1);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+.pdf{
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 0, 0, 1);
+  
+}
+
+.icon-white{
+  border-radius: 3px;
+  font-size: 25px;
+  margin-left: -50px;
+}
+
+.blog-icon{
+  border-radius: 3px;
+  font-size: 25px;
+}
+
+/*carousel*/ 
+
+.carousel-container {
+    width: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    padding: 20px;
+}
+
+.carousel-slide img {
+    width: 300px;
+    height: 400px; 
+}
+
+.carousel-slide h3 {
+    font-size: 1.5em;
+}
+
+.carousel-slide p {
+    font-size: 1em;
+    color: #333;
+}
+
+.post1{
+  width: 100px;
+  height: 100px;
+  display: inline-block !important;
+}
+
+.categories__{
+  margin-left: 10%;
+}
+
+.textt-blog{
+  margin-left: 8px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+.post-data{
+  margin-left: 8px;
+  color: rgba(159, 159, 159, 1);
+  font-size: 12px;
 }
