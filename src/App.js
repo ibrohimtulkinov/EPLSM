@@ -9,6 +9,8 @@ import Explore from "./components/Explore more"
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Galleries from "./components/Gallery";
+import Sofaa from "./components/sofaa"
+
 
 export default function App() {
   return (
@@ -18,8 +20,10 @@ export default function App() {
       <Main />
       <Body />
       <Explore />
+      <Image />
       <Galleries />
       <End />
+      <Sofaa />
   </div>
   )
 }

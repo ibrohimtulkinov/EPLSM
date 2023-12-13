@@ -9,61 +9,29 @@ import furniture6 from '../../assets/img/furniture6.png';
 import furniture7 from '../../assets/img/furniture7.png';
 import furniture9 from '../../assets/img/furniture9.png';
 import furniture8 from '../../assets/img/furniture8.png';
-import Gallery from 'react-photo-gallery';
 
 export default function Galleries() {
-    const photos = [
-        {
-            src: furniture9,
-            width: 1,
-            height: 5 
-        },
-        {
-            src: furniture3,
-            width: 7,
-            height: 5,
-        },        
-        {
-            src: furniture1,
-            width: 1,
-            height: 1
-        },
-        {
-            src: furniture2,
-            width: 1,
-            height: 1
-        },
-        {
-            src: furniture7,
-            width: -1,
-            height: 1
-        },
-        {
-            src: furniture8,
-            width: 3,
-            height: 3
-        },
-        {
-            src: furniture4,
-            width: 2,
-            height: 3
-        },
-        {
-            src: furniture5,
-            width: 3,
-            height: 2
-        },
-        {
-            src: furniture6,
-            width: 4,
-            height: 2
-        },
-      
-    ];
+
 
     return (
         <>
-            <Gallery photos={photos}/>
+        
+            <img src={furniture9} alt=""  className="furniture9_photo ms-5 col-md-1 col-2"/>
+            <img src={furniture3} alt=""  className="furniture3_photo ms-3 col-md-4 col-sm-2 "/>
+            <img src={furniture1} alt=""  className="furniture1_photo ms-3 col-md-2 col-sm-2"/>
+            <img src={furniture2} alt=""  className="furniture2_photo ms-3 col-md-2 col-sm-2"/>
+            <img src={furniture7} alt=""  className="furniture7_photo ms-3 col-md-2 col-sm-2"/>
+       
+
+        <div>
+            <img src={furniture8} alt=""  className="furniture8_photo col-md-2 col-sm-2"/>
+            <img src={furniture4} alt=""  className="furniture4_photo ms-3 col-md-3 col-sm-2"/>
+         <div className="text-end furniture-photo">
+            <img src={furniture5} alt=""  className="furniture5_photo ms-3 col-md-4
+              col-sm-2 "/>
+            <img src={furniture6} alt=""  className="furniture6_photo ms-3 col-md-3 col-sm-2"/>
+        </div>
+        </div>
         </>
     )
 }

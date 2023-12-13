@@ -50,7 +50,7 @@ function SingleProduct() {
                        {
                            data.map((image)=>(
                                <div className='col-md-2'>
-                                   <img src={image.image} alt="" width='100px' height='100px'  onClick={()=>handleChangeImage(image)}/>
+                                   <img src={image.image} alt="" width='100px' className='single_photos' height='100px'  onClick={()=>handleChangeImage(image)}/>
                                </div>
                            ))
                        }
@@ -188,30 +188,30 @@ function SingleProduct() {
       </div>
 
 
-      <div className='mt-5 mb-5 icons__background'>
-                <div className='d-flex'>
-                    <div className='col-md-3 '>
-                        <c className="icons__ mt-2 ms-5"><AiOutlineTrophy/></c>
+            <div className='mt-5 mb-5 icons__background'>
+                <div className='d-xxl-flex d-xl-flex d-sm-block'>
+                <div className='col-md-3  col-sm-2'>
+                        <c className="icons__ mt-2"><AiOutlineTrophy/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>High Quality</p>
                             <p className='icons__text'>crafted from top materials</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineDownCircle/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>Warranty Protection</p>
                             <p className='icons__text'>Over 2 years</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineException/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>Free Shipping</p>
                             <p className='icons__text'>Order over 150 $</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineCustomerService/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>24 / 7 Support</p>
@@ -230,5 +230,3 @@ function SingleProduct() {
 
 
 export default SingleProduct
-
- 

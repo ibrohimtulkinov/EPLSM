@@ -36,7 +36,7 @@ function Contact() {
       <Navbar />
 
             <div className="bg-image">
-                <div className="products-important  text-start col-3  col-md-3 col-lx-12 ">
+                <div className="products-important  ">
                     <h1 className='products--products '>Contact</h1>
                     <p>
                         <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight/></c> </Link> 
@@ -62,7 +62,7 @@ function Contact() {
                     </div>
 
 
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                     <p className='input-texts'>Your name</p>
                     <form>
                          <input 
@@ -86,7 +86,7 @@ function Contact() {
                     </div>
 
 
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                     <p className='input-texts'>Email address</p>
                     <form>
                          <input 
@@ -109,7 +109,7 @@ function Contact() {
                     </div>
 
 
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                     <p className='input-texts'>Subject</p>
                     <form>
                          <input 
@@ -133,7 +133,7 @@ function Contact() {
                     </div>
 
 
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                     <p className='input-texts'>Message</p>
                     <form>
                         <textarea 
@@ -155,7 +155,7 @@ function Contact() {
 
                
                   <div className='text-center mt-5'>
-                    <img src={map} alt="" width='1000px' height='400px' />
+                    <img src={map} alt="" className='col-md-6 col-sm-8 col-10' />
                   </div>
                
 

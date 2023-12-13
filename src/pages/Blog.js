@@ -39,31 +39,26 @@ function Blog() {
                 </div>
             </div>
 
-            <div className='container-fluid mt-5 ms-5 me-5'>
-                <div className='row'>
-                    <div className='col-md-5 col-8'>
-                        <img src={blog1} alt="" className='blog_photos' />
+            
+
+ 
+             <div className='col-md-12 container mt-5 '>
+                <div className='row gap-3 justify-content-between'>
+                    <div className='col-md-7'>
+                    <img src={blog1} alt="" className='blog_photos' />
                        <div className='d-flex blog-icons mt-3'>
                          <p><AiOutlineUser />Admin</p>
                          <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
                          <p className='iconsss'><AiOutlineInbox />Wood</p>
                        </div>
-                       
-                     
-                       <h3>Going all-in with millennial design</h3>
-                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
-                     
-                       
-                       <Link><p className='read-more border-bottom'>Read more</p></Link> 
                     </div>
-                 
-                    <div className='col-md-4 categories'>
-                        <input type="search" className="blog-control"      
+                    <div className='col-md-3 text-start'>
+                    <input type="search" className="blog-control "      
                             aria-label="Search"
                             aria-describedby="search-addon"
                          />
-                         <div className='row ms-4  '>
-                           <h3 className='mt-5'>Categories</h3>
+                         <div className='row ms-4   gap-3'>
+                           <h3 className='mt-5 '>Categories</h3>
                           <div className='col-md-4 mt-2 listof-categories '>
                             <p>Crafts</p>
                             <p>Design</p>
@@ -78,8 +73,34 @@ function Blog() {
                                 <p>1</p>
                                 <p>6</p>
                             </div>
-                            <div>
-                              <h3 className='mt-5'>Recent Posts</h3>
+                            </div>
+                    </div>
+                </div>
+
+             </div>
+
+
+             <div className='col-md-12 container '>
+                <div className='row gap-3 justify-content-between'>
+                    <div className='col-md-7 text-start'>
+                    <h3>Going all-in with millennial design</h3>
+                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
+                       <Link><p className='read-more border-bottom'>Read more</p></Link> 
+                       <img src={blog2} alt="" className='blog_photos mt-3' />
+                       <div className='d-flex blog-icons mt-3'>
+                         <p><AiOutlineUser />Admin</p>
+                         <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
+                         <p className='iconsss'><AiOutlineInbox />Wood</p>
+                       </div> 
+                       <h3>Going all-in with millennial design</h3>
+                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
+                     
+                       
+                       <Link ><p className='read-more border-bottom'>Read more</p></Link>
+                        
+                    </div>
+                    <div className='col-md-3 text-start'>
+                    <h3 className=''>Recent Posts</h3>
                               <div className='d-flex mt-4'>
                                 <img src={post1} alt="" className='post1' />
                                    <div className='d-block'>
@@ -93,82 +114,61 @@ function Blog() {
                                       <p className='textt-blog'>Exploring new ways <br/> of decorating</p>
                                       <p className='post-data'>03 Aug 2022</p>
                                    </div>
+                                   
                               </div>
-                            </div>
-                         </div>
-                         
-                    </div>
-                    
-                    
-                </div>
-            </div>
-
-            <div className='container-fluid ms-5 me-5'>
-                <div className='row'>
-                    <div className='col-md-5 col-8'>
-                        <img src={blog1} alt="" className='blog_photos' />
-                       <div className='d-flex blog-icons mt-3'>
-                         <p><AiOutlineUser />Admin</p>
-                         <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
-                         <p className='iconsss'><AiOutlineInbox />Wood</p>
-                       </div>
-                       
-                     
-                       <h3>Going all-in with millennial design</h3>
-                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
-                     
-                       
-                       <Link><p className='read-more border-bottom'>Read more</p></Link> 
-                    </div>
-                    <div className='col-md-4 categories__'>
-                         <div className='row ms-4  '>
-                            <div>
                               <div className='d-flex mt-4'>
                                 <img src={post3} alt="" className='post1' />
                                    <div className='d-block'>
-                                      <p className='textt-blog'>Handmade pieces <br/>that took time to make</p>
+                                      <p className='textt-blog'>Exploring new ways <br/> of decorating</p>
                                       <p className='post-data'>03 Aug 2022</p>
                                    </div>
+                                   
                               </div>
                               <div className='d-flex mt-4'>
                                 <img src={post4} alt="" className='post1' />
                                    <div className='d-block'>
-                                      <p className='textt-blog'>Modern home in<br/> Milan</p>
+                                      <p className='textt-blog'>Exploring new ways <br/> of decorating</p>
                                       <p className='post-data'>03 Aug 2022</p>
                                    </div>
+                                   
                               </div>
                               <div className='d-flex mt-4'>
                                 <img src={post5} alt="" className='post1' />
                                    <div className='d-block'>
-                                      <p className='textt-blog'>Colorful office<br/> redesign</p>
+                                      <p className='textt-blog'>Exploring new ways <br/> of decorating</p>
                                       <p className='post-data'>03 Aug 2022</p>
                                    </div>
+                                   
                               </div>
-                            </div>
-                         </div>
-                         
                     </div>
-                    
-                    
                 </div>
-            </div>
 
-            <div className='container-fluid mt-5 ms-5 me-5'>
-                <div className='row'>
-                    <div className='col-md-5 col-8'>
-                        <img src={blog3} alt="" className='blog_photos' />
+             </div>
+
+
+             <div className='col-md-12 container mt-3'>
+                <div className='row gap-3 justify-content-between'>
+                    <div className='col-md-7 text-start'>
+                    
+                       <img src={blog3} alt="" className='blog_photos' />
                        <div className='d-flex blog-icons mt-3'>
                          <p><AiOutlineUser />Admin</p>
                          <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
                          <p className='iconsss'><AiOutlineInbox />Wood</p>
-                       </div>
+                       </div> 
                        <h3>Going all-in with millennial design</h3>
                        <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
-                       <Link><p className='read-more border-bottom'>Read more</p></Link> 
+                     
+                       
+                       <Link ><p className='read-more border-bottom'>Read more</p></Link> 
                     </div>
                 </div>
-            </div>
 
+             </div>
+
+
+         
+    
             <div className="container">
                 <div className='conter-content mt-5 mb-5'>
                     <div className='d-flex'>
@@ -180,30 +180,31 @@ function Blog() {
                 </div>
             </div>
 
+ 
             <div className='mt-5 mb-5 icons__background'>
-                <div className='d-flex'>
-                    <div className='col-md-3 '>
-                        <c className="icons__ mt-2 ms-5"><AiOutlineTrophy/></c>
+                <div className='d-xxl-flex d-xl-flex d-sm-block'>
+                <div className='col-md-3  col-sm-2'>
+                        <c className="icons__ mt-2"><AiOutlineTrophy/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>High Quality</p>
                             <p className='icons__text'>crafted from top materials</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineDownCircle/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>Warranty Protection</p>
                             <p className='icons__text'>Over 2 years</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineException/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>Free Shipping</p>
                             <p className='icons__text'>Order over 150 $</p>
                         </div>
                     </div>
-                    <div className='col-md-3'>
+                    <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineCustomerService/></c>
                         <div className='icons_header'>
                             <p className='icons__header mt-5'>24 / 7 Support</p>

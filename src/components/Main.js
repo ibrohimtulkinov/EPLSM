@@ -5,44 +5,38 @@ import mainPhoto3 from '../assets/img/main-photo3.png';
 
 export default function Main() {
     return (
-      <section>
+      <section className="">
           <h1 className="main-title">Browse The Range</h1>
           <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div className="container">
-            <div className="photo---container  ">
-
-            <a href="#" className="photo">
+          <div className="container ">
+<div class="row text-center gap-5">
+    
+          <div className="photo col-md-3 ">
                  <img src={mainPhoto1} alt="#" />
                <div className="glow-wrap">
                  <i className="glow" > </i>
                </div>
-            </a>
-
-              <div className="caption">Dining</div>
+               <p className="caption">Dinner</p>
             </div>
-          <div className="photo---container ">
 
-          <a href="#" className="photo">
+            <div className="photo col-md-3">
                  <img src={mainPhoto2} alt="#" />
                <div className="glow-wrap">
-                 <i className="glow"> </i>
+                 <i className="glow" > </i>
                </div>
-               </a>
+               <p className="caption">Living</p>
+            </div>
 
-              <div className="caption">Living</div>
-          </div>
-          <div className="photo---container ">
-
-          <a href="#" className="photo">
-                 <img src={mainPhoto3} alt="#"/>
+            <div className="photo col-md-3 ">
+                 <img src={mainPhoto3} alt="#" />
                <div className="glow-wrap">
-                 <i className="glow"> </i>
+                 <i className="glow" > </i>
                </div>
-               </a>
+               <p className="caption">Bedroom</p>
+            </div>
 
-              <div className="caption">Bedroom</div>
-          </div>
-           </div>
+</div>
+   </div>
       </section>
     )
 }
