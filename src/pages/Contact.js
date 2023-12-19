@@ -4,6 +4,7 @@ import {Button} from "react-bootstrap";
 import End from "../components/End"
 import map from '../assets/img/map.png';
 import {Link} from "react-router-dom"
+import { useEffect } from "react";
 import { AiFillEnvironment,AiFillClockCircle ,AiFillPhone  } from "react-icons/ai";
 
 
@@ -18,6 +19,16 @@ function Contact() {
     const [formData, setFormData] = React.useState(
         {firstName: "", lastName: "", email: "", comments: ""}
     )
+    const [information, setInformation] = useState()
+    const getInformation = async () => {
+        const response = await fetch( 'https://eplsm.olimjohn.uz/api/contact-item/')
+        const data = await response.json()
+        setInformation(data)
+    }
+
+    useEffect(() => {
+        getInformation()
+    }, []) 
    
     console.log(formData.comments)
 
@@ -54,14 +65,24 @@ function Contact() {
                 </dir>
              </div>
 
+                  {
+                    information?.map(information => {
+                        return
+                    })
+                  }
+
              <div className='container-fluid '>
                 <div className='row mt-5'>
-                    <div className='col-md-3 contact-address col-3'>
+
+                {
+                    information?.map(information => {
+                        return<div className='col-md-3 contact-address col-3'>
                         <h5><AiFillEnvironment className='contact-icon'/> <d className="main-contact">Address</d></h5>
-                        <p className='contact-text'>236 5th SE Avenue, New <br /> York NY10000, United <br /> States</p>
+                        <p className='contact-text'>{information?.address}</p>
                     </div>
-
-
+                    })
+                  }
+                    
                     <div className='col-md-4'>
                     <p className='input-texts'>Your name</p>
                     <form>
@@ -80,13 +101,17 @@ function Contact() {
 
                 </div>
                 <div className='row'>
-                    <div className='col-md-3 contact-address col-3'>
+                      
+                      {
+                        information?.map(information => {
+                            return <div className='col-md-3 contact-address col-3'>
                         <h5><AiFillPhone   className='contact-icon'/>  <d className="main-contact">Phone</d></h5>
-                        <p className='contact-text'>Mobile: +(84) 546-6789 <br />Hotline: +(84) 456-6789</p>
-                    </div>
-
-
-                    <div className='col-md-4'>
+                        <p className='contact-text'>{information?.phone_primary}<br />{information?.phone_secondary}</p>
+                        </div>
+                        
+                        })
+                      }
+                      <div className='col-md-4'>
                     <p className='input-texts'>Email address</p>
                     <form>
                          <input 
@@ -100,13 +125,18 @@ function Contact() {
                     </form>
                     </div>
 
-
                 </div>
                 <div className='row'>
-                    <div className='col-md-3 contact-address col-3'>
+
+
+                  {
+                    information?.map(information => {
+                        return   <div className='col-md-3 contact-address col-3'>
                         <h5><AiFillClockCircle className='contact-icon'/> <d className="main-contact">Working Time</d></h5>
-                        <p className='contact-text'>Monday-Friday: 9:00 - <br /> 22:00 <br />Saturday-Sunday: 9:00 - <br /> 21:00</p>
+                        <p className='contact-text'>{information?.work_start}<br />{information?.work_end}</p>
                     </div>
+                    })
+                  }
 
 
                     <div className='col-md-4'>

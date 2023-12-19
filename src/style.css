@@ -1,4 +1,5 @@
 nav {
+  display: flex;
   background-color: white;
   height: 9px;
   padding: 30px 25px;
@@ -12,11 +13,9 @@ nav {
   box-shadow: 0px 2.98256px 7.7864px rgb(0, 0, 0, 0.1);
 }
 
-.nav--icon {
-  height: 30px;
-  margin-right: 7px;
-  margin-top: -20px;
-}
+ .nav--icon {
+  height: 35px;
+} 
 
 .navbarCenter {
   margin-left: 30%;
@@ -32,14 +31,14 @@ nav ul {
 .navigations {
   text-decoration: none;
   font-size: 16px;
-  color: #000000;
-  font-weight: 550;
+  color: #000000!important;
+  font-weight: 600!important;
   font-family: "Poppins", sans-serif;
 }
 
 .navigations:hover {
   transition: 0.3s ease;
-  color: #b88e2f;
+  color: #b88e2f!important;
   border-bottom: 1px solid #b88e2f;
 }
 
@@ -60,15 +59,15 @@ nav ul {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 52px;
-  color: rgba(184, 142, 47, 1);
-  margin-top: -10px;
+  color: rgba(184, 142, 47, 1)!important;
+  
 }
 
 .card-text {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif!important;
   font-size: 18px;
-  color: rgba(51, 51, 51, 1);
-  margin-top: 70px;
+  color: rgba(51, 51, 51, 1)!important;
+  margin-top: 15%;
 }
 
 .card-button {
@@ -97,7 +96,7 @@ nav ul {
   background-color: #fff3e3;
   display: inline-block;
   border-radius: 10px;
-  padding: 50px 60px;
+  padding: 30px 30px;
   float: right;
   margin-right: 5%;
 }
@@ -152,7 +151,7 @@ section {
   font-size: 40px;
   font-weight: 700;
   color: rgba(58, 58, 58, 1);
-  margin-top: 50px;
+  
 }
 
 .body-photos {
@@ -163,9 +162,8 @@ section {
 }
 
 .cardPhotoStyle {
-  height: 400px;
+  height: 500px;
   width: 80%;
-  margin-right: 82px;
   margin-bottom: 20px;
 }
 
@@ -199,8 +197,23 @@ section {
 .body-container77 {
   background-color: #f4f5f7;
   padding-bottom: 50px;
-  margin-right: 82px;
+  margin-right: 50px;
+  margin-bottom: 40px;
+  line-height: 3;
 }
+
+
+
+.body-container777 {
+  background-color: #f4f5f7;
+  padding-bottom: 50px;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 40px;
+  line-height: 3;
+}
+
+
 
 .body-container {
   background-color: #f4f5f7;
@@ -316,7 +329,12 @@ section {
   font-size: 12px;
   line-height: 40px;
 }
-
+.align-middle {
+  /* Optional: Add this class if you need to vertically align text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .number4 {
   position: absolute;
   top: 10px;
@@ -399,6 +417,7 @@ section {
     justify-content: center;
     align-items: center;
     line-height: 5px;
+    margin-left: 47px;
   }
 }
 
@@ -937,6 +956,7 @@ ul {
   font-size: 20px;
   padding: 11px 5px;
   cursor: pointer;
+  border: 0;
 }
 
 .number__0:hover {
@@ -951,6 +971,7 @@ ul {
   font-size: 20px;
   padding: 8px 25px 9px 15px;
   cursor: pointer;
+  border: 0;
 }
 
 .number__next:hover {
@@ -1083,15 +1104,38 @@ ul {
 }
 .singleproduct-description {
   font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 1);
   font-size: 24px;
+  color: rgba(159, 159, 159, 1);
   margin-right: 7%;
+  border: 0;
+  background-color: white;
 }
+
+.singleproduct-description:focus {
+  color: #000;
+}
+
+.singleproduct-description:hover {
+  color: #000;
+  transition: 0.5s ease;
+}
+
+.singleproduct-info:focus {
+  color: #000;
+}
+
+.singleproduct-info:hover {
+  color: #000;
+  transition: 0.5s ease;
+}
+
 .singleproduct-info {
   font-family: "Roboto", sans-serif;
   color: rgba(159, 159, 159, 1);
   font-size: 24px;
   margin-right: 7%;
+  border: 0;
+  background-color: white;
 }
 
 .text-of-singleproduct {
@@ -1377,6 +1421,7 @@ ul {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: rgba(255, 0, 0, 1);
+  text-decoration: none;
 }
 
 .icon-white {
@@ -1440,6 +1485,7 @@ ul {
 
 .furniture9_photo {
   height: 400px;
+  cursor: pointer;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1593,6 +1639,16 @@ ul {
 }
 
 /* navbar */
+.ml-auto {
+  color: #000;
+}
+
+.related0{
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
+  color: #000;
+  font-weight: bold;
+}
 
 /*
 <div className='container-fluid mt-5 ms-5 me-5'>

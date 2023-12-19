@@ -21,9 +21,22 @@ import {
     AiTwotoneCalendar,
     AiOutlineInbox 
 } from 'react-icons/ai';
+import { useEffect } from "react";
 
 
 function Blog() {
+
+    const [information, setInformation] = useState()
+    const getInformation = async () => {
+        const response = await fetch('https://eplsm.olimjohn.uz/api/post-list/')
+        const data = await response.json()
+        setInformation(data)
+    }
+
+    useEffect(() => {
+        getInformation()
+    }, []) 
+  
     return(
    <>
 
@@ -44,27 +57,36 @@ function Blog() {
  
              <div className='col-md-12 container mt-5 '>
                 <div className='row gap-3 justify-content-between'>
-                    <div className='col-md-7'>
-                    <img src={blog1} alt="" className='blog_photos' />
-                       <div className='d-flex blog-icons mt-3'>
-                         <p><AiOutlineUser />Admin</p>
-                         <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
-                         <p className='iconsss'><AiOutlineInbox />Wood</p>
-                       </div>
-                    </div>
+                
+                         {
+                            information?.map(information => {
+                                return <div className='col-md-7 text-start'>
+                                  
+                                 <img src={information?.photo_medium} alt="" className='blog_photos mt-3' />
+                                 <div className='d-flex blog-icons mt-3'>
+                                       <p><AiOutlineUser />Admin</p>
+                                        <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
+                                       <p className='iconsss'><AiOutlineInbox />Wood</p>
+                                     </div> 
+                                </div>
+                            })
+                         }
+                    
                     <div className='col-md-3 text-start'>
                     <input type="search" className="blog-control "      
                             aria-label="Search"
                             aria-describedby="search-addon"
                          />
-                         <div className='row ms-4   gap-3'>
+                         {
+                            information?.map(information => {
+                                return <div className='row ms-4   gap-5'>
                            <h3 className='mt-5 '>Categories</h3>
                           <div className='col-md-4 mt-2 listof-categories '>
-                            <p>Crafts</p>
-                            <p>Design</p>
+                            <p>{information?.title}</p>
+                            {/* <p>Design</p>
                             <p>Handmade</p>
                             <p>Interior</p>
-                            <p>Wood</p>
+                            <p>Wood</p> */}
                          </div>
                             <div className='col-md-4 mt-2 listof-categories'>
                                 <p>2</p>
@@ -74,31 +96,39 @@ function Blog() {
                                 <p>6</p>
                             </div>
                             </div>
+                            })
+                         }
+                        
                     </div>
-                </div>
 
+                </div>
              </div>
 
 
              <div className='col-md-12 container '>
                 <div className='row gap-3 justify-content-between'>
-                    <div className='col-md-7 text-start'>
-                    <h3>Going all-in with millennial design</h3>
-                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
-                       <Link><p className='read-more border-bottom'>Read more</p></Link> 
-                       <img src={blog2} alt="" className='blog_photos mt-3' />
-                       <div className='d-flex blog-icons mt-3'>
-                         <p><AiOutlineUser />Admin</p>
-                         <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
-                         <p className='iconsss'><AiOutlineInbox />Wood</p>
-                       </div> 
-                       <h3>Going all-in with millennial design</h3>
-                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
+                         {
+                            information?.map(information => {
+                                return <div className='col-md-7 text-start'>
+                                       <h3>{information?.title}</h3>
+                                   <p className='mt-3 blog-text'>{information?.description}</p>
+                                  <Link><p className='read-more border-bottom'>Read more</p></Link> 
+                                 <img src={information?.photo_medium} alt="" className='blog_photos mt-3' />
+                                 <div className='d-flex blog-icons mt-3'>
+                                       <p><AiOutlineUser />{information?.username}</p>
+                                        <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
+                                       <p className='iconsss'><AiOutlineInbox />Wood</p>
+                                     </div> 
+                                   <h3>{information?.title}</h3>
+                                    <p className='mt-3 blog-text'>{information?.description}</p>
                      
                        
-                       <Link ><p className='read-more border-bottom'>Read more</p></Link>
-                        
-                    </div>
+                             <Link ><p className='read-more border-bottom'>Read more</p></Link>
+                          </div>
+                            })
+                         }
+                   
+                    
                     <div className='col-md-3 text-start'>
                     <h3 className=''>Recent Posts</h3>
                               <div className='d-flex mt-4'>
@@ -148,22 +178,23 @@ function Blog() {
 
              <div className='col-md-12 container mt-3'>
                 <div className='row gap-3 justify-content-between'>
-                    <div className='col-md-7 text-start'>
-                    
-                       <img src={blog3} alt="" className='blog_photos' />
+
+                     {
+                        information?.map(information => {
+                        return <div className='col-md-7 text-start'>
+                       <img src={information?.photo_medium} alt="" className='blog_photos' />
                        <div className='d-flex blog-icons mt-3'>
-                         <p><AiOutlineUser />Admin</p>
-                         <p className='iconsss'><AiTwotoneCalendar />14 Oct 2022</p>
+                         <p><AiOutlineUser />{information?.username}</p>
+                         <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
                          <p className='iconsss'><AiOutlineInbox />Wood</p>
                        </div> 
-                       <h3>Going all-in with millennial design</h3>
-                       <p className='mt-3 blog-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.</p>
-                     
-                       
+                       <h3>{information?.title}</h3>
+                       <p className='mt-3 blog-text'>{information?.description}</p>
                        <Link ><p className='read-more border-bottom'>Read more</p></Link> 
                     </div>
+                   })
+                  }
                 </div>
-
              </div>
 
 
@@ -182,7 +213,7 @@ function Blog() {
 
  
             <div className='mt-5 mb-5 icons__background'>
-                <div className='d-xxl-flex d-xl-flex d-sm-block'>
+                <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>
                 <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineTrophy/></c>
                         <div className='icons_header'>

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 export default function End() {
     const [formData, setFormData] = React.useState(
@@ -6,7 +7,6 @@ export default function End() {
             email: "",
         }
     )
-
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target
@@ -33,17 +33,17 @@ export default function End() {
                 </div>
              
                 <div className="col-md-2 text-start end-row">
-                    <a href="" className="end-main"><p>Links</p></a>
-                    <a href="" className="end-texts" ><p>Home</p></a>
-                    <a href="" className="end-texts" ><p>Products</p></a>
-                    <a href="" className="end-texts" ><p>About</p></a>
-                    <a href="" className="end-texts" ><p>Contact</p></a>
+                    <Link to="" className="end-main"><p>Links</p></Link>
+                    <Link to="/" className="end-texts" ><p>Home</p> </Link>
+                    <Link to="/products" className="end-texts" ><p>Products</p></Link>
+                    <Link to="" className="end-texts" ><p>About</p></Link>
+                    <Link to="/contact" className="end-texts" ><p>Contact</p></Link>
                 </div>
                 <div className="col-md-2 text-start end-row">
-                    <a href="" className="end-main"><p>Help</p></a>
-                    <a href="" className="end-texts" ><p>Payment Options</p></a>
-                    <a href="" className="end-texts" ><p>Returns</p></a>
-                    <a href="" className="end-texts" ><p>Privacy Policies</p></a>
+                    <Link to="" className="end-main"><p>Help</p></Link>
+                    <Link to="" className="end-texts" ><p>Payment Options</p></Link>
+                    <Link to="" className="end-texts" ><p>Returns</p></Link>
+                    <Link to="" className="end-texts" ><p>Privacy Policies</p></Link>
                 </div>
            
                 <div className="col-md-3 text-start end--row">

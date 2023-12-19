@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <Contact />,
   },
   {
-    path: "/singlebrand",
+    path: "/singlebrand/:guid",
     element: <SingleBrand />,
   }
 ]);

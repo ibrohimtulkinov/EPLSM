@@ -20,7 +20,11 @@ import bodyPhoto4 from '../assets/img/body-photo4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
+
 function ProductsPage() {
+
+
+    
 
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -178,7 +182,7 @@ function ProductsPage() {
             </div>
 
             <section className='sofaaa__background'>
-                <div className="row">
+                <div className="row mx-auto">
 
                     <div className="col-md-4 inline">
                         <div onClick={toggleSidebar} className={isOpen ? 'filterOpen' : 'filterClosed'}>
@@ -228,12 +232,12 @@ function ProductsPage() {
                             <li><h2 className="menu__itemm" href="#">Categories</h2></li>
 
 
-                            <Link to="/SingleProduct" className="filter-texts">Sofa</Link>
-                            <Link to="/SingleProduct" className="filter-texts">Chair</Link>
-                            <Link to="/SingleProduct" className="filter-texts">Table</Link>
-                            <Link to="/SingleProduct" className="filter-texts">Sofa</Link>
-                            <Link to="/SingleProduct" className="filter-texts">Chair</Link>
-                            <Link to="/SingleProduct" className="filter-texts">Table</Link>
+                            <Link to="" className="filter-texts">Sofa</Link>
+                            <Link to="" className="filter-texts">Chair</Link>
+                            <Link to="" className="filter-texts">Table</Link>
+                            <Link to="" className="filter-texts">Sofa</Link>
+                            <Link to="" className="filter-texts">Chair</Link>
+                            <Link to="" className="filter-texts">Table</Link>
 
 
                             <li><h2 className="menu__itemm" href="#">Brand</h2></li>
@@ -250,7 +254,7 @@ function ProductsPage() {
                         <div className="d-inline-flex flex-wrap ">
                             {products.map(product => (
                                 <div className={`${productCardClass} conter-content`} key={product.id}>
-                                    <div className="photo-container mt-5 ms-5 text-center">
+                                    <div className="photo-container mt-5  text-center">
                                         <div className="defaultVisible ">
                                             <img className={'cardPhotoStyle'} src={product.image} alt={product.name} />
                                             {product.discount && (
@@ -263,11 +267,12 @@ function ProductsPage() {
                                                     <p className="numberr4">{product.deduction}</p>
                                                 </div>
                                             )}
-                                        </div>
-                                        <div className={`body-container77${product.isNew ? '4' : ''}`}>
+                                            <div className={`body-container777${product.isNew ? '4' : ''}`}>
                                             <h3 className="body-title">{product.name}</h3>
                                             <p className="body-text">{product.description}</p>
+                                            </div>
                                         </div>
+                                        
                                         <div className="onHoverVisibleProduct position-absolute">
                                             <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate('/SingleProduct')}>
                                                 {product.name}
@@ -284,18 +289,18 @@ function ProductsPage() {
             </div>
 
             <div className="container">
-                <div className='conter-content mt-5 mb-5'>
-                    <div className='d-flex'>
-                        <div className='col-md-3 number__0'>1</div>
-                        <div className='col-md-3 number__0'>2</div>
-                        <div className='col-md-3 number__0'>3</div>
-                        <div className='col-md-4 number__next'>Next</div>
-                    </div>
+               <div className='conter-content mt-5 mb-5'>
+                  <div className='d-flex'>
+                     <button className='col-md-3 number__0'>1</button>
+                     <button className='col-md-3 number__0'>2</button>
+                     <button className='col-md-3 number__0'>3</button>
+                     <button className='col-md-4 number__next'>Next</button>
+                   </div>
                 </div>
             </div>
 
             <div className='mt-5 mb-5 icons__background'>
-                <div className='d-xxl-flex d-xl-flex d-sm-block'>
+                <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>
                     <div className='col-md-3  col-sm-2'>
                         <c className="icons__ mt-2"><AiOutlineTrophy /></c>
                         <div className='icons_header'>

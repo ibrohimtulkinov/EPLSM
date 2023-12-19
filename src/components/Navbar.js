@@ -1,39 +1,73 @@
-import React from "react"
-import { Image } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import React, { useState } from 'react';
+import { AiOutlineSearch } from "react-icons/ai";
+
+
 import navLogo from '../assets/img/nav-logo.png'
+import {
+  MDBNavbar,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBNavbarBrand,
+  MDBCollapse
+} from 'mdb-react-ui-kit';
 
-export default function Navbar() {
-    return (
 
-        <nav className="col-md-12 col-6">
-            <Link to="/"><Image src={navLogo} alt="" className="nav--icon ms-5 d-none d-sm-block" /></Link>
-            <ul className='navbarCenter gap-5'>
-                <li >
-                    <Link to="/"  className="navigations  col-2 ">Home</Link>
-                </li>
-                <li >
-                    <Link to="/products" className="navigations col-2">Products</Link>
-                </li>
-                <li >
-                   <Link to="/brands" className="navigations col-2">Brands</Link>
-                </li>
-                <li >
-                   <Link to="/catalogs" className="navigations col-2">Catalogs</Link>
-                </li>
-                <li >
-                    <Link to="/blog" className="navigations col-2">Blog</Link>
-                </li>
-                <li >
-                    <Link to="/contact" className="navigations col-2">Contact</Link>
-                </li>
-            </ul>
-        </nav>
+export default function App() {
+  const [openNavColorThird, setOpenNavColorThird] = useState(false);
+ 
+  return (
+    <>
 
-    )
+      <MDBNavbar className="p-5 bg-white" expand='lg' light style={{ backgroundColor: '#e3f2fd' }}>
+        <MDBContainer fluid>
+          <MDBNavbarBrand href='/'><img src={navLogo} alt="" className="nav--icon "/></MDBNavbarBrand>
+          <MDBNavbarToggler
+           
+            type='button'
+            data-target='#navbarColor02'
+            aria-controls='navbarColor02'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+            onClick={() => setOpenNavColorThird(!openNavColorThird)}
+          >
+            <MDBIcon icon='bars' fas />
+          </MDBNavbarToggler>
+          <MDBCollapse open={openNavColorThird} navbar>
+            <MDBNavbarNav className='me-auto mb-2 mb-lg-0 gap-5 '>
+              <MDBNavbarItem className='active'>
+                <MDBNavbarLink aria-current='page' href='/' className="navigations">
+                  Home
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/products' className="navigations">Products</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/brands' className="navigations">Brands</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/catalogs' className="navigations">Catalogs</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/blog' className="navigations">Blog</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/contact' className="navigations">Contact</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink><AiOutlineSearch className='nav__icon'/></MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBContainer>
+      </MDBNavbar>
+    </>
+  );
 }
-
-
 
 
 
