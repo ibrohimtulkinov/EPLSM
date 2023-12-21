@@ -22,7 +22,7 @@ export default function App() {
   return (
     <>
 
-      <MDBNavbar className="p-5 bg-white justify-content-between h-100" expand='lg' light style={{ backgroundColor: '#e3f2fd' }}>
+      <MDBNavbar className="p-4  bg-white justify-content-between h-100" expand='lg' light style={{ backgroundColor: '#e3f2fd' }}>
         <MDBContainer fluid>
           <div>
             <MDBNavbarBrand href='/'><img src={navLogo} alt="" className="nav--icon" /></MDBNavbarBrand>

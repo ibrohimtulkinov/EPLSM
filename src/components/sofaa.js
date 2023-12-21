@@ -1,66 +1,35 @@
-// import React, { useState } from 'react';
-// import { AiOutlineSearch } from "react-icons/ai";
-// import {
-//     AiOutlineDownCircle,
-//     AiOutlineTrophy,
-//     AiOutlineCustomerService,
-//     AiOutlineException,
-// } from 'react-icons/ai';
-// import navLogo from '../assets/img/nav-logo.png';
-// import {
-//     MDBNavbar,
-//     MDBContainer,
-//     MDBIcon,
-//     MDBNavbarNav,
-//     MDBNavbarItem,
-//     MDBNavbarLink,
-//     MDBNavbarToggler,
-//     MDBNavbarBrand,
-//     MDBCollapse
-// } from 'mdb-react-ui-kit';
-// // Initialization for  ES Users
-// import { Collapse, initMDB } from "mdb-react-ui-kit";
+// import explore3 from '../assets/img/explore3.png';
+// import explore4 from '../assets/img/explore4.png';
+// import React from 'react';
+// import { Carousel } from 'react-bootstrap';
 
-// initMDB({ Collapse });  
+// const MyCarousel = () => {
+//   return (
+//     <Carousel>
+//       <Carousel.Item interval={1000}>
+//           <div className="cardd">
+//             <div className="under-card col-md-4 col-8 ">
+//               <p className="card-title">New Arrival</p>
+//               <h1 className="card-header ">Discover Products</h1>
+//               <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut <br /> elit tellus, luctus nec ullamcorper mattis.</p>
+//               <a href=""><button className="card-button">BUY NOW</button></a>
+//             </div>
+//           </div>
+//       </Carousel.Item>
+//       <Carousel.Item interval={1000}>
+      
+//           <div className="cardd">
+//             <div className="under-card col-md-4 col-8 ">
+//               <p className="card-title">New Arrival</p>
+//               <h1 className="card-header ">Discover Products</h1>
+//               <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut <br /> elit tellus, luctus nec ullamcorper mattis.</p>
+//               <a href=""><button className="card-button">BUY NOW</button></a>
+//             </div>
+//           </div>
+//       </Carousel.Item>
+//       {/* Add more items with the same interval */}
+//     </Carousel>
+//   );
+// };
 
-// export default function App() {
-//     const [openNavColorThird, setOpenNavColorThird] = useState(false);
-
-//     return (
-//         <>
-//             <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-//                 <div class="container-fluid">
-//                     <a class="navbar-brand" href="#">Navbar w/ text</a>
-//                     <button
-//                         data-mdb-collapse-init
-//                         class="navbar-toggler"
-//                         type="button"
-//                         data-mdb-target="#navbarText"
-//                         aria-controls="navbarText"
-//                         aria-expanded="false"
-//                         aria-label="Toggle navigation"
-//                     >
-//                         <i class="fas fa-bars"></i>
-//                     </button>
-//                     <div class="collapse navbar-collapse" id="navbarText">
-//                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-//                             <li class="nav-item">
-//                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
-//                             </li>
-//                             <li class="nav-item">
-//                                 <a class="nav-link" href="#">Features</a>
-//                             </li>
-//                             <li class="nav-item">
-//                                 <a class="nav-link" href="#">Pricing</a>
-//                             </li>
-//                         </ul>
-//                         <span class="navbar-text">
-//                             Navbar text with an inline element
-//                         </span>
-//                     </div>
-//                 </div>
-//             </nav>
-
-//         </>
-//     );
-// }
+// export default MyCarousel;

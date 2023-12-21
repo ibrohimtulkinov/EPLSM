@@ -77,11 +77,7 @@ function Contact() {
                 </dir>
             </div>
 
-            {
-                information?.map(information => {
-                    return
-                })
-            }
+
 
             <div className='container-fluid '>
                 <div className='row mt-5'>

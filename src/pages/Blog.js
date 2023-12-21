@@ -77,8 +77,8 @@ function Blog() {
                         post?.map(information => {
                             return <div className='col-md-7 text-start'><img src={information?.photo_medium} alt="" className='blog_photos' />
                                 <div className='d-flex blog-icons mt-3'>
-                                    <p><AiOutlineUser />Admin</p>
-                                    <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
+                                    <p><AiOutlineUser />{information?.username}</p>
+                                    <p className='iconsss'><AiTwotoneCalendar />{information.date.split('T', 2)[0]}</p>
                                     <p className='iconsss'><AiOutlineInbox />Wood</p>
                                 </div>
                                 <h3>{information?.title}</h3>
@@ -98,15 +98,15 @@ function Blog() {
                                 return <div className='row ms-4   gap-5'>
                                     <h3 className='mt-5 '>Categories</h3>
                                     <div className='col-md-4 mt-2 listof-categories '>
-                                        <p>{information?.title}</p>
-                                        {
-                                            /* <p>Design</p>
-                                            <p>Handmade</p>
-                                            <p>Interior</p>
-                                            <p>Wood</p> */
-                                        }
+                                        <p>Crafts</p>
+                                        <p>Design</p>
+                                        <p>Handmade</p>
+                                        <p>Interior</p>
+                                        <p>Wood</p>
+
                                     </div>
                                     <div className='col-md-4 mt-2 listof-categories'>
+
                                         <p>2</p>
                                         <p>8</p>
                                         <p>7</p>
@@ -188,33 +188,39 @@ function Blog() {
 
 
 
+            {/* offset */}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            <div className="container">
-                <div className='conter-content mt-5 mb-5'>
-                    <div className='d-flex'>
-                        <div className='col-md-3 number__0'>1</div>
-                        <div className='col-md-3 number__0'>2</div>
-                        <div className='col-md-3 number__0'>3</div>
-                        <div className='col-md-4 number__next'>Next</div>
+            {/* <div className="container justify-content-center">
+                <div className="conter-content mt-5 mb-5">
+                    <div className="d-flex">
+                        {page > 1 && (
+                            <button
+                                className="col-md-4 number__prev"
+                                onClick={() => handlePageChange(page - 1)}
+                            >
+                                Previous
+                            </button>
+                        )}
+                        {renderPagination()}
+                        {page < Math.ceil(count / limit) && (
+                            <button
+                                className="col-md-4 number__next"
+                                onClick={() => handlePageChange(page + 1)}
+                            >
+                                Next
+                            </button>
+                        )}
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+
+
+
 
             <div className='mt-5 mb-5 icons__background'>
                 <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>

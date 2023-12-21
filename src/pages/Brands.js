@@ -22,8 +22,8 @@ import axios from 'axios';
 function Brands() {
   const [brands, setBrands] = useState()
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(4);
-  const [count, setCount] = useState(0);
+  const [limit, setLimit] = useState(8);
+  const [count, setCount] = useState(2);
 
   useEffect(() => {
     getBrands();
@@ -156,6 +156,7 @@ function Brands() {
         </div>
       </section>
 
+
       <div className="container justify-content-center">
         <div className="conter-content mt-5 mb-5">
           <div className="d-flex">
@@ -179,6 +180,8 @@ function Brands() {
           </div>
         </div>
       </div>
+
+
 
       <div className=' mb-5  brandicons-background'>
         <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>

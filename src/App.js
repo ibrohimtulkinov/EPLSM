@@ -9,6 +9,7 @@ import Explore from "./components/Explore more"
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Galleries from "./components/Gallery";
+import MyCarousel from "./components/sofaa"
 
 
 
@@ -23,6 +24,7 @@ export default function App() {
       <Image />
       <Galleries />
       <End />
+      {/* <MyCarousel />  */}
     </div>
   )
 }
