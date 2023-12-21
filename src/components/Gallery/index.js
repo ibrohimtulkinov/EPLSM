@@ -17,24 +17,24 @@ export default function Galleries() {
 
     const [gallery, setGallery] = useState()
     const getGallery = async () => {
-      const response = await fetch('https://eplsm.olimjohn.uz/api/gallery-list/')
-      const data = await response.json()
-      setGallery(data)
+        const response = await fetch('https://eplsm.olimjohn.uz/api/gallery-list/')
+        const data = await response.json()
+        setGallery(data)
     }
-  
+
     useEffect(() => {
-       getGallery()
+        getGallery()
     }, [])
 
     return (
         <>
-        {
-            gallery?.map(item => {
-                return<img src={item?.photo_medium} alt=""  className="furniture9_photo ms-5 col-md-1 col-2"/>
-            })
-        }
-        
-       
+            {
+                gallery?.map((item, index) => (
+                    <img src={item?.photo_medium} alt="" className={'ms-5 ' + `furniture${index + 1}_photo`} />
+                ))
+            }
+
+
             {/* <img src={furniture3} alt=""  className="furniture3_photo ms-3 col-md-4 col-sm-2 "/>
             <img src={furniture1} alt=""  className="furniture1_photo ms-3 col-md-2 col-sm-2"/>
             <img src={furniture2} alt=""  className="furniture2_photo ms-3 col-md-2 col-sm-2"/>

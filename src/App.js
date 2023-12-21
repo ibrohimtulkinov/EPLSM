@@ -23,6 +23,6 @@ export default function App() {
       <Image />
       <Galleries />
       <End />
-  </div>
+    </div>
   )
 }

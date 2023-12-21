@@ -24,48 +24,91 @@ import {
 import End from "../components/End";
 import Body from "../components/Body";
 import { useEffect } from "react";
+import axios from "axios";
 
 
 function SingleProduct() {
     const [brandDetail, setBrandDetail] = useState()
     const { guid } = useParams();
+    const [limit, setLimit] = useState(8);
+    const [products, setProducts] = useState([]);
+    const url = 'https://eplsm.olimjohn.uz/api';
+    const navigate = useNavigate();
+
     const getBrandDetail = async () => {
         const response = await fetch(`https://eplsm.olimjohn.uz/api/brand-detail/${guid}`)
         const data = await response.json()
         setBrandDetail(data);
+        axios.get(url + '/product-list/', { params: { p: true, limit: limit, brand: data?.id } }).then((r) => {
+            setProducts(r.data.results);
+        })
     }
 
     useEffect(() => {
         getBrandDetail();
-    }, [])
+
+    }, [guid])
+
+    const handleShowMore = () => {
+        setLimit(limit + 4);
+    };
 
     return (
         <>
-
             <Navbar />
-
 
             <div className='d-flex sofa__background'>
                 <Link to="/" className='singleProduct_home'  ><c className='sofa__ '>Home</c><AiOutlineRight className='icon-right' /></Link>
                 <Link to="/brands" className='singleProduct_Product' ><c className='sofa___ '>Brands</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to="/singlebrand" className='singleProduct_Asgaard '><c className='sofa__sofa '>Roche</c></Link>
+                <Link to="/singlebrand" className='singleProduct_Asgaard '><c className='sofa__sofa '>{brandDetail?.title}</c></Link>
             </div>
             <div className='row m-auto'>
                 <div className=' col-md-3 text-center'>
                     <img src={brandDetail?.photo_medium} alt="" className='col-7 mt-5' />
                 </div>
-                <div className='col-md-5 mt-5 '>
+                <div className='col-md-5 mt-5'>
                     <p className='single-brand-main'>{brandDetail?.title}</p>
                     <p className='single-brand-text mt-4'>{brandDetail?.description}</p>
                     <div className='text-start'>
                         <p className='singleBrand_'> Catalog</p>
-                        <a href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger me-2 blog-icon'/>catalog_2024.01.01.pdf</a>
+                        <a href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger me-2 blog-icon' />{brandDetail?.catalog_file.split('/', 6)[5]}</a>
                     </div>
                 </div>
             </div>
 
 
-            <Body />
+            <section className="mx-auto">
+                <h1 className="body-header mb-4 mt-5">Our Products</h1>
+
+                <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
+                    {
+                        products?.map(item => (
+                            <div className="conter-content">
+                                <div className="photo-container ">
+                                    <div className="defaultVisible">
+                                        <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
+                                        <div>
+                                            <p className="number">-30%</p>
+                                        </div>
+                                        <div className="body-container">
+                                            <h3 className="body-title ">{item?.title}</h3>
+                                            <p className="body-text">{item?.sub_title}</p>
+                                        </div>
+                                    </div>
+                                    <div className="onHoverVisible position-absolute">
+                                        <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
+                                        <br />
+                                        <h6 className="share"><AiOutlineShareAlt />Share</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div>
+                    <button className="body-button" type='button' onClick={handleShowMore}>Show More</button>
+                </div>
+            </section>
 
 
             <div className='mt-5 mb-5 icons__background'>

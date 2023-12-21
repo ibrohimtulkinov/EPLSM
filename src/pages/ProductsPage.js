@@ -12,6 +12,7 @@ import {
 import Navbar from '../components/Navbar'
 import { Button } from "react-bootstrap";
 import End from "../components/End"
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import bodyPhoto1 from '../assets/img/body-photo1.png';
 import bodyPhoto2 from '../assets/img/body-photo2.png';
@@ -19,152 +20,161 @@ import bodyPhoto3 from '../assets/img/body-photo3.png';
 import bodyPhoto4 from '../assets/img/body-photo4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 
 function ProductsPage() {
-
-
-    
-
+    const [brands, setBrands] = useState();
     const [isOpen, setIsOpen] = useState(false);
+    const productGridClass = isOpen ? 'col-md-9' : 'col-md-12';
+    const productCardClass = isOpen ? 'col-md-4' : 'col-md-3';
+    const [limit, setLimit] = useState(8);
+    const [products, setProducts] = useState([]);
+    const [count, setCount] = useState(0);
+    const [categories, setCategories] = useState([]);
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        getBrands();
+        getCategories();
+    }, [])
+
+    useEffect(() => {
+        getProducts();
+    }, [limit, page]);
+
+
+    const getCategories = async () => {
+        const response = await fetch('https://eplsm.olimjohn.uz/api/product-category-list/')
+        const data = await response.json()
+        setCategories(data)
+    }
+
+    const getProducts = async () => {
+        const offset = (page - 1) * limit;
+        axios
+            .get('https://eplsm.olimjohn.uz/api/product-list/', {
+                params: { limit, p: true, offset },
+            })
+            .then((r) => {
+                setCount(r?.data?.count);
+                setProducts(r?.data?.results);
+            });
+    };
+
+    const getBrands = async () => {
+        axios.get('https://eplsm.olimjohn.uz/api/brand-list/').then((r) => {
+            setBrands(r.data);
+        })
+    }
+
     const navigate = useNavigate();
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
 
-    const productGridClass = isOpen ? 'col-md-9' : 'col-md-12';
-    const productCardClass = isOpen ? 'col-md-4' : 'col-md-3';
+    const getProductsByCategory = (id) => {
+        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { category: id, p: true, limit: limit } }).then((r) => {
+            setProducts(r.data.results);
+            setCount(r.data.count);
+        })
+    }
 
-    const products = [
-        {
-            id: 1,
-            name: "Syltherine",
-            description: "Stylish cafe chair",
-            image: bodyPhoto1,
-            discount: "-30%",
-            isNew: false,
-        },
-        {
-            id: 2,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto2,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 3,
-            name: "Lolito",
-            description: "Luxury big sofa",
-            image: bodyPhoto3,
-            discount: "-50%",
-            isNew: false
-        },
-        {
-            id: 4,
-            name: "Respira",
-            description: "Outdoor bar table and stool",
-            image: bodyPhoto4,
-            deduction: "New",
-            isNew: false
-        },
-        {
-            id: 1,
-            name: "Syltherine",
-            description: "Stylish cafe chair",
-            image: bodyPhoto1,
-            discount: "-30%",
-            isNew: false
-        },
-        {
-            id: 2,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto2,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 3,
-            name: "Lolito",
-            description: "Luxury big sofa",
-            image: bodyPhoto3,
-            discount: "-50%",
-            isNew: false
-        },
-        {
-            id: 4,
-            name: "Respira",
-            description: "Outdoor bar table and stool",
-            image: bodyPhoto4,
-            deduction: "New",
-            isNew: false
-        },
-        {
-            id: 1,
-            name: "Syltherine",
-            description: "Stylish cafe chair",
-            image: bodyPhoto1,
-            discount: "-30%",
-            isNew: false
-        },
-        {
-            id: 2,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto2,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 3,
-            name: "Lolito",
-            description: "Luxury big sofa",
-            image: bodyPhoto3,
-            discount: "-50%",
-            isNew: false
-        },
-        {
-            id: 4,
-            name: "Respira",
-            description: "Outdoor bar table and stool",
-            image: bodyPhoto4,
-            deduction: "New",
-            isNew: false
-        },
-        {
-            id: 1,
-            name: "Syltherine",
-            description: "Stylish cafe chair",
-            image: bodyPhoto1,
-            discount: "-30%",
-            isNew: false
-        },
-        {
-            id: 2,
-            name: "Leviosa",
-            description: "Stylish cafe chair",
-            image: bodyPhoto2,
-            discount: "",
-            isNew: false
-        },
-        {
-            id: 3,
-            name: "Lolito",
-            description: "Luxury big sofa",
-            image: bodyPhoto3,
-            discount: "-50%",
-            isNew: false
-        },
-        {
-            id: 4,
-            name: "Respira",
-            description: "Outdoor bar table and stool",
-            image: bodyPhoto4,
-            deduction: "New",
-            isNew: false
-        },
-    ]
+    const getProductsByBrand = (id) => {
+        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { brand: id, p: true, limit: limit } }).then((r) => {
+            setProducts(r.data.results);
+            setCount(r.data.count);
+        })
+    }
+
+    const handlePageChange = (newPage) => {
+        setPage(newPage);
+    };
+
+    const renderPagination = () => {
+        const totalPages = Math.ceil(count / limit);
+
+        if (totalPages <= 4) {
+            return Array.from({ length: totalPages }, (_, index) => (
+                <button
+                    key={index}
+                    className={`col-md-3 number__${page === index + 1 ? 'active' : '0'}`}
+                    onClick={() => handlePageChange(index + 1)}
+                >
+                    {index + 1}
+                </button>
+            ));
+        }
+
+        const pagesToShow = 2;
+        const pages = [];
+
+        // Show the first 2 pages
+        for (let i = 1; i <= pagesToShow; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    className={`col-md-2 number__${page === i ? 'active' : '0'}`}
+                    onClick={() => handlePageChange(i)}
+                >
+                    {i}
+                </button>
+            );
+        }
+
+        // Show ellipsis if not at the beginning
+        if (page > pagesToShow + 1) {
+            pages.push(<button
+                className={`col-md-1 number__0 `}
+            >
+                ...
+            </button>);
+        }
+
+        // Show the current page and the next one
+        // for (let i = Math.max(1, page - pagesToShow); i <= Math.min(totalPages, page + pagesToShow); i++) {
+        //     pages.push(
+        //         <button
+        //             key={i}
+        //             className={`col-md-3 number__${page === i ? 'active' : '0'}`}
+        //             onClick={() => handlePageChange(i)}
+        //         >
+        //             {i}
+        //         </button>
+        //     );
+        // }
+
+        // Show ellipsis if not at the end
+        if (page < totalPages - pagesToShow) {
+            pages.push(<button
+                className={`col-md-1 number__0`}
+            >
+                ...
+            </button>);
+        }
+
+        // Show the last 2 pages
+        for (let i = totalPages - 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    className={`col-md-2 number__${page === i ? 'active' : '0'}`}
+                    onClick={() => handlePageChange(i)}
+                >
+                    {i}
+                </button>
+            );
+        }
+
+        return pages;
+    };
+
+    const handleSearch = (inputValue) => {
+        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { limit: limit, p: true, q: inputValue } }).then((r) => {
+            setProducts(r.data.results);
+            setCount(r.data.count);
+        })
+    }
 
     return (
         <>
@@ -190,7 +200,7 @@ function ProductsPage() {
                         </div>
                         <AiTwotoneAppstore className='appstore-icon' />
                         <AiOutlineLayout className='appstore-icon' />
-                        <p className='rad-1'>Showing 1–16 of 32 results</p>
+                        <p className='rad-1'>{`Showing 1–${products.length} of ${count} results`}</p>
                     </div>
 
 
@@ -198,8 +208,8 @@ function ProductsPage() {
                         <p className='show-text'>Show</p>
                         <p className="display-number">
                             <input
-                                type="number"
-                                className="form-control w-px-60 rounded-0"
+                                type="number" onChange={(e) => setLimit(e.target.value)}
+                                className="form-control w-px-60 rounded-0" value={limit}
                             />
                         </p>
 
@@ -223,7 +233,7 @@ function ProductsPage() {
 
                             <div className="ms-4 me-4">
                                 <input
-                                    type="search"
+                                    type="search" onChange={(e) => handleSearch(e.target.value)}
                                     className="form-control rounded" placeholder="Search"
                                     aria-label="Search"
                                     aria-describedby="search-addon" />
@@ -231,22 +241,19 @@ function ProductsPage() {
 
                             <li><h2 className="menu__itemm" href="#">Categories</h2></li>
 
-
-                            <Link to="" className="filter-texts">Sofa</Link>
-                            <Link to="" className="filter-texts">Chair</Link>
-                            <Link to="" className="filter-texts">Table</Link>
-                            <Link to="" className="filter-texts">Sofa</Link>
-                            <Link to="" className="filter-texts">Chair</Link>
-                            <Link to="" className="filter-texts">Table</Link>
-
+                            {
+                                categories?.map(information => {
+                                    return <Link to="" className="filter-texts" onClick={() => getProductsByCategory(information.id)}>{information?.title}</Link>
+                                })
+                            }
 
                             <li><h2 className="menu__itemm" href="#">Brand</h2></li>
 
-                            <Link to="/#" className="filter-texts">BMW</Link>
-                            <Link to="/#" className="filter-texts">Mercedes - Benz</Link>
-                            <Link to="/#" className="filter-texts">Audi</Link>
-                            <Link to="/#" className="filter-texts">Toyota</Link>
-                            <Link to="/#" className="filter-texts">BYD</Link>
+                            {
+                                brands?.map(brand => {
+                                    return <Link to="" className="filter-texts" onClick={() => getProductsByBrand(brand.id)}>{brand?.title}</Link>
+                                })
+                            }
 
                         </ul>
                     </div>
@@ -256,7 +263,7 @@ function ProductsPage() {
                                 <div className={`${productCardClass} conter-content`} key={product.id}>
                                     <div className="photo-container mt-5  text-center">
                                         <div className="defaultVisible ">
-                                            <img className={'cardPhotoStyle'} src={product.image} alt={product.name} />
+                                            <img className={'cardPhotoStyle'} src={product?.images[0]?.photo_medium} alt={product.name} />
                                             {product.discount && (
                                                 <div>
                                                     <p className="numberr">{product.discount}</p>
@@ -268,14 +275,14 @@ function ProductsPage() {
                                                 </div>
                                             )}
                                             <div className={`body-container777${product.isNew ? '4' : ''}`}>
-                                            <h3 className="body-title">{product.name}</h3>
-                                            <p className="body-text">{product.description}</p>
+                                                <h3 className="body-title">{product.title}</h3>
+                                                <p className="body-text">{product.sub_title}</p>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="onHoverVisibleProduct position-absolute">
-                                            <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate('/SingleProduct')}>
-                                                {product.name}
+                                            <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${product.guid}`)}>
+                                                {product.title}
                                             </Button>
                                             <br />
                                             <h6 className="share"><AiOutlineShareAlt /> Share</h6>
@@ -288,14 +295,38 @@ function ProductsPage() {
                 </div>
             </div>
 
-            <div className="container">
-               <div className='conter-content mt-5 mb-5'>
-                  <div className='d-flex'>
-                     <button className='col-md-3 number__0'>1</button>
-                     <button className='col-md-3 number__0'>2</button>
-                     <button className='col-md-3 number__0'>3</button>
-                     <button className='col-md-4 number__next'>Next</button>
-                   </div>
+            {/* <div className="container">
+                <div className='conter-content mt-5 mb-5'>
+                    <div className='d-flex'>
+                        <button className='col-md-3 number__0'>1</button>
+                        <button className='col-md-3 number__0'>2</button>
+                        <button className='col-md-3 number__0'>3</button>
+                        <button className='col-md-4 number__next'>Next</button>
+                    </div>
+                </div>
+            </div> */}
+
+            <div className="container justify-content-center">
+                <div className="conter-content mt-5 mb-5">
+                    <div className="d-flex">
+                        {page > 1 && (
+                            <button
+                                className="col-md-4 number__prev"
+                                onClick={() => handlePageChange(page - 1)}
+                            >
+                                Previous
+                            </button>
+                        )}
+                        {renderPagination()}
+                        {page < Math.ceil(count / limit) && (
+                            <button
+                                className="col-md-4 number__next"
+                                onClick={() => handlePageChange(page + 1)}
+                            >
+                                Next
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
 

@@ -53,7 +53,7 @@ export default function Body() {
                   </div>
                 </div>
                 <div className="onHoverVisible position-absolute">
-                  <Button className="btn btn-light text-warning rounded-0 w-50 rad-0" onClick={() => navigate('/SingleProduct')}>Syltherine</Button>
+                  <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
                   <br />
                   <h6 className="share"><AiOutlineShareAlt />Share</h6>
                 </div>

@@ -33,10 +33,10 @@ export default function Explore() {
     autoplay: true
   };
   return (
-    <section className="explore">
-      <div className='carousel-container'>
-        <div className='carousel-slide'>
-          <div className="row">
+    <section className="explore ">
+      <div className='carousel-container '>
+        <div className='carousel-slide '>
+          <div className="row mx-auto">
             <div className="col-md-5 align-middle text-start mx-auto">
               <h3 className="text-explore">50+ Beautiful rooms <br /> inspiration</h3>
               <p className="explore-text">Our designer already made a lot of beautiful <br /> prototipe of rooms that inspire you</p>
@@ -44,15 +44,15 @@ export default function Explore() {
             </div>
             <div className="col-md-5 me-auto">
               <Slider {...settings}>
-                   
-                    {
-                      products?.map(item => {
-                        return <div>
-                                 <img src={item?.photo} alt="Room 1" className="col-md-3 col-3" />
-                              </div>
-                      })
-                    }
-               
+
+                {
+                  products?.map(item => {
+                    return <div>
+                      <img src={item?.photo} alt="Room 1" className="col-md-3 col-3 shadow" />
+                    </div>
+                  })
+                }
+
 
                 {/* <div>
                   <img src={explore2} alt="Room 1" className="col-md-3 col-3" />
