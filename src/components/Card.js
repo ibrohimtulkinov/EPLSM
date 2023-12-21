@@ -37,7 +37,7 @@ const Card = () => {
       {
         logo?.map(logo => {
           return <Carousel.Item interval={1000}>
-            <div style={{ background: `url(${logo?.photo}) no-repeat center center / cover`, backgroundSize: 'cover', width: '100%', height: '850px' }}>
+            <div style={{ background: `url(${logo?.photo}) no-repeat center center / cover`, backgroundSize: 'cover', width: '100%', height: '900px' }}>
               <div className="under-card col-md-4 col-8 ">
                 <p className="card-title">New Arrival</p>
                 <h1 className="card-header ">{logo?.title}</h1>

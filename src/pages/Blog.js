@@ -27,16 +27,26 @@ import axios from 'axios';
 
 function Blog() {
     const url = 'https://eplsm.olimjohn.uz/api';
-    const [post, setPost] = useState();
+    const [post, setPost] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [limit, setLimit] = useState(8);
+    const [count, setCount] = useState(0);
+    const [products, setProducts] = useState([]);
+    const [search, setSearch] = useState([]);
+
+    useEffect(() => {
+        if (search) getBlogBySearch(search)
+    }, [search])
 
     useEffect(() => {
         getPostList();
         getRecentPostList();
-        // getCategories();
     }, [])
 
+    console.log({
+        post
+    })
     const getPostList = async () => {
         const response = await fetch('https://eplsm.olimjohn.uz/api/post-list/')
         const data = await response.json()
@@ -49,11 +59,19 @@ function Blog() {
         })
     }
 
-    // const getCategories = () => {
-    //     axios.get(url + '/category-list/').then((r) => {
-    //         setCategories(r.data);
-    //     })
-    // }
+    const getBlogBySearch = (input) => {
+        axios.get('https://eplsm.olimjohn.uz/api/post-list/', {
+            params: {
+                limit: limit, p: true, q: input
+            }
+        }).then((r) => {
+            setPost(r.data?.results)
+        })
+    }
+
+    const handleSearch = (inputValue) => {
+        setSearch(inputValue)
+    }
 
     return (
         <>
@@ -71,11 +89,11 @@ function Blog() {
             </div>
 
 
-            <div className='col-md-12 container mt-5'>
-                <div className='row gap-3 justify-content-between'>
+            <div className='row container-fluid mt-5'>
+                <div className='col-md-9 col-sm-12 text-center'>
                     {
                         post?.map(information => {
-                            return <div className='col-md-7 text-start'><img src={information?.photo_medium} alt="" className='blog_photos' />
+                            return <div className='w-75 mx-auto text-start'><img src={information?.photo_medium} alt="" className='blog_photos' />
                                 <div className='d-flex blog-icons mt-3'>
                                     <p><AiOutlineUser />{information?.username}</p>
                                     <p className='iconsss'><AiTwotoneCalendar />{information.date.split('T', 2)[0]}</p>
@@ -88,49 +106,68 @@ function Blog() {
                         })
                     }
 
-                    <div className='col-md-3 text-start'>
-                        <input type="search" className="blog-control "
+                    {/* <div className="ms-4 me-4">
+                        <input
+                            type="search" onChange={(e) => handleSearch(e.target.value)}
+                            className="form-control rounded" placeholder="Search"
                             aria-label="Search"
-                            aria-describedby="search-addon"
-                        />
-                        {
-                            post?.map(information => {
-                                return <div className='row ms-4   gap-5'>
-                                    <h3 className='mt-5 '>Categories</h3>
-                                    <div className='col-md-4 mt-2 listof-categories '>
-                                        <p>Crafts</p>
-                                        <p>Design</p>
-                                        <p>Handmade</p>
-                                        <p>Interior</p>
-                                        <p>Wood</p>
+                            aria-describedby="search-addon" />
+                    </div> */}
 
-                                    </div>
-                                    <div className='col-md-4 mt-2 listof-categories'>
 
-                                        <p>2</p>
-                                        <p>8</p>
-                                        <p>7</p>
-                                        <p>1</p>
-                                        <p>6</p>
-                                    </div>
-                                </div>
-                            })
-                        }
-                        <h3 className=''>Recent Posts</h3>
-                        {
-                            recentPosts.map((item) => (
-                                <div className='d-flex mt-4'>
-                                    <img src={item.photo_medium} alt="" className='post1' />
-                                    <div className='d-block'>
-                                        <p className='textt-blog'>{item.title}</p>
-                                        <p className='post-data'>{item.date.split('T', 2)[0]}</p>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
                 </div>
-            </div>
+                <div className='col-md-3 text-start'>
+
+                    <input
+                        type="search" onChange={(e) => handleSearch(e.target.value)}
+                        className="form-control rounded" placeholder="Search"
+                        aria-label="Search"
+                        aria-describedby="search-addon"
+
+                    />
+
+
+                    <div className='filter-sidebar-blog mt-3'>
+                        <div className="filter-sidebar-blog-box w-75 mx-auto">
+                            <h3 className=''>Categories</h3>
+                            <div className="filer-sidebar-category-text d-flex mt-5">
+                                <p className='w-75'>Crafts</p>
+                                <p className='w-25'>2</p>
+                            </div>
+                            <div className="filer-sidebar-category-text d-flex mt-3">
+                                <p className='w-75'>Design</p>
+                                <p className='w-25'>8</p>
+                            </div>
+                            <div className="filer-sidebar-category-text d-flex mt-3">
+                                <p className='w-75'>Handmade</p>
+                                <p className='w-25'>7</p>
+                            </div>
+                            <div className="filer-sidebar-category-text d-flex mt-3">
+                                <p className='w-75'>Interior</p>
+                                <p className='w-25'>1</p>
+                            </div>
+                            <div className="filer-sidebar-category-text d-flex mt-3">
+                                <p className='w-75'>Wood</p>
+                                <p className='w-25'>6</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3 className=''>Recent Posts</h3>
+                    {
+                        recentPosts?.map((item) => (
+                            <div className='d-flex mt-4'>
+                                <img src={item.photo_medium} alt="" className='post1' />
+                                <div className='d-block'>
+                                    <p className='textt-blog'>{item.title}</p>
+                                    <p className='post-data'>{item.date.split('T', 2)[0]}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div >
 
 
 

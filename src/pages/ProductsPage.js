@@ -170,7 +170,13 @@ function ProductsPage() {
     };
 
     const handleSearch = (inputValue) => {
-        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { limit: limit, p: true, q: inputValue } }).then((r) => {
+        axios.get('https://eplsm.olimjohn.uz/api/product-list/', {
+            params: {
+                limit: limit, p: true, q:
+
+                    inputValue
+            }
+        }).then((r) => {
             setProducts(r.data.results);
             setCount(r.data.count);
         })
@@ -263,7 +269,7 @@ function ProductsPage() {
                                 <div className={`${productCardClass} conter-content`} key={product.id}>
                                     <div className="photo-container mt-5  text-center">
                                         <div className="defaultVisible ">
-                                            <img className={'cardPhotoStyle'} src={product?.images[0]?.photo_medium} alt={product.name} />
+                                            <img className={'cardPhotoStyle'} src={product?.images[0]?.photo} alt={product.name} />
                                             {product.discount && (
                                                 <div>
                                                     <p className="numberr">{product.discount}</p>

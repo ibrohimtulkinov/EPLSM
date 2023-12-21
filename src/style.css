@@ -113,12 +113,12 @@ nav ul {
   margin-right: 5%;
 }
 
-.cardd {
+/* .cardd {
   background: url("../src/assets/img/main-furniture.png") no-repeat center top;
   background-size: cover;
   width: 100%;
   height: 850px;
-}
+} */
 
 section {
   text-align: center;
@@ -436,8 +436,6 @@ section {
   margin-top: 220px;
   color: rgba(184, 142, 47, 1) !important;
 }
-
-
 
 .share {
   padding-top: 15px;
@@ -1216,12 +1214,12 @@ ul {
   height: 430px;
 }
 
-.cardd {
+/* .cardd {
   background: url("../src/assets/img/main-furniture.png") no-repeat center top;
   background-size: cover;
   width: 100%;
   height: 850px;
-}
+} */
 
 .bg-image {
   background: url("../src/assets/img/product-image.png") no-repeat center top;
@@ -1480,6 +1478,15 @@ ul {
   border-radius: 3px;
   font-size: 25px;
 }
+
+
+
+
+.filer-sidebar-category-text{
+  font-family: "Poppins", sans-serif;
+  color: rgba(159, 159, 159, 1);
+}
+
 
 /*carousel*/
 
