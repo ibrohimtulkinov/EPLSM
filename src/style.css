@@ -79,7 +79,7 @@ nav ul {
   font-family: "Poppins", sans-serif !important;
   font-size: 18px;
   color: rgba(51, 51, 51, 1) !important;
-  margin-top: 15%;
+  margin-top: 8%;
 }
 
 .card-button {
@@ -113,12 +113,68 @@ nav ul {
   margin-right: 5%;
 }
 
-/* .cardd {
-  background: url("../src/assets/img/main-furniture.png") no-repeat center top;
-  background-size: cover;
-  width: 100%;
-  height: 850px;
-} */
+@media only screen and (max-width: 576px) {
+  .under-card {
+    width: 500px;
+    height: 730px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .under-card {
+    width: 580px;
+    height: 680px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .card-header {
+    width: 300px;
+    height: 110px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .card-header {
+    width: 300px;
+    height: 120px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .card-text {
+    width: 250px;
+    height: 400px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .card-text {
+    width: 350px;
+    height: 290px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .card-button {
+    width: 250px;
+    height: 80px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .card-button {
+    width: 300px;
+    height: 90px;
+  }
+}
+
+
+@media only screen and (max-width: 576px) {
+  .zoom-size {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .zoom-size {
+    width: 100px;
+    height: 100px;
+  }
+}
 
 section {
   text-align: center;
@@ -130,6 +186,7 @@ section {
   font-size: 32px;
   font-family: "Poppins", sans-serif;
   color: rgba(51, 51, 51, 1);
+
   margin-top: 50px;
 }
 
@@ -138,7 +195,7 @@ section {
   font-size: 20px;
   color: rgba(51, 51, 51, 1);
   margin-top: -20px;
-  margin-bottom: 50px;
+  display: inline-block;
 }
 
 .container {
@@ -555,15 +612,34 @@ section {
 
 /*hover effect*/
 
-.photo {
-  margin-right: 20px;
-  top: 50%;
-  left: 50%;
+/* @media only screen and (max-width: 576px) {
+  .defaultVisible {
+    width: 300px;
+    height: 310px;
+  }
 }
+@media (min-width: 577px) and (max-width: 900px) {
+  .defaultVisible {
+    width: 100%;
+    height: 300px;
+  } */
+
+/* @media only screen and (max-width: 576px) {
+  .photo.col-md-3.mt-5 {
+    width: 500px;
+    height: 310px;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .photo.col-md-3.mt-5 {
+    width: 100%;
+    height: 300px;
+  }
+} */
 
 .photo img {
-  width: 350px;
-  height: 450px;
+  width: 300px;
+  height: 400px;
   object-fit: cover;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1041,6 +1117,7 @@ ul {
   font-family: "Roboto", sans-serif;
   font-size: 25px;
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .icons__text {
@@ -1479,14 +1556,10 @@ ul {
   font-size: 25px;
 }
 
-
-
-
-.filer-sidebar-category-text{
+.filer-sidebar-category-text {
   font-family: "Poppins", sans-serif;
   color: rgba(159, 159, 159, 1);
 }
-
 
 /*carousel*/
 
@@ -1538,7 +1611,7 @@ ul {
 
 .furniture9_photo {
   height: 400px;
-  width: 300px;
+  width: 260px;
   cursor: pointer;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1550,7 +1623,7 @@ ul {
 
 .furniture3_photo {
   margin-top: 5%;
-  height: 350px;
+  height: 250px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1561,7 +1634,7 @@ ul {
 
 .furniture1_photo {
   height: 500px;
-  width: 150px;
+  width: 260px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1573,7 +1646,7 @@ ul {
 .furniture2_photo {
   margin-top: 3%;
   height: 450px;
-  width: 350px;
+  width: 250px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1584,7 +1657,7 @@ ul {
 
 .furniture7_photo {
   height: 250px;
-  width: 350px;
+  width: 260px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1595,7 +1668,7 @@ ul {
 
 .furniture8_photo {
   height: 350px;
-  width: 300px;
+  width: 250px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1606,7 +1679,7 @@ ul {
 
 .furniture4_photo {
   height: 350px;
-  width: 350px;
+  width: 260px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1617,7 +1690,7 @@ ul {
 
 .furniture5_photo {
   height: 450px;
-  width: 350px;
+  width: 265px;
   box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -1661,7 +1734,7 @@ ul {
 
 .photoofbrands {
   width: 100%;
-  height: 300px;
+  height: 250px;
 }
 
 .div_shadow {
@@ -1707,6 +1780,20 @@ ul {
   font-size: 36px;
   color: #000;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 576px) {
+  .box-size {
+    width: 500px;
+    height: 310px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .box-size {
+    width: 100%;
+    height: 300px;
+  }
 }
 
 /*

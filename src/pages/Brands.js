@@ -10,6 +10,7 @@ import {
   AiOutlineCustomerService,
   AiOutlineException,
   AiOutlineDownCircle
+
 } from 'react-icons/ai';
 import vng from '../assets/img/Vng_brand.png';
 import pntgree from '../assets/img/Pntgree_brand.png';
@@ -140,10 +141,10 @@ function Brands() {
 
       <section>
 
-        <div class="row  row-cols-3 row-cols-md-4 row-cols-lg-5 col-md-12  gap-5 mt-5 mx-auto">
+        <div class="row  row-cols-3 row-cols-md-4 row-cols-lg-5   gap-5   mt-5 mx-auto">
           {
             brands?.map(item => {
-              return <div class="col-md-4 col-sm-4 col-7 div_shadow mx-auto">
+              return <div class="col-md-4 col-sm-4 col-6 div_shadow mx-auto box-size">
                 <Link to={`/singlebrand/${item.guid}`}><img src={item?.photo_medium} class="photoofbrands " alt="Photo 1 " /></Link>
                 <div class="d-flex justify-content-between pb-4 ">
                   <Link className='brand_link' to="/singlebrand"><span className='brand_text'>{item?.title}</span></Link>
@@ -152,8 +153,8 @@ function Brands() {
               </div>
             })
           }
-
         </div>
+
       </section>
 
 
@@ -183,38 +184,50 @@ function Brands() {
 
 
 
-      <div className=' mb-5  brandicons-background'>
-        <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>
-          <div className='col-md-3  col-sm-2'>
-            <c className="icons__ mt-2"><AiOutlineTrophy /></c>
-            <div className='icons_header'>
-              <p className='icons__header mt-5'>High Quality</p>
-              <p className='icons__text'>crafted from top materials</p>
+      <div className='brandicons-background'>
+        <div className='d-flex flex-wrap justify-content-around ms-5'>
+          <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+            <div className='d-flex align-items-center'>
+              <span className="icons me-3"><AiOutlineTrophy size="4em" /></span>
+              <div className='text-start'>
+                <p className='icons__header'>High Quality</p>
+                <p className='icons__text'>Crafted from top materials</p>
+              </div>
             </div>
           </div>
-          <div className='col-md-3  col-sm-2'>
-            <c className="icons__ mt-2"><AiOutlineDownCircle /></c>
-            <div className='icons_header'>
-              <p className='icons__header mt-5'>Warranty Protection</p>
-              <p className='icons__text'>Over 2 years</p>
+          <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+            <div className='d-flex align-items-center'>
+              <span className="icons me-3"><AiOutlineDownCircle size="4em" /></span>
+              <div className='text-start'>
+                <p className='icons__header'>Warranty Protection</p>
+                <p className='icons__text'>Over 2 years</p>
+              </div>
             </div>
           </div>
-          <div className='col-md-3  col-sm-2'>
-            <c className="icons__ mt-2"><AiOutlineException /></c>
-            <div className='icons_header'>
-              <p className='icons__header mt-5'>Free Shipping</p>
-              <p className='icons__text'>Order over 150 $</p>
+          <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+            <div className='d-flex align-items-center'>
+              <span className="icons me-3"><AiOutlineException size="4em" /></span>
+              <div className='text-start'>
+                <p className='icons__header'>Free Shipping</p>
+                <p className='icons__text'>Order over 150 $</p>
+              </div>
             </div>
           </div>
-          <div className='col-md-3  col-sm-2'>
-            <c className="icons__ mt-2"><AiOutlineCustomerService /></c>
-            <div className='icons_header'>
-              <p className='icons__header mt-5'>24 / 7 Support</p>
-              <p className='icons__text'>Dedicated support</p>
+          <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+            <div className='d-flex align-items-center'>
+              <span className="icons me-3"><AiOutlineCustomerService size="4em" /></span>
+              <div className='text-start'>
+                <p className='icons__header'>24/7 Support</p>
+                <p className='icons__text'>Dedicated support</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
+
 
       <End />
 

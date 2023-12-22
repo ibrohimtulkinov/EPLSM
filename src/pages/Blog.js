@@ -95,7 +95,7 @@ function Blog() {
                         post?.map(information => {
                             return <div className='w-75 mx-auto text-start'><img src={information?.photo_medium} alt="" className='blog_photos' />
                                 <div className='d-flex blog-icons mt-3'>
-                                    <p><AiOutlineUser />{information?.username}</p>
+                                    <p><AiOutlineUser />Admin</p>
                                     <p className='iconsss'><AiTwotoneCalendar />{information.date.split('T', 2)[0]}</p>
                                     <p className='iconsss'><AiOutlineInbox />Wood</p>
                                 </div>
@@ -129,7 +129,7 @@ function Blog() {
 
                     <div className='filter-sidebar-blog mt-3'>
                         <div className="filter-sidebar-blog-box w-75 mx-auto">
-                            <h3 className=''>Categories</h3>
+                            <h3 className='mt-5'>Categories</h3>
                             <div className="filer-sidebar-category-text d-flex mt-5">
                                 <p className='w-75'>Crafts</p>
                                 <p className='w-25'>2</p>
@@ -154,7 +154,7 @@ function Blog() {
                     </div>
 
 
-                    <h3 className=''>Recent Posts</h3>
+                    <h3 className='mt-5'>Recent Posts</h3>
                     {
                         recentPosts?.map((item) => (
                             <div className='d-flex mt-4'>
@@ -258,35 +258,42 @@ function Blog() {
 
 
 
-
             <div className='mt-5 mb-5 icons__background'>
-                <div className='d-xxl-flex d-xl-flex d-sm-block ms-5'>
-                    <div className='col-md-3  col-sm-2'>
-                        <c className="icons__ mt-2"><AiOutlineTrophy /></c>
-                        <div className='icons_header'>
-                            <p className='icons__header mt-5'>High Quality</p>
-                            <p className='icons__text'>crafted from top materials</p>
+                <div className='d-flex flex-wrap justify-content-around ms-5'>
+                    <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+                        <div className='d-flex align-items-center'>
+                            <span className="icons me-3"><AiOutlineTrophy size="4em" /></span>
+                            <div className='text-start'>
+                                <p className='icons__header'>High Quality</p>
+                                <p className='icons__text'>Crafted from top materials</p>
+                            </div>
                         </div>
                     </div>
-                    <div className='col-md-3  col-sm-2'>
-                        <c className="icons__ mt-2"><AiOutlineDownCircle /></c>
-                        <div className='icons_header'>
-                            <p className='icons__header mt-5'>Warranty Protection</p>
-                            <p className='icons__text'>Over 2 years</p>
+                    <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+                        <div className='d-flex align-items-center'>
+                            <span className="icons me-3"><AiOutlineDownCircle size="4em" /></span>
+                            <div className='text-start'>
+                                <p className='icons__header'>Warranty Protection</p>
+                                <p className='icons__text'>Over 2 years</p>
+                            </div>
                         </div>
                     </div>
-                    <div className='col-md-3  col-sm-2'>
-                        <c className="icons__ mt-2"><AiOutlineException /></c>
-                        <div className='icons_header'>
-                            <p className='icons__header mt-5'>Free Shipping</p>
-                            <p className='icons__text'>Order over 150 $</p>
+                    <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+                        <div className='d-flex align-items-center'>
+                            <span className="icons me-3"><AiOutlineException size="4em" /></span>
+                            <div className='text-start'>
+                                <p className='icons__header'>Free Shipping</p>
+                                <p className='icons__text'>Order over 150 $</p>
+                            </div>
                         </div>
                     </div>
-                    <div className='col-md-3  col-sm-2'>
-                        <c className="icons__ mt-2"><AiOutlineCustomerService /></c>
-                        <div className='icons_header'>
-                            <p className='icons__header mt-5'>24 / 7 Support</p>
-                            <p className='icons__text'>Dedicated support</p>
+                    <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
+                        <div className='d-flex align-items-center'>
+                            <span className="icons me-3"><AiOutlineCustomerService size="4em" /></span>
+                            <div className='text-start'>
+                                <p className='icons__header'>24/7 Support</p>
+                                <p className='icons__text'>Dedicated support</p>
+                            </div>
                         </div>
                     </div>
                 </div>
