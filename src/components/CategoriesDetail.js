@@ -26,53 +26,30 @@ import { useEffect } from "react";
 import axios from "axios";
 
 
-function SingleProduct() {
-    const [brandDetail, setBrandDetail] = useState()
+function CategoriesDetail() {
+    const [categoryDetail, setCategoryDetail] = useState()
     const { guid } = useParams();
     const [limit, setLimit] = useState(8);
     const [products, setProducts] = useState([]);
     const url = 'https://api.eplsm.uz/api';
     const navigate = useNavigate();
 
-    const getBrandDetail = async () => {
-        const response = await fetch(`https://api.eplsm.uz/api/brand-detail/${guid}`)
+    const getCategoryDetail = async () => {
+        const response = await fetch(`https://api.eplsm.uz/api/product-category-detail/${guid}`)
         const data = await response.json()
-        setBrandDetail(data);
-        axios.get(url + '/product-list/', { params: { p: true, limit: limit, brand: data?.id } }).then((r) => {
+        setCategoryDetail(data);
+        axios.get(url + '/product-list/', { params: { p: true, limit: limit, category: data?.id } }).then((r) => {
             setProducts(r.data.results);
         })
     }
 
     useEffect(() => {
-        getBrandDetail();
+        getCategoryDetail();
 
     }, [guid])
 
     const handleShowMore = () => {
         setLimit(limit + 4);
-    };
-
-
-    const handleAdd = async (guid, id) => {
-        console.log(id)
-        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}?catalog_id=${id}`, { method: "get" })
-            .then(async (res) => {
-                // console.log({ res });
-                // console.log({ resJson: res.json() });
-
-                return res.blob()
-            })
-            .then((blob) => {
-                console.log({ blob });
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "Document.pdf";
-
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
-            });
     };
 
     return (
@@ -82,25 +59,16 @@ function SingleProduct() {
 
             <div className='d-flex sofa__background'>
                 <Link to="/" className='singleProduct_home'  ><c className='sofa__ '>Home</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to="/brands" className='singleProduct_Product' ><c className='sofa___ '>Brands</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to="/singlebrand" className='singleProduct_Asgaard '><c className='sofa__sofa '>{brandDetail?.title}</c></Link>
+                <Link to="/categories" className='singleProduct_Product' ><c className='sofa___ '>Categories</c><AiOutlineRight className='icon-right' /></Link>
+                <Link to={''} className='singleProduct_Asgaard '><c className='sofa__sofa '>{categoryDetail?.title}</c></Link>
             </div>
 
             <div className='row m-auto'>
                 <div className=' col-md-3 text-center'>
-                    <img src={brandDetail?.photo_medium} alt="" className='col-7 mt-5' />
+                    <img src={categoryDetail?.photo_medium} alt="" className='col-7 mt-5' />
                 </div>
                 <div className='col-md-5 mt-5'>
-                    <p className='single-brand-main'>{brandDetail?.title}</p>
-                    <p className='single-brand-text mt-4'>{brandDetail?.description}</p>
-                    <div className='text-start'>
-                        <p className='singleBrand_'> Catalog</p>
-                        {
-                            brandDetail?.catalogs?.map((catalog) => (
-                                <div onClick={() => handleAdd(brandDetail?.guid, catalog.id)} href={catalog?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger me-2 blog-icon' />{catalog?.catalog_file?.split('/', 6)[5]}</div>
-                            ))
-                        }
-                    </div>
+                    <p className='single-brand-main'>{categoryDetail?.title}</p>
                 </div>
             </div>
 
@@ -115,9 +83,9 @@ function SingleProduct() {
                                 <div className="photo-container ">
                                     <div className="defaultVisible">
                                         <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
-                                        {/* <div>
+                                        <div>
                                             <p className="number">-30%</p>
-                                        </div> */}
+                                        </div>
                                         <div className="body-container">
                                             <h3 className="body-title ">{item?.title}</h3>
                                             <p className="body-text">{item?.sub_title}</p>
@@ -189,4 +157,4 @@ function SingleProduct() {
 
 
 
-export default SingleProduct
+export default CategoriesDetail

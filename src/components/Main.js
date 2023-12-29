@@ -4,12 +4,13 @@ import mainPhoto2 from '../assets/img/main-photo2.png';
 import mainPhoto3 from '../assets/img/main-photo3.png';
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
-
+  const navigate = useNavigate();
   const [products, setProducts] = useState()
   const getProducts = async () => {
-    const response = await fetch("https://eplsm.olimjohn.uz/api/product-category-list/")
+    const response = await fetch("https://api.eplsm.uz/api/product-category-list/")
     const data = await response.json()
     setProducts(data)
   }
@@ -18,23 +19,22 @@ export default function Main() {
     getProducts()
   }, [])
 
-  console.log({ products });
-
   return (
     <section className="">
       <h1 className="main-title">Browse The Range</h1>
       <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div className="container">
-        <div class="row text-center  gap-5 mx-auto ">
+        <div class="row text-center  gap-5 ">
           {
             products?.map(item => {
-              return <div className="photo col-md-3 mt-5  text-center">
+              return <div className="photo col-md-3 mt-5  text-center" onClick={() => navigate(`/categories/${item.guid}`)}>
                 <img src={item?.photo_medium} alt="#" />
                 <div className="glow-wrap">
                   <i className="glow" > </i>
                 </div>
                 <p className="caption">{item?.title}</p>
               </div>
+
             })
           }
           {/* <div className="photo col-md-3 ">

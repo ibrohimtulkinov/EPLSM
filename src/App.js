@@ -12,7 +12,6 @@ import Galleries from "./components/Gallery";
 import MyCarousel from "./components/sofaa"
 
 
-
 export default function App() {
   return (
     <div>

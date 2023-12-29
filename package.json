@@ -19,8 +19,10 @@
     "react-image-magnify": "^2.7.4",
     "react-medium-image-zoom": "^5.1.8",
     "react-photo-gallery": "^8.0.0",
+    "react-photo-view": "^1.2.4",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
+    "react-simple-image-viewer": "^1.2.2",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"

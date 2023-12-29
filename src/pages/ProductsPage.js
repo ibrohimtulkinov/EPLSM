@@ -14,10 +14,6 @@ import { Button } from "react-bootstrap";
 import End from "../components/End"
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import bodyPhoto1 from '../assets/img/body-photo1.png';
-import bodyPhoto2 from '../assets/img/body-photo2.png';
-import bodyPhoto3 from '../assets/img/body-photo3.png';
-import bodyPhoto4 from '../assets/img/body-photo4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -26,13 +22,14 @@ import axios from 'axios';
 function ProductsPage() {
     const [brands, setBrands] = useState();
     const [isOpen, setIsOpen] = useState(false);
-    const productGridClass = isOpen ? 'col-md-9' : 'col-md-12';
+    const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
     const productCardClass = isOpen ? 'col-md-4' : 'col-md-3';
     const [limit, setLimit] = useState(8);
     const [products, setProducts] = useState([]);
     const [count, setCount] = useState(0);
     const [categories, setCategories] = useState([]);
     const [page, setPage] = useState(1);
+    const [showMore, setShowMore] = useState(false)
 
     useEffect(() => {
         getBrands();
@@ -45,7 +42,7 @@ function ProductsPage() {
 
 
     const getCategories = async () => {
-        const response = await fetch('https://eplsm.olimjohn.uz/api/product-category-list/')
+        const response = await fetch('https://api.eplsm.uz/api/product-category-list/')
         const data = await response.json()
         setCategories(data)
     }
@@ -53,7 +50,7 @@ function ProductsPage() {
     const getProducts = async () => {
         const offset = (page - 1) * limit;
         axios
-            .get('https://eplsm.olimjohn.uz/api/product-list/', {
+            .get('https://api.eplsm.uz/api/product-list/', {
                 params: { limit, p: true, offset },
             })
             .then((r) => {
@@ -63,7 +60,7 @@ function ProductsPage() {
     };
 
     const getBrands = async () => {
-        axios.get('https://eplsm.olimjohn.uz/api/brand-list/').then((r) => {
+        axios.get('https://api.eplsm.uz/api/brand-list/').then((r) => {
             setBrands(r.data);
         })
     }
@@ -74,14 +71,14 @@ function ProductsPage() {
     };
 
     const getProductsByCategory = (id) => {
-        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { category: id, p: true, limit: limit } }).then((r) => {
+        axios.get('https://api.eplsm.uz/api/product-list/', { params: { category: id, p: true, limit: limit } }).then((r) => {
             setProducts(r.data.results);
             setCount(r.data.count);
         })
     }
 
     const getProductsByBrand = (id) => {
-        axios.get('https://eplsm.olimjohn.uz/api/product-list/', { params: { brand: id, p: true, limit: limit } }).then((r) => {
+        axios.get('https://api.eplsm.uz/api/product-list/', { params: { brand: id, p: true, limit: limit } }).then((r) => {
             setProducts(r.data.results);
             setCount(r.data.count);
         })
@@ -109,7 +106,6 @@ function ProductsPage() {
         const pagesToShow = 2;
         const pages = [];
 
-        // Show the first 2 pages
         for (let i = 1; i <= pagesToShow; i++) {
             pages.push(
                 <button
@@ -122,7 +118,6 @@ function ProductsPage() {
             );
         }
 
-        // Show ellipsis if not at the beginning
         if (page > pagesToShow + 1) {
             pages.push(<button
                 className={`col-md-1 number__0 `}
@@ -130,21 +125,6 @@ function ProductsPage() {
                 ...
             </button>);
         }
-
-        // Show the current page and the next one
-        // for (let i = Math.max(1, page - pagesToShow); i <= Math.min(totalPages, page + pagesToShow); i++) {
-        //     pages.push(
-        //         <button
-        //             key={i}
-        //             className={`col-md-3 number__${page === i ? 'active' : '0'}`}
-        //             onClick={() => handlePageChange(i)}
-        //         >
-        //             {i}
-        //         </button>
-        //     );
-        // }
-
-        // Show ellipsis if not at the end
         if (page < totalPages - pagesToShow) {
             pages.push(<button
                 className={`col-md-1 number__0`}
@@ -152,8 +132,6 @@ function ProductsPage() {
                 ...
             </button>);
         }
-
-        // Show the last 2 pages
         for (let i = totalPages - 1; i <= totalPages; i++) {
             pages.push(
                 <button
@@ -170,7 +148,7 @@ function ProductsPage() {
     };
 
     const handleSearch = (inputValue) => {
-        axios.get('https://eplsm.olimjohn.uz/api/product-list/', {
+        axios.get('https://api.eplsm.uz/api/product-list/', {
             params: {
                 limit: limit, p: true, q:
 
@@ -184,9 +162,7 @@ function ProductsPage() {
 
     return (
         <>
-
             <Navbar />
-
             <div className="bg-image">
                 <div className="products-important  ">
                     <h1 className='products--products '>Products</h1>
@@ -199,48 +175,32 @@ function ProductsPage() {
 
             <section className='sofaaa__background'>
                 <div className="row mx-auto">
-
-                    <div className="col-md-4 inline">
+                    <div className=" text-start inline">
                         <div onClick={toggleSidebar} className={isOpen ? 'filterOpen' : 'filterClosed'}>
                             <FontAwesomeIcon icon={faSlidersH} style={{ marginRight: '14px' }} color={isOpen ? 'warning' : 'dark'} /><span className='ml-2'>{isOpen ? 'Filter' : 'Filter'}</span>
                         </div>
-                        <AiTwotoneAppstore className='appstore-icon' />
-                        <AiOutlineLayout className='appstore-icon' />
-                        <p className='rad-1'>{`Showing 1–${products.length} of ${count} results`}</p>
-                    </div>
-
-
-                    <div className="col-md-8 mt-20">
-                        <p className='show-text'>Show</p>
+                        <p className='show-text ms-5 ps-3'>Show</p>
                         <p className="display-number">
                             <input
                                 type="number" onChange={(e) => setLimit(e.target.value)}
-                                className="form-control w-px-60 rounded-0" value={limit}
+                                className="form-control w-px-60 rounded-0 ms-2" value={limit}
                             />
                         </p>
-
-
-                        <p className='sortby-text'>Sort by</p>
-                        <p className='display-number'>
-                            <select name="sort" id="sort" className='form-control rounded-0 w-px-188'>
-                                <option value="">Default</option>
-                            </select>
-                        </p>
+                        <p className='rad-1 ms-4 mb-0'>{`Showing 1–${products.length} of ${count} results`}</p>
                     </div>
-
                 </div>
             </section>
 
             <div className="container-fluid">
                 <div className="col-md-12 d-flex">
-                    <div className={`col-md-3 sidebar ${isOpen ? '' : 'd-none'}`}>
+                    <div className={` sidebar ${isOpen ? 'w-px-550' : 'd-none'}`}>
                         <ul className="">
                             <li><h2 className="menu__itemm" href="#">Title</h2></li>
 
                             <div className="ms-4 me-4">
                                 <input
                                     type="search" onChange={(e) => handleSearch(e.target.value)}
-                                    className="form-control rounded" placeholder="Search"
+                                    className="form-control rounded w-px-250" placeholder="Search"
                                     aria-label="Search"
                                     aria-describedby="search-addon" />
                             </div>
@@ -256,62 +216,46 @@ function ProductsPage() {
                             <li><h2 className="menu__itemm" href="#">Brand</h2></li>
 
                             {
-                                brands?.map(brand => {
+                                (showMore ? brands : brands?.slice(0, 5))?.map(brand => {
                                     return <Link to="" className="filter-texts" onClick={() => getProductsByBrand(brand.id)}>{brand?.title}</Link>
                                 })
                             }
 
+                            <div className='mt-3 open-button w-px-60' onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "More"} </div>
                         </ul>
                     </div>
-                    <div className={productGridClass}>
-                        <div className="d-inline-flex flex-wrap ">
-                            {products.map(product => (
-                                <div className={`${productCardClass} conter-content`} key={product.id}>
-                                    <div className="photo-container mt-5  text-center">
-                                        <div className="defaultVisible ">
-                                            <img className={'cardPhotoStyle'} src={product?.images[0]?.photo} alt={product.name} />
-                                            {product.discount && (
-                                                <div>
-                                                    <p className="numberr">{product.discount}</p>
+
+
+
+                    <div className={isOpen ? "d-none d-md-block w-100" : "container"}>
+                        <div className="row w-100">
+                            {count > 0 ?
+                                products?.map(product => (
+                                    <div className={productGridClass + ""} style={{ height: "446px", position: "relative" }} onClick={() => navigate(`/single-product/${product.guid}`)}>
+                                        <div className='w-100' style={{ height: "80%" }}>
+                                            <div className="product-image-container" style={{ height: "100%" }}>
+                                                <img src={product?.images[0]?.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                                <div className="overlay">
+                                                    <Button className="btn btn-light  rounded-0 w-50 rad-00" onClick={() => navigate(`/single-product/${product.guid}`)}>{product?.title}</Button>
+                                                    <h6 className="share"><AiOutlineShareAlt /> Share</h6>
                                                 </div>
-                                            )}
-                                            {product.deduction && (
-                                                <div>
-                                                    <p className="numberr4">{product.deduction}</p>
-                                                </div>
-                                            )}
-                                            <div className={`body-container777${product.isNew ? '4' : ''}`}>
-                                                <h3 className="body-title">{product.title}</h3>
-                                                <p className="body-text">{product.sub_title}</p>
+                                            </div>
+                                            <div className='bg-light w-100 text-start' style={{ padding: "16px" }}>
+                                                <h3>{product.title}</h3>
+                                                <p className='mb-0'>{product.sub_title}</p>
                                             </div>
                                         </div>
-
-                                        <div className="onHoverVisibleProduct position-absolute">
-                                            <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${product.guid}`)}>
-                                                {product.title}
-                                            </Button>
-                                            <br />
-                                            <h6 className="share"><AiOutlineShareAlt /> Share</h6>
-                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+                                :
+                                (<h3 className='text-center my-4'>
+                                    No information added!
+                                </h3>)
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* <div className="container">
-                <div className='conter-content mt-5 mb-5'>
-                    <div className='d-flex'>
-                        <button className='col-md-3 number__0'>1</button>
-                        <button className='col-md-3 number__0'>2</button>
-                        <button className='col-md-3 number__0'>3</button>
-                        <button className='col-md-4 number__next'>Next</button>
-                    </div>
-                </div>
-            </div> */}
-
             <div className="container justify-content-center">
                 <div className="conter-content mt-5 mb-5">
                     <div className="d-flex">

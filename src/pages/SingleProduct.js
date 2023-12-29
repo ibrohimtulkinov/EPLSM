@@ -8,7 +8,6 @@ import single4 from '../assets/img/single4.png';
 import ReactImageMagnify from 'react-image-magnify';
 import { useEffect } from "react";
 import End from "../components/End"
-import Sofaa from "../components/sofaa";
 import { Link, useParams } from "react-router-dom";
 import bodyPhoto1 from '../assets/img/body-photo1.png';
 import bodyPhoto2 from '../assets/img/body-photo2.png';
@@ -36,14 +35,14 @@ function SingleProduct() {
   const [products, setProducts] = useState();
   const [limit, setLimit] = useState(4);
 
-  const url = 'https://eplsm.olimjohn.uz/api';
+  const url = 'https://api.eplsm.uz/api';
 
   const { guid } = useParams();
 
   useEffect(() => {
     axios.get(url + `/product-detail/${guid}`).then((r) => {
       setProduct(r.data);
-      setSelectedImage(r.data.images[0].photo_medium);
+      setSelectedImage(r.data.images[0].photo);
       axios.get(url + '/product-list/', { params: { limit: limit, p: true, category: r.data?.category?.id } }).then((r) => {
         setProducts(r.data.results);
       })
@@ -86,36 +85,36 @@ function SingleProduct() {
         <Link to="/products" className='singleProduct_Product' ><c className='sofa___ '>Product</c><AiOutlineRight className='icon-right' /></Link>
         <Link to="/SingleProduct" className='singleProduct_Asgaard '><c className='sofa__sofa '>{product?.title}</c></Link>
       </div>
-      <div className='row mx-auto '>
-        <div className="d-flex ">
-          <div className="d-block mt-5 ms-5 me-5 ">
+      <div className='row mx-auto  '>
+        <div className="single-product-image">
+          <div className="d-flex flex-column mt-5 ms-5 me-5 sp-imagemap gap-3 ">
             {
               product?.images?.map((image) => (
-                <div>
-                  <img src={image.photo_small} alt="" width='100px' className='single_photos' height='100px' onClick={() => handleChangeImage(image.photo_medium)} />
+                <div className='rounded-3 overflow-hidden '>
+                  <img src={image.photo_small} alt="" width='100px' className='single_photos' height='100px' onClick={() => handleChangeImage(image.photo)} />
                 </div>
               ))
             }
           </div>
-          <div className='col-md-4 mt-5 zoom-size'>
-            <ReactImageMagnify {...{
+          <div className='col-md-4 mt-5 zoom-size  '>
+            <ReactImageMagnify className='borderRadiusZoom'  {...{
               smallImage: {
                 alt: 'Product',
                 src: selectedImage,
                 width: 350,
-                height: 300
+                height: 300,
               },
               largeImage: {
                 src: selectedImage,
-                width: 500,
-                height: 450
+                width: 550,
+                height: 500,
               }
             }} />
           </div>
-          <div className='col-md-3 mt-5'>
+          <div className='col-md-3 mt-5 zoom-text'>
             <p className='single-product-main'>{product?.title}</p>
             <p className='single-product-text mt-4'>{product?.description.length > 0 ? product?.description[0].description : ''}</p>
-            <p className='singleProduct_'> <d className="singleBrand_">Brand</d>  {product?.brand?.title}</p>
+            <p className='singleProduct_'> <d className="singleBrand_">Brand</d>  {product?.brand?.title || 'Information not added!'}</p>
             <p className='singleProduct_'> <d className="singleBrand_">Category</d>  {product?.category?.title}</p>
           </div>
         </div>
@@ -125,7 +124,7 @@ function SingleProduct() {
         <div className='container'>
           <div className='text-center d-flex mt-5'>
             <button onClick={() => handleTabClick("Description")} className='singleproduct-description col-md-4'>Description</button>
-            <button onClick={() => handleTabClick("AddtiotionalInformation")} className='singleproduct-info col-md-6'>Additional Information</button>
+            <button onClick={() => handleTabClick("AddtiotionalInformation")} className='singleproduct-info col-md-8'>Additional Information</button>
             {/* <button onClick={() => handleTabClick("Review")} className='singleproduct-info col-md-4'>Reviews [5]</button>  */}
           </div>
 
@@ -141,35 +140,38 @@ function SingleProduct() {
           <p className='border-top'></p>
           <p className='mt-5 mb-4 related0'>Related Products</p>
         </div>
-        <div className="d-inline-flex flex-wrap justify-content-center px-4">
+        <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
           {
-            products?.map(item => (
-              <div className="conter-content">
-                <div className="photo-container ">
-                  <div className="defaultVisible">
-                    <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
-                    <div>
-                      <p className="number">-30%</p>
+            products?.length > 0 ?
+              (products?.map(item => (
+                <div className="conter-content">
+                  <div className="photo-container ">
+                    <div className="defaultVisible">
+                      <img className="body-photos" src={item?.images?.[0]?.photo} alt="Фото 1" />
+                      {/* <div>
+                        <p className="number">-30%</p>
+                      </div> */}
+                      <div className="body-container">
+                        <h3 className="body-title ">{item?.title}</h3>
+                        <p className="body-text">{item?.sub_title}</p>
+                      </div>
                     </div>
-                    <div className="body-container">
-                      <h3 className="body-title ">{item?.title}</h3>
-                      <p className="body-text">{item?.sub_title}</p>
+                    <div className="onHoverVisible position-absolute">
+                      <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
+                      <br />
+                      <h6 className="share"><AiOutlineShareAlt />Share</h6>
                     </div>
-                  </div>
-                  <div className="onHoverVisible position-absolute">
-                    <Button className="btn btn-light text-warning rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
-                    <br />
-                    <h6 className="share"><AiOutlineShareAlt />Share</h6>
                   </div>
                 </div>
-              </div>
-            ))
+              )))
+              :
+              (<h3 className='text-center my-4'>No information added!</h3>)
           }
         </div>
 
 
         <div className='text-center'>
-          <button className="product-button" type='button' onClick={handleShowMore}>Show More</button>
+          <button className="product-button my-3" type='button' onClick={handleShowMore}>Show More</button>
         </div>
       </section>
 
@@ -276,7 +278,7 @@ function SingleProduct() {
 
       <End />
 
-      {/*  <Sofaa /> */}
+
 
     </>
   )

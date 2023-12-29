@@ -24,7 +24,7 @@ function Catalogs() {
     const [brandDetail, setBrandDetail] = useState()
 
     const getBrandDetail = async () => {
-        const response = await fetch('https://eplsm.olimjohn.uz/api/brand-list/')
+        const response = await fetch('https://api.eplsm.uz/api/brand-list/')
         const data = await response.json()
         setBrandDetail(data)
     }
@@ -32,6 +32,21 @@ function Catalogs() {
     useEffect(() => {
         getBrandDetail()
     }, [])
+
+    const handleAdd = async (guid) => {
+        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}/`, { method: "get" })
+            .then((res) => res.blob())
+            .then((blob) => {
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "Document.pdf";
+
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link);
+            });
+    };
 
 
     return (
@@ -51,11 +66,11 @@ function Catalogs() {
             <section>
                 {
                     brandDetail?.map(brandDetail => {
-                        return <div className='row mx-auto'>
-                            <div className='col-md-3 ms-5 col-4'><img src={brandDetail?.photo_medium} alt="" /></div>
+                        return <div className='row mx-auto mt-4'>
+                            <div className='col-md-3 col-4'><img src={brandDetail?.photo_medium} alt="" /></div>
                             <div className='col-md-6 text-start '>
-                                <p className='catalog-vng ms-5'>{brandDetail?.title}</p>
-                                <a href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger ms-5 me-2 blog-icon' />catalog_2024.01.01.pdf</a>
+                                <p className='catalog-vng '>{brandDetail?.title}</p>
+                                <div onClick={() => handleAdd(brandDetail.guid)} href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger  me-2 blog-icon' />catalog_2024.01.01.pdf</div>
                                 <div className='border-top catalog-border'></div>
                             </div>
                         </div>

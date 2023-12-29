@@ -26,7 +26,7 @@ import axios from 'axios';
 
 
 function Blog() {
-    const url = 'https://eplsm.olimjohn.uz/api';
+    const url = 'https://api.eplsm.uz/api';
     const [post, setPost] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -48,7 +48,7 @@ function Blog() {
         post
     })
     const getPostList = async () => {
-        const response = await fetch('https://eplsm.olimjohn.uz/api/post-list/')
+        const response = await fetch('https://api.eplsm.uz/api/post-list/')
         const data = await response.json()
         setPost(data);
     }
@@ -60,7 +60,7 @@ function Blog() {
     }
 
     const getBlogBySearch = (input) => {
-        axios.get('https://eplsm.olimjohn.uz/api/post-list/', {
+        axios.get('https://api.eplsm.uz/api/post-list/', {
             params: {
                 limit: limit, p: true, q: input
             }

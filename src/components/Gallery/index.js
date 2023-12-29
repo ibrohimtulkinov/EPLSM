@@ -11,13 +11,14 @@ import furniture9 from '../../assets/img/furniture9.png';
 import furniture8 from '../../assets/img/furniture8.png';
 import { useEffect } from "react";
 import { useState } from "react";
+import ImageViewer from "../ImageViewer";
 
 
 export default function Galleries() {
 
     const [gallery, setGallery] = useState()
     const getGallery = async () => {
-        const response = await fetch('https://eplsm.olimjohn.uz/api/gallery-list/')
+        const response = await fetch('https://api.eplsm.uz/api/gallery-list/')
         const data = await response.json()
         setGallery(data)
     }
@@ -26,14 +27,19 @@ export default function Galleries() {
         getGallery()
     }, [])
 
+    const images = gallery?.map(item => item?.photo_medium)
+
     return (
         <>
-            {
+            {/* {
                 gallery?.map((item, index) => (
                     <img src={item?.photo_medium} alt="" className={'ms-5 ' + `furniture${index + 1}_photo`} />
                 ))
-            }
+            } */}
 
+            <div className="ps-5 pt-5 ">
+                <ImageViewer images={images} />
+            </div>
 
             {/* <img src={furniture3} alt=""  className="furniture3_photo ms-3 col-md-4 col-sm-2 "/>
             <img src={furniture1} alt=""  className="furniture1_photo ms-3 col-md-2 col-sm-2"/>

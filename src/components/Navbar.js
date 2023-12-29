@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch } from "react-icons/ai";
 // import { MDBNavbar, MDBContainer, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink, MDBIcon } from 'mdb-react-ui-kit';
-
+import { AiOutlineAlignCenter } from "react-icons/ai";
 import navLogo from '../assets/img/nav-logo.png'
 import {
   MDBNavbar,
@@ -14,11 +14,13 @@ import {
   MDBNavbarBrand,
   MDBCollapse
 } from 'mdb-react-ui-kit';
+import { Link, useLocation } from 'react-router-dom';
 
 
 export default function App() {
   const [openNavColorThird, setOpenNavColorThird] = useState(false);
-
+  const { pathname } = useLocation()
+  console.log({ pathname });
   return (
     <>
 
@@ -35,31 +37,34 @@ export default function App() {
             aria-label='Toggle navigation'
             onClick={() => setOpenNavColorThird(!openNavColorThird)}
           >
-            <MDBIcon icon='bars' fas />
+            {/* <MDBIcon icon='bars' fas /> */}
+
+            <div><AiOutlineAlignCenter /></div>
           </MDBNavbarToggler>
           <MDBCollapse open={openNavColorThird} navbar className='ms -auto'>
 
             <MDBNavbarNav className=' me-0 mb-2 mb-lg-0 gap-5'>
-              <MDBNavbarItem className='active'>
-                <MDBNavbarLink aria-current='page' href='/' className="navigations">
-                  Home
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/products' className="navigations ">Products</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/brands' className="navigations">Brands</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/catalogs' className="navigations">Catalogs</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/blog' className="navigations">Blog</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/contact' className="navigations">Contact</MDBNavbarLink>
-              </MDBNavbarItem>
+              {/* <MDBNavbarItem className='active'> */}
+              <Link className="navigations" aria-current='page' to='/' style={{ color: pathname === '/' ? "#b88e2f" : "#000" }}>Home</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link className="navigations" style={{ color: pathname.includes('products') ? "#b88e2f" : "#000" }} to='/products' >Products</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link to='/brands' className="navigations" style={{ color: pathname.includes('brands') ? "#b88e2f" : "#000" }}>Brands</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link to='/categories' className="navigations" style={{ color: pathname.includes('categories') ? "#b88e2f" : "#000" }}>Categories</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link to='/catalogs' className="navigations" style={{ color: pathname.includes('catalogs') ? "#b88e2f" : "#000" }}>Catalogs</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link to='/blog' className="navigations" style={{ color: pathname.includes('blog') ? "#b88e2f" : "#000" }}>Blog</Link>
+              {/* </MDBNavbarItem> */}
+              {/* <MDBNavbarItem> */}
+              <Link to='/contact' className="navigations" style={{ color: pathname.includes('contact') ? "#b88e2f" : "#000" }}>Contact</Link>
+              {/* </MDBNavbarItem> */}
             </MDBNavbarNav>
 
             <MDBNavbarItem className='div-icon'>

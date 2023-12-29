@@ -15,7 +15,7 @@ export default function Explore() {
 
   const [products, setProducts] = useState()
   const getProducts = async () => {
-    const response = await fetch('https://eplsm.olimjohn.uz/api/slider-list/')
+    const response = await fetch('https://api.eplsm.uz/api/slider-list/')
     const data = await response.json()
     setProducts(data)
   }
@@ -33,7 +33,7 @@ export default function Explore() {
     autoplay: true
   };
   return (
-    <section className="explore ">
+    <section className="explore">
       <div className='carousel-container '>
         <div className='carousel-slide '>
           <div className="row mx-auto">
@@ -48,7 +48,7 @@ export default function Explore() {
                 {
                   products?.map(item => {
                     return <div>
-                      <img src={item?.photo} alt="Room 1" className="col-md-3 col-3 shadow" />
+                      <img src={item?.photo} alt="Room 1" className="col-md-3 col-3 shadow carousel-photo" />
                     </div>
                   })
                 }

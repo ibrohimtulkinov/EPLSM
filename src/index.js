@@ -7,13 +7,15 @@ import Brands from "./pages/Brands";
 import Catalogs from "./pages/Catalogs";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
-import SingleBrand from "./pages/SingleBrand"
+import SingleBrand from "./pages/SingleBrand";
+import CategoriesDetail from "./components/CategoriesDetail";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
 } from "react-router-dom";
-
+import Categories from "./pages/Categories";
+import 'react-photo-view/dist/react-photo-view.css';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
   {
     path: "/brands",
     element: <Brands />,
+  },
+  {
+    path: "/categories",
+    element: <Categories />,
+  },
+  {
+    path: "/categories/:guid",
+    element: <CategoriesDetail />,
   },
   {
     path: "/catalogs",

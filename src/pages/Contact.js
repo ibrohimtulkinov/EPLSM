@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { AiFillEnvironment, AiFillClockCircle, AiFillPhone } from "react-icons/ai";
 import axios from 'axios';
 
+
 import {
     AiTwotoneAppstore,
     AiOutlineLayout,
@@ -21,7 +22,7 @@ function Contact() {
     )
     const [information, setInformation] = useState()
     const getInformation = async () => {
-        const response = await fetch('https://eplsm.olimjohn.uz/api/contact-item/')
+        const response = await fetch('https://api.eplsm.uz/api/contact-item/')
         const data = await response.json()
         setInformation(data)
     }
@@ -41,7 +42,7 @@ function Contact() {
 
     const handleSave = () => {
         console.log(formData);
-        axios.post(`https://eplsm.olimjohn.uz/api/contact-form-create/`, {
+        axios.post(`https://api.eplsm.uz/api/contact-form-create/`, {
             name: formData?.firstName,
             email: formData?.email,
             subject: formData?.subject,
@@ -198,6 +199,7 @@ function Contact() {
 
 
             <End />
+
 
 
         </>
