@@ -14,7 +14,6 @@ import {
 import { useEffect } from "react";
 import axios from 'axios';
 
-
 const Categories = () => {
     const [categories, setCategories] = useState()
     const [page, setPage] = useState(1);
@@ -114,9 +113,9 @@ const Categories = () => {
                 </div>
             </div>
 
-            <section>
+            <section >
 
-                <div class="row  mt-5 p-5">
+                <div class="row  mt-5 p-5 overflow-x-hidden">
                     {
                         categories?.map(item => {
                             return <div className='col-12 col-sm-12  col-md-6  col-lg-4  col-xl-3 px-3 '>

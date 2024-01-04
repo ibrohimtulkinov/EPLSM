@@ -33,9 +33,9 @@ const Card = () => {
           return (
             <div className="">
               <div key={item?.id} style={{ background: `url(${item?.photo}) no-repeat center center / cover`, backgroundSize: 'cover', width: '100%', height: '900px' }}>
-                <div className="under-card col-md-4 col-8 ">
+                <div className="under-card col-md-4 col-8 pe-3 ">
                   <p className="card-title">New Arrival</p>
-                  <h1 className="card-header ">{item?.title}</h1>
+                  <h1 className="card-header">{item?.title}</h1>
                   <p className="card-text">{item?.description}</p>
                   <button className="card-button">BUY NOW</button>
                 </div>

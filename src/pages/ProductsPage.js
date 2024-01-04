@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import {
     AiOutlineDownCircle,
-    AiTwotoneAppstore,
-    AiOutlineLayout,
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
@@ -18,13 +16,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-
 function ProductsPage() {
     const [brands, setBrands] = useState();
     const [isOpen, setIsOpen] = useState(false);
     const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
     const productCardClass = isOpen ? 'col-md-4' : 'col-md-3';
-    const [limit, setLimit] = useState(8);
+    const [limit, setLimit] = useState(16);
     const [products, setProducts] = useState([]);
     const [count, setCount] = useState(0);
     const [categories, setCategories] = useState([]);
@@ -117,7 +114,6 @@ function ProductsPage() {
                 </button>
             );
         }
-
         if (page > pagesToShow + 1) {
             pages.push(<button
                 className={`col-md-1 number__0 `}
@@ -175,18 +171,28 @@ function ProductsPage() {
 
             <section className='sofaaa__background'>
                 <div className="row mx-auto">
-                    <div className=" text-start inline">
-                        <div onClick={toggleSidebar} className={isOpen ? 'filterOpen' : 'filterClosed'}>
-                            <FontAwesomeIcon icon={faSlidersH} style={{ marginRight: '14px' }} color={isOpen ? 'warning' : 'dark'} /><span className='ml-2'>{isOpen ? 'Filter' : 'Filter'}</span>
+                    <div className="text-start inline justify-content-between"> {/* Flex container */}
+                        {/* ... other elements ... */}
+                        <div> {/* This div contains all your existing elements */}
+                            <div onClick={toggleSidebar} className={isOpen ? 'filterOpen' : 'filterClosed'}>
+                                <FontAwesomeIcon icon={faSlidersH} style={{ marginRight: '14px' }} color={isOpen ? 'warning' : 'dark'} /><span className='ml-2'>{isOpen ? 'Filter' : 'Filter'}</span>
+                            </div>
+                            <p className='show-text ms-5 ps-3'>Show</p>
+                            <p className="display-number">
+                                <input
+                                    type="number" onChange={(e) => setLimit(e.target.value)}
+                                    className="form-control w-px-60 rounded-0 ms-2" value={limit}
+                                />
+                            </p>
+                            <p className='rad-1 ms-4 mb-0'>{`Showing 1–${products.length} of ${count} results`}</p>
                         </div>
-                        <p className='show-text ms-5 ps-3'>Show</p>
-                        <p className="display-number">
+                        <div className="search-input mt-4 me-4"> {/* Input container */}
                             <input
-                                type="number" onChange={(e) => setLimit(e.target.value)}
-                                className="form-control w-px-60 rounded-0 ms-2" value={limit}
-                            />
-                        </p>
-                        <p className='rad-1 ms-4 mb-0'>{`Showing 1–${products.length} of ${count} results`}</p>
+                                type="search" onChange={(e) => handleSearch(e.target.value)}
+                                className="form-control rounded w-px-250" placeholder="Search"
+                                aria-label="Search"
+                                aria-describedby="search-addon" />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -221,7 +227,7 @@ function ProductsPage() {
                                 })
                             }
 
-                            <div className='mt-3 open-button w-px-60' onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "More"} </div>
+                            <div className='mt-3 open-button w-px-60 text-center' onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "More"} </div>
                         </ul>
                     </div>
 
@@ -249,7 +255,7 @@ function ProductsPage() {
                                 ))
                                 :
                                 (<h3 className='text-center my-4'>
-                                    No information added!
+                                    Nothing was found!
                                 </h3>)
                             }
                         </div>
@@ -328,3 +334,12 @@ function ProductsPage() {
 }
 
 export default ProductsPage
+
+
+
+
+
+
+
+
+

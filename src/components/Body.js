@@ -1,19 +1,9 @@
 import { Button } from "react-bootstrap";
 import React from "react"
 import { AiOutlineShareAlt } from 'react-icons/ai';
-import bodyPhoto1 from '../assets/img/body-photo1.png';
-import bodyPhoto2 from '../assets/img/body-photo2.png';
-import bodyPhoto3 from '../assets/img/body-photo3.png';
-import bodyPhoto4 from '../assets/img/body-photo4.png';
-import bodyPhoto5 from '../assets/img/body-photo5.png';
-import bodyPhoto6 from '../assets/img/body-photo6.png';
-import bodyPhoto7 from '../assets/img/body-photo7.png';
-import bodyPhoto8 from '../assets/img/body-photo8.png';
 import { useNavigate } from "react-router-dom";
-import MyCarousel from "../components/sofaa";
 import { useEffect } from "react";
 import { useState } from "react";
-
 
 export default function Body() {
   const navigate = useNavigate();
@@ -64,11 +54,11 @@ export default function Body() {
             ))
           }
         </div>
-        <div className="div-block">
-          <button className="body-button" type='button' onClick={handleShowMore}>Show More</button>
-        </div>
 
       </section>
+      <div className="div-block">
+        <button className="body-button" type='button' onClick={handleShowMore}>Show More</button>
+      </div>
       {/* <MyCarousel /> */}
     </>
 

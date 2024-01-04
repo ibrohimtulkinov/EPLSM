@@ -20,14 +20,14 @@ export default function Main() {
   }, [])
 
   return (
-    <section className="">
+    <section className="main-div">
       <h1 className="main-title">Browse The Range</h1>
       <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div className="container">
-        <div class="row text-center  gap-5 ">
+        <div class="row col-9">
           {
             products?.map(item => {
-              return <div className="photo col-md-3 mt-5  text-center" onClick={() => navigate(`/categories/${item.guid}`)}>
+              return <div className="photo col-md-4 mt-5  text-center" onClick={() => navigate(`/categories/${item.guid}`)}>
                 <img src={item?.photo_medium} alt="#" />
                 <div className="glow-wrap">
                   <i className="glow" > </i>
@@ -37,30 +37,6 @@ export default function Main() {
 
             })
           }
-          {/* <div className="photo col-md-3 ">
-                 <img src={mainPhoto1} alt="#" />
-               <div className="glow-wrap">
-                 <i className="glow" > </i>
-               </div>
-               <p className="caption">Dinner</p>
-            </div>
-
-            <div className="photo col-md-3">
-                 <img src={mainPhoto2} alt="#" />
-               <div className="glow-wrap">
-                 <i className="glow" > </i>
-               </div>
-               <p className="caption">Living</p>
-            </div>
-
-            <div className="photo col-md-3 ">
-                 <img src={mainPhoto3} alt="#" />
-               <div className="glow-wrap">
-                 <i className="glow" > </i>
-               </div>
-               <p className="caption">Bedroom</p>
-            </div> */}
-
         </div>
       </div>
     </section>

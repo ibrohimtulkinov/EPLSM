@@ -74,7 +74,7 @@ function CategoriesDetail() {
 
 
             <section className="mx-auto">
-                <h1 className="body-header mb-4 mt-5">Our Products</h1>
+                <h1 className="body-header mb-4 mt-5">Category Products</h1>
 
                 <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
                     {

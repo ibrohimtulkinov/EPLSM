@@ -16,7 +16,7 @@ import axios from 'axios';
 
 
 function Brands() {
-  const [brands, setBrands] = useState()
+  const [brands, setBrands] = useState([])
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(16);
   const [count, setCount] = useState(2);
@@ -126,17 +126,37 @@ function Brands() {
       </div>
     </div>
 
-    <section className='overflow-x-hidden'>
-      <div className="ms-5 mt-3">
-        <input
-          type="search" onChange={(e) => handleSearch(e.target.value)}
-          className="form-control rounded w-px-250" placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon" />
+    <section className='sofaaa__background'>
+      <div className="row mx-auto">
+        <div className=" text-start inline justify-content-between">
+          <div className='main-brand-div'>
+            <p className='show-words  ps-3'>Show</p>
+            <p className="display-number">
+              <input
+                type="number" onChange={(e) => setLimit(e.target.value)}
+                className="form-control w-px-60 rounded-0 ms-2" value={limit}
+              />
+            </p>
+            <p className=' rad-1 mb-0'>{`Showing 1–${brands.length} of ${count} results`}</p>
+          </div>
+          <div>
+            <p className='rad-11 me-5'>
+              <input
+                type="search" onChange={(e) => handleSearch(e.target.value)}
+                className="form-control rounded w-px-250" placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon" />
+            </p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section className='overflow-x-hidden'>
+
 
       <div class="row  mt-3 p-5">
-        {
+        {count > 0 ?
           brands?.map(item => {
             return <div className='col-12 col-sm-12  col-md-6  col-lg-4  col-xl-3 px-3 '>
 
@@ -149,6 +169,10 @@ function Brands() {
               </div>
             </div>
           })
+          :
+          (<h3 className='text-center my-4'>
+            Nothing was found!
+          </h3>)
         }
       </div>
 

@@ -40,34 +40,23 @@ export default function Explore() {
             <div className="col-md-5 align-middle text-start mx-auto">
               <h3 className="text-explore">50+ Beautiful rooms <br /> inspiration</h3>
               <p className="explore-text">Our designer already made a lot of beautiful <br /> prototipe of rooms that inspire you</p>
-              <button className="explore-button  w-25 ">Explore More</button>
+              <button className="explore-button  ">Explore More</button>
             </div>
-            <div className="col-md-5 me-auto">
+            <div className="col-md-6 me-auto">
               <Slider {...settings}>
 
                 {
                   products?.map(item => {
                     return <div>
-                      <img src={item?.photo} alt="Room 1" className="col-md-3 col-3 shadow carousel-photo" />
+                      <img src={item?.photo} alt="Room 1" className="col-md-4 col-4 shadow carousel-photo" />
                     </div>
                   })
                 }
 
-
-                {/* <div>
-                  <img src={explore2} alt="Room 1" className="col-md-3 col-3" />
-                </div>
-                <div>
-                  <img src={explore3} alt="Room 3" className="col-md-3 col-3" />
-                </div>
-                <div>
-                  <img src={explore4} alt="Room 3" className="col-md-3 col-3" />
-                </div> */}
               </Slider>
             </div>
           </div>
         </div>
-
       </div>
     </section >
   )
