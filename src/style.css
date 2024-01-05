@@ -251,7 +251,7 @@ nav ul {
 @media only screen and (max-width: 576px) {
   .under-card {
     width: 90% !important;
-    height: 500px !important;
+    /* height: 600px !important; */
     margin-top: 15%;
     margin-right: 5%;
     background-color: #fff3e3;
@@ -263,14 +263,14 @@ nav ul {
 @media (min-width: 577px) and (max-width: 768px) {
   .under-card {
     width: 431px !important;
-    height: 570px !important;
+    /* height: 570px !important; */
   }
 }
 @media (min-width: 769px) and (max-width: 999px) {
   .under-card {
     width: 650px !important;
     margin-right: 5%;
-    height: 550px;
+    /* height: 550px; */
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
