@@ -1516,6 +1516,16 @@ ul {
   color: rgba(0, 0, 0, 1);
 }
 
+.map-div {
+  text-align: center;
+}
+
+.map {
+  display: inline-block;
+  width: 50%;
+  margin: auto;
+}
+
 .contact-under {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
