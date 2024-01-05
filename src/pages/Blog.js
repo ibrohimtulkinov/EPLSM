@@ -19,7 +19,8 @@ import {
     AiOutlineTrophy,
     AiOutlineUser,
     AiTwotoneCalendar,
-    AiOutlineInbox
+    AiOutlineInbox,
+    AiOutlineAndroid
 } from 'react-icons/ai';
 import { useEffect } from "react";
 import axios from 'axios';
@@ -80,10 +81,10 @@ function Blog() {
 
             <div className="bg-image  ">
                 <div className="products-important text-start ">
-                    <h1 className='products--products '>Blog</h1>
+                    <h1 className='products--products fw-bold'>Blog</h1>
                     <p>
                         <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight /></c> </Link>
-                        <Link to="/blog" className="singleProduct_home"><c className="products-products">Blog</c></Link>
+                        <Link to="/blog" className="singleProduct_home "><c className="products-products">Blog</c></Link>
                     </p>
                 </div>
             </div>
@@ -91,7 +92,7 @@ function Blog() {
 
             <div className='row container-fluid mt-5'>
                 <div className='col-md-9 col-sm-12 text-center'>
-                    {
+                    {count > 0 ?
                         post?.map(information => {
                             return <div className='w-75 mx-auto text-start'><img src={information?.photo_medium} alt="" className='blog_photos' />
                                 <div className='d-flex blog-icons mt-3'>
@@ -104,15 +105,16 @@ function Blog() {
                                 <Link ><p className='read-more border-bottom'>Read more</p></Link>
                             </div>
                         })
+                        :
+                        (<h3 className='blog_info mt-5 mb-5'>
+                            Nothing was found!
+                            <div className='blog_icon mt-2'>
+                                <AiOutlineAndroid />
+                            </div>
+                        </h3>)
                     }
 
-                    {/* <div className="ms-4 me-4">
-                        <input
-                            type="search" onChange={(e) => handleSearch(e.target.value)}
-                            className="form-control rounded" placeholder="Search"
-                            aria-label="Search"
-                            aria-describedby="search-addon" />
-                    </div> */}
+
 
 
                 </div>
@@ -155,6 +157,7 @@ function Blog() {
 
 
                     <h3 className='mt-5'>Recent Posts</h3>
+                    {post?.length === 0 && "Nothing was found!"}
                     {
                         recentPosts?.map((item) => (
                             <div className='d-flex mt-4'>
@@ -167,96 +170,7 @@ function Blog() {
                         ))
                     }
                 </div>
-            </div >
-
-
-
-
-            {/* 
-              <div className='col-md-12 container '>
-                <div className='row gap-3 justify-content-between'>
-                         {
-                            information?.map(information => {
-                                return <div className='col-md-7 text-start'>
-                                       <h3>{information?.title}</h3>
-                                   <p className='mt-3 blog-text'>{information?.description}</p>
-                                  <Link><p className='read-more border-bottom'>Read more</p></Link> 
-                                 <img src={information?.photo_medium} alt="" className='blog_photos mt-3' />
-                                 <div className='d-flex blog-icons mt-3'>
-                                       <p><AiOutlineUser />{information?.username}</p>
-                                        <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
-                                       <p className='iconsss'><AiOutlineInbox />Wood</p>
-                                     </div> 
-                                   <h3>{information?.title}</h3>
-                                    <p className='mt-3 blog-text'>{information?.description}</p>
-                     
-                       
-                             <Link ><p className='read-more border-bottom'>Read more</p></Link>
-                          </div>
-                            })
-                         }
-                   
-                </div>
-
-             </div>  */}
-
-            {/* 
-             <div className='col-md-12 container mt-3'>
-                <div className='row gap-3 justify-content-between'>
-
-                     {
-                        information?.map(information => {
-                        return <div className='col-md-7 text-start'>
-                       <img src={information?.photo_medium} alt="" className='blog_photos' />
-                       <div className='d-flex blog-icons mt-3'>
-                         <p><AiOutlineUser />{information?.username}</p>
-                         <p className='iconsss'><AiTwotoneCalendar />{information?.date}</p>
-                         <p className='iconsss'><AiOutlineInbox />Wood</p>
-                       </div> 
-                       <h3>{information?.title}</h3>
-                       <p className='mt-3 blog-text'>{information?.description}</p>
-                       <Link ><p className='read-more border-bottom'>Read more</p></Link> 
-                    </div>
-                   })
-                  }
-                </div>
-             </div> */}
-
-
-
-
-            {/* offset */}
-
-
-
-
-
-            {/* <div className="container justify-content-center">
-                <div className="conter-content mt-5 mb-5">
-                    <div className="d-flex">
-                        {page > 1 && (
-                            <button
-                                className="col-md-4 number__prev"
-                                onClick={() => handlePageChange(page - 1)}
-                            >
-                                Previous
-                            </button>
-                        )}
-                        {renderPagination()}
-                        {page < Math.ceil(count / limit) && (
-                            <button
-                                className="col-md-4 number__next"
-                                onClick={() => handlePageChange(page + 1)}
-                            >
-                                Next
-                            </button>
-                        )}
-                    </div>
-                </div>
-            </div> */}
-
-
-
+            </div>
 
             <div className='mt-5 mb-5 icons__background'>
                 <div className='d-flex flex-wrap justify-content-around ms-5'>

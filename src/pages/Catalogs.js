@@ -11,7 +11,8 @@ import {
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
-    AiOutlineFileText
+    AiOutlineFileText,
+    AiOutlineAndroid
 } from 'react-icons/ai';
 import axios from 'axios';
 import { useEffect } from "react";
@@ -153,7 +154,7 @@ function Catalogs() {
 
             <div className="bg-image ">
                 <div className="products-important text-start ">
-                    <h1 className='products--products '>Catalogs</h1>
+                    <h1 className='products--products'>Catalogs</h1>
                     <p>
                         <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight /></c> </Link>
                         <Link to="/catalogs" className="singleProduct_home"><c className="products-products">Catalogs</c></Link>
@@ -199,10 +200,11 @@ function Catalogs() {
                                 <div className='border-top catalog-border'></div>
                             </div>
                         </div>
-                    })  
+                    })
                     :
                     (<h3 className='text-center my-4'>
                         Nothing was found!
+                        <AiOutlineAndroid />
                     </h3>)
                 }
             </section>

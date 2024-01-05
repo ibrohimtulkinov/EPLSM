@@ -23,7 +23,7 @@ export default function Main() {
     <section className="main-div">
       <h1 className="main-title">Browse The Range</h1>
       <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div className="container">
+      <div className="container overflow-x-hidden">
         <div class="row col-9">
           {
             products?.map(item => {

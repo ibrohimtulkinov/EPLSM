@@ -51,6 +51,7 @@ function CategoriesDetail() {
     const handleShowMore = () => {
         setLimit(limit + 4);
     };
+    console.log({ products });
 
     return (
         <>
@@ -77,6 +78,7 @@ function CategoriesDetail() {
                 <h1 className="body-header mb-4 mt-5">Category Products</h1>
 
                 <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
+                    {products?.length === 0 && "Nothing was found!"}
                     {
                         products?.map(item => (
                             <div className="conter-content">
@@ -88,7 +90,7 @@ function CategoriesDetail() {
                                         </div>
                                         <div className="body-container">
                                             <h3 className="body-title ">{item?.title}</h3>
-                                            <p className="body-text">{item?.sub_title}</p>
+                                            <p className="body-text">{item?.sub_title || "no"}</p>
                                         </div>
                                     </div>
                                     <div className="onHoverVisible position-absolute">

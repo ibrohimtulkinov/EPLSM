@@ -8,14 +8,14 @@ import {
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
-    AiOutlineDownCircle
-
+    AiOutlineDownCircle,
+    AiOutlineAndroid
 } from 'react-icons/ai';
 import { useEffect } from "react";
 import axios from 'axios';
 
 const Categories = () => {
-    const [categories, setCategories] = useState()
+    const [categories, setCategories] = useState([])
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(16);
     const [count, setCount] = useState(2);
@@ -100,6 +100,17 @@ const Categories = () => {
         return pages;
     };
 
+    const handleSearch = (inputValue) => {
+        axios.get('https://api.eplsm.uz/api/product-category-list/', {
+            params: {
+                limit: limit, p: true, q: inputValue
+            }
+        }).then((r) => {
+            setCategories(r.data.results);
+            setCount(r.data.count);
+        })
+    }
+
     return (
         <div>
             <Navbar />
@@ -113,10 +124,36 @@ const Categories = () => {
                 </div>
             </div>
 
+            <section className='sofaaa__background'>
+                <div className="row mx-auto">
+                    <div className=" text-start inline justify-content-between">
+                        <div className='main-brand-div'>
+                            <p className='show-words  ps-3'>Show</p>
+                            <p className="display-number">
+                                <input
+                                    type="number" onChange={(e) => setLimit(e.target.value)}
+                                    className="form-control w-px-60 rounded-0 ms-2" value={limit}
+                                />
+                            </p>
+                            <p className=' rad-1 mb-0'>{`Showing 1–${categories.length} of ${count} results`}</p>
+                        </div>
+                        <div>
+                            <p className='rad-11 me-5'>
+                                <input
+                                    type="search" onChange={(e) => handleSearch(e.target.value)}
+                                    className="form-control rounded w-px-250" placeholder="Search"
+                                    aria-label="Search"
+                                    aria-describedby="search-addon" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section >
 
                 <div class="row  mt-5 p-5 overflow-x-hidden">
-                    {
+                    {count > 0 ?
                         categories?.map(item => {
                             return <div className='col-12 col-sm-12  col-md-6  col-lg-4  col-xl-3 px-3 '>
 
@@ -129,6 +166,11 @@ const Categories = () => {
                                 </div>
                             </div>
                         })
+                        :
+                        (<h3 className='text-center my-4'>
+                            Nothing was found!
+                            <AiOutlineAndroid />
+                        </h3>)
                     }
                 </div>
 

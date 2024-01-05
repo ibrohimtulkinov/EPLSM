@@ -18,7 +18,8 @@ import {
     AiOutlineTrophy,
     AiOutlineCustomerService,
     AiOutlineException,
-    AiOutlineFileText
+    AiOutlineFileText,
+
 } from 'react-icons/ai';
 import End from "../components/End";
 import Body from "../components/Body";
@@ -27,12 +28,13 @@ import axios from "axios";
 
 
 function SingleProduct() {
-    const [brandDetail, setBrandDetail] = useState()
+    const [brandDetail, setBrandDetail] = useState([])
     const { guid } = useParams();
     const [limit, setLimit] = useState(8);
     const [products, setProducts] = useState([]);
     const url = 'https://api.eplsm.uz/api';
     const navigate = useNavigate();
+
 
     const getBrandDetail = async () => {
         const response = await fetch(`https://api.eplsm.uz/api/brand-detail/${guid}`)
@@ -75,6 +77,8 @@ function SingleProduct() {
             });
     };
 
+
+
     return (
         <>
             <Navbar />
@@ -95,10 +99,12 @@ function SingleProduct() {
                     <p className='single-brand-text mt-4'>{brandDetail?.description}</p>
                     <div className='text-start'>
                         <p className='singleBrand_'> Catalog</p>
+                        {/* {brandDetail?.length === 0 && "Nothing was found!"} */}
                         {
                             brandDetail?.catalogs?.map((catalog) => (
                                 <div onClick={() => handleAdd(brandDetail?.guid, catalog.id)} href={catalog?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger me-2 blog-icon' />{catalog?.catalog_file?.split('/', 6)[5]}</div>
                             ))
+
                         }
                     </div>
                 </div>
@@ -109,6 +115,7 @@ function SingleProduct() {
                 <h1 className="body-header mb-4 mt-5">Related Products</h1>
 
                 <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
+                    {products?.length === 0 && "Nothing was found!"}
                     {
                         products?.map(item => (
                             <div className="conter-content">

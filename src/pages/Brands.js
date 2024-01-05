@@ -8,7 +8,8 @@ import {
   AiOutlineTrophy,
   AiOutlineCustomerService,
   AiOutlineException,
-  AiOutlineDownCircle
+  AiOutlineDownCircle,
+  AiOutlineAndroid
 
 } from 'react-icons/ai';
 import { useEffect } from "react";
@@ -172,6 +173,7 @@ function Brands() {
           :
           (<h3 className='text-center my-4'>
             Nothing was found!
+            <AiOutlineAndroid />
           </h3>)
         }
       </div>

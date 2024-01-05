@@ -5,7 +5,8 @@ import {
     AiOutlineCustomerService,
     AiOutlineException,
     AiOutlineShareAlt,
-    AiOutlineRight
+    AiOutlineRight,
+    AiOutlineAndroid
 } from 'react-icons/ai';
 import Navbar from '../components/Navbar'
 import { Button } from "react-bootstrap";
@@ -256,6 +257,7 @@ function ProductsPage() {
                                 :
                                 (<h3 className='text-center my-4'>
                                     Nothing was found!
+                                    <AiOutlineAndroid />
                                 </h3>)
                             }
                         </div>
