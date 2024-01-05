@@ -37,36 +37,20 @@ export default function App() {
             aria-label='Toggle navigation'
             onClick={() => setOpenNavColorThird(!openNavColorThird)}
           >
-            {/* <MDBIcon icon='bars' fas /> */}
 
             <div><AiOutlineAlignCenter /></div>
           </MDBNavbarToggler>
           <MDBCollapse open={openNavColorThird} navbar className='ms -auto'>
 
             <MDBNavbarNav className=' me-0 mb-2 mb-lg-0 gap-5'>
-              {/* <MDBNavbarItem className='active'> */}
-              <Link className="navigations" aria-current='page' to='/' style={{ color: pathname === '/' ? "#b88e2f" : "#000" }}>Home</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link className="navigations" style={{ color: pathname.includes('products') ? "#b88e2f" : "#000" }} to='/products' >Products</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link to='/brands' className="navigations" style={{ color: pathname.includes('brands') ? "#b88e2f" : "#000" }}>Brands</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link to='/categories' className="navigations" style={{ color: pathname.includes('categories') ? "#b88e2f" : "#000" }}>Categories</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link to='/catalogs' className="navigations" style={{ color: pathname.includes('catalogs') ? "#b88e2f" : "#000" }}>Catalogs</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link to='/blog' className="navigations" style={{ color: pathname.includes('blog') ? "#b88e2f" : "#000" }}>Blog</Link>
-              {/* </MDBNavbarItem> */}
-              {/* <MDBNavbarItem> */}
-              <Link to='/contact' className="navigations" style={{ color: pathname.includes('contact') ? "#b88e2f" : "#000" }}>Contact</Link>
-              {/* </MDBNavbarItem> */}
+              <Link className={pathname === '/' ? 'navigationActive' : 'navigations'} aria-current='page' to='/'>Home</Link>
+              <Link className={pathname.includes('products') ? 'navigationActive' : 'navigations'} to='/products' >Products</Link>
+              <Link className={pathname.includes('brands') ? 'navigationActive' : 'navigations'} to='/brands'>Brands</Link>
+              <Link className={pathname.includes('categories') ? 'navigationActive' : 'navigations'} to='/categories'>Categories</Link>
+              <Link className={pathname.includes('catalogs') ? 'navigationActive' : 'navigations'} to='/catalogs'>Catalogs</Link>
+              <Link className={pathname.includes('blog') ? 'navigationActive' : 'navigations'} to='/blog'>Blog</Link>
+              <Link className={pathname.includes('contact') ? 'navigationActive' : 'navigations'} to='/contact'>Contact</Link>
             </MDBNavbarNav>
-
             <MDBNavbarItem className='div-icon'>
               <MDBNavbarLink className={openNavColorThird ? 'nav_icon_open' : ''}><AiOutlineSearch style={{ width: '30px' }} className='nav__icon' /></MDBNavbarLink>
             </MDBNavbarItem>

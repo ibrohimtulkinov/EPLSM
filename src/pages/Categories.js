@@ -152,7 +152,7 @@ const Categories = () => {
 
             <section >
 
-                <div class="row  mt-5 p-5 overflow-x-hidden">
+                <div class="row  mt-5 mx-auto ">
                     {count > 0 ?
                         categories?.map(item => {
                             return <div className='col-12 col-sm-12  col-md-6  col-lg-4  col-xl-3 px-3 '>
