@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import blog1 from "../assets/img/blog1.png"
-import blog2 from "../assets/img/blog2.png"
-import blog3 from "../assets/img/blog3.png"
-import post1 from "../assets/img/post1.png"
-import post2 from "../assets/img/post2.png"
-import post3 from "../assets/img/post3.png"
-import post4 from "../assets/img/post4.png"
-import post5 from "../assets/img/post5.png"
 import Navbar from '../components/Navbar'
-import { Button } from "react-bootstrap";
 import End from "../components/End"
 import { Link } from "react-router-dom"
 import {
@@ -113,9 +104,6 @@ function Blog() {
                             </div>
                         </h3>)
                     }
-
-
-
 
                 </div>
                 <div className='col-md-3 text-start'>

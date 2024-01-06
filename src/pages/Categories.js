@@ -13,6 +13,7 @@ import {
 } from 'react-icons/ai';
 import { useEffect } from "react";
 import axios from 'axios';
+import Pagination from '../components/Pagination';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
@@ -199,6 +200,7 @@ const Categories = () => {
                     </div>
                 </div>
             </div>
+           
 
             <div className='brandicons-background'>
                 <div className='d-flex flex-wrap justify-content-around ms-5'>

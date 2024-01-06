@@ -1880,6 +1880,18 @@ ul {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 576px) {
+  .pdf {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .pdf {
+    font-size: 13px;
+  }
+}
+
 .icon-white {
   border-radius: 3px;
   font-size: 25px;

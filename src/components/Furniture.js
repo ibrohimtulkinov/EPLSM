@@ -1,6 +1,5 @@
 import React from "react"
 
-
 const   Image = ({ src, alt }) => {
   const [isClicked, setIsClicked] = React.useState(false);
 

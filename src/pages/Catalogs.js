@@ -17,14 +17,15 @@ import {
 import axios from 'axios';
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import Pagination from '../components/Pagination';
 
 
 
 function Catalogs() {
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(2);
-    const [count, setCount] = useState(2);
-
+    const [limit, setLimit] = useState(4);
+    const [count, setCount] = useState(0);
+    const [loading, setLoading] = useState(false)
 
 
     const navigate = useNavigate();
@@ -36,6 +37,12 @@ function Catalogs() {
     }, [limit, page]);
 
     const getBrandDetail = async () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+        setLoading(true)
         const response = await fetch('https://api.eplsm.uz/api/brand-list/')
         const data = await response.json()
         setBrandDetail(data)
@@ -47,6 +54,7 @@ function Catalogs() {
             .then((r) => {
                 setCount(r?.data?.count);
                 setBrandDetail(r?.data?.results);
+                setLoading(false)
             });
     };
 
@@ -191,16 +199,21 @@ function Catalogs() {
 
             <section>
                 {count > 0 ?
-                    brandDetail?.map(brandDetail => {
-                        return <div className='row mx-auto mt-4'>
-                            <div className='catolog_cursor col-md-3 col-4'><img onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)} src={brandDetail?.photo_medium} alt="" /></div>
-                            <div className='col-md-6 text-start '>
-                                <Link to={`/singlebrand/${brandDetail.guid}`} className='catalog-vng '>{brandDetail?.title}</Link>
-                                <div onClick={() => handleAdd(brandDetail.guid)} href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger  me-2 blog-icon' />catalog_2024.01.01.pdf</div>
-                                <div className='border-top catalog-border'></div>
+                    loading ? <h3 className='text-center my-4'>
+                        Loading...
+                        <AiOutlineAndroid />
+                    </h3> : (
+                        brandDetail?.map(brandDetail => {
+                            return <div className='row mx-auto mt-4'>
+                                <div className='catolog_cursor col-md-3 col-4'><img onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)} src={brandDetail?.photo_medium} alt="" /></div>
+                                <div className='col-md-6 text-start '>
+                                    <Link to={`/singlebrand/${brandDetail.guid}`} className='catalog-vng '>{brandDetail?.title}</Link>
+                                    <div onClick={() => handleAdd(brandDetail.guid)} href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger  me-2 blog-icon' />catalog_2024.01.01.pdf</div>
+                                    <div className='border-top catalog-border'></div>
+                                </div>
                             </div>
-                        </div>
-                    })
+                        })
+                    )
                     :
                     (<h3 className='text-center my-4'>
                         Nothing was found!
@@ -210,7 +223,7 @@ function Catalogs() {
             </section>
 
             <div className="container justify-content-center">
-                <div className="conter-content mt-5 mb-5">
+                {/* <div className="conter-content mt-5 mb-5">
                     <div className="d-flex">
                         {page > 1 && (
                             <button
@@ -230,7 +243,8 @@ function Catalogs() {
                             </button>
                         )}
                     </div>
-                </div>
+                </div> */}
+                <Pagination limit={limit} page={page} setPage={setPage} total={count} />
             </div>
 
             <div className='mt-5 mb-5 icons__background'>

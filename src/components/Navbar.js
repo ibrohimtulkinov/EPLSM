@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch } from "react-icons/ai";
-// import { MDBNavbar, MDBContainer, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink, MDBIcon } from 'mdb-react-ui-kit';
 import { AiOutlineAlignCenter } from "react-icons/ai";
 import navLogo from '../assets/img/nav-logo.png'
 import {
   MDBNavbar,
   MDBContainer,
-  MDBIcon,
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
@@ -15,7 +13,6 @@ import {
   MDBCollapse
 } from 'mdb-react-ui-kit';
 import { Link, useLocation } from 'react-router-dom';
-
 
 export default function App() {
   const [openNavColorThird, setOpenNavColorThird] = useState(false);

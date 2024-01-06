@@ -85,7 +85,7 @@ function SingleProduct() {
         <Link to="/products" className='singleProduct_Product' ><c className='sofa___ '>Product</c><AiOutlineRight className='icon-right' /></Link>
         <Link to="/SingleProduct" className='singleProduct_Asgaard '><c className='sofa__sofa '>{product?.title}</c></Link>
       </div>
-      <div className='row mx-auto  '>
+      <div className='row mx-auto overflow-x-hidden '>
         <div className="single-product-image">
           <div className="d-flex flex-column mt-5 ms-5 me-5 sp-imagemap gap-3 ">
             {
@@ -135,7 +135,7 @@ function SingleProduct() {
 
 
 
-      <section>
+      <section className='overflow-x-hidden'>
         <div className='text-center mt-5 '>
           <p className='border-top'></p>
           <p className='mt-5 mb-4 related0'>Related Products</p>

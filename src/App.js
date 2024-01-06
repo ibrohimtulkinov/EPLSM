@@ -10,7 +10,6 @@ import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Galleries from "./components/Gallery";
 
-
 export default function App() {
   return (
     <div>
