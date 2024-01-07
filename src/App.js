@@ -18,10 +18,9 @@ export default function App() {
       <Main />
       <Body />
       <Explore />
-      <div className="image-grid">
-        <Galleries />
-      </div>
+      <Image />
+      <Galleries />
       <End />
-  </div>
+    </div>
   )
 }

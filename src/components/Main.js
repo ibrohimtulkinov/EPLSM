@@ -2,47 +2,43 @@ import React from "react"
 import mainPhoto1 from '../assets/img/main-photo1.png';
 import mainPhoto2 from '../assets/img/main-photo2.png';
 import mainPhoto3 from '../assets/img/main-photo3.png';
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
-    return (
-      <section>
-          <h1 className="main-title">Browse The Range</h1>
-          <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div className="container">
-            <div className="photo---container  ">
+  const navigate = useNavigate();
+  const [products, setProducts] = useState()
+  const getProducts = async () => {
+    const response = await fetch("https://api.eplsm.uz/api/product-category-list/")
+    const data = await response.json()
+    setProducts(data)
+  }
 
-            <a href="#" className="photo">
-                 <img src={mainPhoto1} alt="#" />
-               <div className="glow-wrap">
-                 <i className="glow" > </i>
-               </div>
-               </a>
+  useEffect(() => {
+    getProducts()
+  }, [])
 
-              <div className="caption">Dining</div>
-            </div>
-          <div className="photo---container ">
+  return (
+    <section className="main-div">
+      <h1 className="main-title">Browse The Range</h1>
+      <p className="main-text mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div className="container overflow-x-hidden">
+        <div class="row col-9">
+          {
+            products?.map(item => {
+              return <div className="photo col-md-4 mt-5  text-center" onClick={() => navigate(`/categories/${item.guid}`)}>
+                <img src={item?.photo_medium} alt="#" />
+                <div className="glow-wrap">
+                  <i className="glow" > </i>
+                </div>
+                <p className="caption">{item?.title}</p>
+              </div>
 
-          <a href="#" className="photo">
-                 <img src={mainPhoto2} alt="#" />
-               <div className="glow-wrap">
-                 <i className="glow"> </i>
-               </div>
-               </a>
-
-              <div className="caption">Living</div>
-          </div>
-          <div className="photo---container ">
-
-          <a href="#" className="photo">
-                 <img src={mainPhoto3} alt="#"/>
-               <div className="glow-wrap">
-                 <i className="glow"> </i>
-               </div>
-               </a>
-
-              <div className="caption">Bedroom</div>
-          </div>
-           </div>
-      </section>
-    )
+            })
+          }
+        </div>
+      </div>
+    </section>
+  )
 }

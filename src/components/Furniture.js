@@ -1,30 +1,23 @@
 import React from "react"
 
-
-const Image = ({ src, alt }) => {
-  const [isClicked, setIsClicked] =  React.useState(false);
+const   Image = ({ src, alt }) => {
+  const [isClicked, setIsClicked] = React.useState(false);
 
   const handleClick = () => {
     setIsClicked(!isClicked);
   }
 
   return (
-    
-  <>
-    <div className="image-container">
-      <img
-        className={isClicked ? 'image-clicked' : 'image'}
-        src={src}
-        alt={alt}
-        onClick={handleClick}
-      />
-      {isClicked && (
-        <div className="overlay" onClick={handleClick}>
-          <img src={src} alt={alt} className="clicked-image" />
+
+    <>
+      <div className="container">
+        <div className="text-center">
+          <p className="furniture-title">Share your set up with</p>
+          <h1 className="furniture-header">#FuniroFurniture</h1>
         </div>
-      )}
-    </div>
-  </>
+      </div>
+
+    </>
   )
 }
 
