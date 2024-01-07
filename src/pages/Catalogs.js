@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Navbar from '../components/Navbar'
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import End from "../components/End"
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 import {
     AiOutlineRight
 } from 'react-icons/ai';
@@ -15,10 +15,9 @@ import {
     AiOutlineAndroid
 } from 'react-icons/ai';
 import axios from 'axios';
-import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import {useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
 import Pagination from '../components/Pagination';
-
 
 
 function Catalogs() {
@@ -49,7 +48,7 @@ function Catalogs() {
         const offset = (page - 1) * limit;
         axios
             .get('https://api.eplsm.uz/api/brand-list/', {
-                params: { limit, p: true, offset },
+                params: {limit, p: true, offset},
             })
             .then((r) => {
                 setCount(r?.data?.count);
@@ -62,8 +61,8 @@ function Catalogs() {
         getBrandDetail()
     }, [])
 
-    const handleAdd = async (guid) => {
-        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}/`, { method: "get" })
+    const handleAdd = async (guid, catalogId) => {
+        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}/`, {params: {catalog_id: catalogId}}, {method: "get"})
             .then((res) => res.blob())
             .then((blob) => {
                 const url = window.URL.createObjectURL(new Blob([blob]));
@@ -85,7 +84,7 @@ function Catalogs() {
         const totalPages = Math.ceil(count / limit);
 
         if (totalPages <= 4) {
-            return Array.from({ length: totalPages }, (_, index) => (
+            return Array.from({length: totalPages}, (_, index) => (
                 <button
                     key={index}
                     className={`col-md-3 number__${page === index + 1 ? 'active' : '0'}`}
@@ -158,14 +157,18 @@ function Catalogs() {
     return (
         <>
 
-            <Navbar />
+            <Navbar/>
 
             <div className="bg-image ">
                 <div className="products-important text-start ">
                     <h1 className='products--products'>Catalogs</h1>
                     <p>
-                        <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight /></c> </Link>
-                        <Link to="/catalogs" className="singleProduct_home"><c className="products-products">Catalogs</c></Link>
+                        <Link to="/" className='singleProduct_home'>
+                            <c className="home-products ">Home <AiOutlineRight/></c>
+                        </Link>
+                        <Link to="/catalogs" className="singleProduct_home">
+                            <c className="products-products">Catalogs</c>
+                        </Link>
                     </p>
                 </div>
             </div>
@@ -190,7 +193,7 @@ function Catalogs() {
                                     type="search" onChange={(e) => handleSearch(e.target.value)}
                                     className="form-control rounded w-px-250" placeholder="Search"
                                     aria-label="Search"
-                                    aria-describedby="search-addon" />
+                                    aria-describedby="search-addon"/>
                             </p>
                         </div>
                     </div>
@@ -201,14 +204,32 @@ function Catalogs() {
                 {count > 0 ?
                     loading ? <h3 className='text-center my-4'>
                         Loading...
-                        <AiOutlineAndroid />
+                        <AiOutlineAndroid/>
                     </h3> : (
                         brandDetail?.map(brandDetail => {
                             return <div className='row mx-auto mt-4'>
-                                <div className='catolog_cursor col-md-3 col-4'><img onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)} src={brandDetail?.photo_medium} alt="" /></div>
+                                <div className='catolog_cursor col-md-3 col-4'><img
+                                    onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)}
+                                    src={brandDetail?.photo_medium} alt=""/></div>
                                 <div className='col-md-6 text-start '>
-                                    <Link to={`/singlebrand/${brandDetail.guid}`} className='catalog-vng '>{brandDetail?.title}</Link>
-                                    <div onClick={() => handleAdd(brandDetail.guid)} href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger  me-2 blog-icon' />catalog_2024.01.01.pdf</div>
+                                    <Link to={`/singlebrand/${brandDetail.guid}`}
+                                          className='catalog-vng '>{brandDetail?.title}</Link>
+                                    {
+                                        brandDetail.catalogs.length > 0 ? brandDetail.catalogs.map((item, index) => (
+                                                <div onClick={() => handleAdd(brandDetail?.guid, item.id)}
+                                                     href={item?.catalog_file} className='pdf mt-4 '>
+                                                    <AiOutlineFileText
+                                                        className='text-white bg-danger  me-2 blog-icon'/>Catalog {index + 1}
+                                                </div>
+                                            ))
+                                            :
+                                            (
+                                                <div className='pdf mt-4 '>
+                                                    Catalogs not added
+                                                </div>
+                                            )
+
+                                    }
                                     <div className='border-top catalog-border'></div>
                                 </div>
                             </div>
@@ -217,7 +238,7 @@ function Catalogs() {
                     :
                     (<h3 className='text-center my-4'>
                         Nothing was found!
-                        <AiOutlineAndroid />
+                        <AiOutlineAndroid/>
                     </h3>)
                 }
             </section>
@@ -244,14 +265,14 @@ function Catalogs() {
                         )}
                     </div>
                 </div> */}
-                <Pagination limit={limit} page={page} setPage={setPage} total={count} />
+                <Pagination limit={limit} page={page} setPage={setPage} total={count}/>
             </div>
 
             <div className='mt-5 mb-5 icons__background'>
                 <div className='d-flex flex-wrap justify-content-around ms-5'>
                     <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
                         <div className='d-flex align-items-center'>
-                            <span className="icons me-3"><AiOutlineTrophy size="4em" /></span>
+                            <span className="icons me-3"><AiOutlineTrophy size="4em"/></span>
                             <div className='text-start'>
                                 <p className='icons__header'>High Quality</p>
                                 <p className='icons__text'>Crafted from top materials</p>
@@ -260,7 +281,7 @@ function Catalogs() {
                     </div>
                     <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
                         <div className='d-flex align-items-center'>
-                            <span className="icons me-3"><AiOutlineDownCircle size="4em" /></span>
+                            <span className="icons me-3"><AiOutlineDownCircle size="4em"/></span>
                             <div className='text-start'>
                                 <p className='icons__header'>Warranty Protection</p>
                                 <p className='icons__text'>Over 2 years</p>
@@ -269,7 +290,7 @@ function Catalogs() {
                     </div>
                     <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
                         <div className='d-flex align-items-center'>
-                            <span className="icons me-3"><AiOutlineException size="4em" /></span>
+                            <span className="icons me-3"><AiOutlineException size="4em"/></span>
                             <div className='text-start'>
                                 <p className='icons__header'>Free Shipping</p>
                                 <p className='icons__text'>Order over 150 $</p>
@@ -278,7 +299,7 @@ function Catalogs() {
                     </div>
                     <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
                         <div className='d-flex align-items-center'>
-                            <span className="icons me-3"><AiOutlineCustomerService size="4em" /></span>
+                            <span className="icons me-3"><AiOutlineCustomerService size="4em"/></span>
                             <div className='text-start'>
                                 <p className='icons__header'>24/7 Support</p>
                                 <p className='icons__text'>Dedicated support</p>
@@ -288,7 +309,7 @@ function Catalogs() {
                 </div>
             </div>
 
-            <End />
+            <End/>
 
         </>
     )
