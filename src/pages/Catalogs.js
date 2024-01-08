@@ -19,7 +19,6 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 
 
-
 function Catalogs() {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(4);
@@ -61,19 +60,9 @@ function Catalogs() {
         getBrandDetail()
     }, [])
 
-    const handleAdd = async (guid) => {
-        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}/`, { method: "get" })
-            .then((res) => res.blob())
-            .then((blob) => {
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "Document.pdf";
-
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
-            });
+    const handleAdd = async (guid, catalogId) => {
+        const urlPaths = `https://api.eplsm.uz/api/brand-download/${guid}/?catalog_id=${catalogId}`;
+        window.open(urlPaths, '_blank');
     };
 
     const handlePageChange = (newPage) => {
@@ -163,8 +152,12 @@ function Catalogs() {
                 <div className="products-important text-start ">
                     <h1 className='products--products'>Catalogs</h1>
                     <p>
-                        <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight /></c> </Link>
-                        <Link to="/catalogs" className="singleProduct_home"><c className="products-products">Catalogs</c></Link>
+                        <Link to="/" className='singleProduct_home'>
+                            <c className="home-products ">Home <AiOutlineRight /></c>
+                        </Link>
+                        <Link to="/catalogs" className="singleProduct_home">
+                            <c className="products-products">Catalogs</c>
+                        </Link>
                     </p>
                 </div>
             </div>
@@ -204,10 +197,28 @@ function Catalogs() {
                     </h3> : (
                         brandDetail?.map(brandDetail => {
                             return <div className='row mx-auto mt-4'>
-                                <div className='catolog_cursor col-md-3 col-4'><img onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)} src={brandDetail?.photo_medium} alt="" /></div>
+                                <div className='catolog_cursor col-md-3 col-4'><img
+                                    onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)}
+                                    src={brandDetail?.photo_medium} alt="" /></div>
                                 <div className='col-md-6 text-start '>
-                                    <Link to={`/singlebrand/${brandDetail.guid}`} className='catalog-vng '>{brandDetail?.title}</Link>
-                                    <div onClick={() => handleAdd(brandDetail.guid)} href={brandDetail?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger  me-2 blog-icon' />catalog_2024.01.01.pdf</div>
+                                    <Link to={`/singlebrand/${brandDetail.guid}`}
+                                        className='catalog-vng '>{brandDetail?.title}</Link>
+                                    {
+                                        brandDetail.catalogs.length > 0 ? brandDetail.catalogs.map((item, index) => (
+                                            <div onClick={() => handleAdd(brandDetail?.guid, item.id)}
+                                                href={item?.catalog_file} className='pdf mt-4 '>
+                                                <AiOutlineFileText
+                                                    className='text-white bg-danger  me-2 blog-icon' />Catalog {index + 1}
+                                            </div>
+                                        ))
+                                            :
+                                            (
+                                                <div className='pdf mt-4 '>
+                                                    Catalogs not added
+                                                </div>
+                                            )
+
+                                    }
                                     <div className='border-top catalog-border'></div>
                                 </div>
                             </div>
