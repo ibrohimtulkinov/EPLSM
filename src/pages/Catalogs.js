@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
-import { Button } from "react-bootstrap";
 import End from "../components/End"
 import { Link } from "react-router-dom"
 import {
@@ -222,7 +221,7 @@ function Catalogs() {
                 }
             </section>
 
-            <div className="container justify-content-center">
+            <div className="container justify-content-center mt-5">
                 {/* <div className="conter-content mt-5 mb-5">
                     <div className="d-flex">
                         {page > 1 && (
