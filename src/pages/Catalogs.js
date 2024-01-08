@@ -62,18 +62,8 @@ function Catalogs() {
     }, [])
 
     const handleAdd = async (guid, catalogId) => {
-        await fetch(`https://api.eplsm.uz/api/brand-download/${guid}/`, {params: {catalog_id: catalogId}}, {method: "get"})
-            .then((res) => res.blob())
-            .then((blob) => {
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "Document.pdf";
-
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
-            });
+        const urlPaths = `https://api.eplsm.uz/api/brand-download/${guid}/?catalog_id=${catalogId}`;
+        window.open(urlPaths, '_blank');
     };
 
     const handlePageChange = (newPage) => {
