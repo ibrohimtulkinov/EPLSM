@@ -24,7 +24,7 @@ import {
 } from 'react-icons/ai';
 import Description from '../components/Description';
 import AdditionalInformation from '../components/AdditionalInformation';
-import Review from '../components/Review';
+import Review from '../components/Specification';
 import axios from 'axios';
 
 function SingleProduct() {
@@ -91,7 +91,7 @@ function SingleProduct() {
             {
               product?.images?.map((image) => (
                 <div className='rounded-3 overflow-hidden '>
-                  <img src={image.photo_small} alt="" width='100px' className='single_photos' height='100px' onClick={() => handleChangeImage(image.photo)} />
+                  <img src={image.photo_small} alt="" width='76px' className='single_photos' height='80px' onClick={() => handleChangeImage(image.photo)} />
                 </div>
               ))
             }
@@ -101,8 +101,8 @@ function SingleProduct() {
               smallImage: {
                 alt: 'Product',
                 src: selectedImage,
-                width: 350,
-                height: 300,
+                width: 423,
+                height: 450,
               },
               largeImage: {
                 src: selectedImage,
@@ -123,9 +123,9 @@ function SingleProduct() {
       <div>
         <div className='container'>
           <div className='text-center d-flex mt-5'>
+            <button onClick={() => handleTabClick("Review")} className='singleproduct-info col-md-4'>Specification</button>
             <button onClick={() => handleTabClick("Description")} className='singleproduct-description col-md-4'>Description</button>
             <button onClick={() => handleTabClick("AddtiotionalInformation")} className='singleproduct-info col-md-8'>Additional Information</button>
-            {/* <button onClick={() => handleTabClick("Review")} className='singleproduct-info col-md-4'>Reviews [5]</button>  */}
           </div>
 
         </div>
@@ -147,7 +147,7 @@ function SingleProduct() {
                 <div className="conter-content">
                   <div className="photo-container ">
                     <div className="defaultVisible">
-                      <img className="body-photos" src={item?.images?.[0]?.photo} alt="Фото 1" />
+                      <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
                       {/* <div>
                         <p className="number">-30%</p>
                       </div> */}

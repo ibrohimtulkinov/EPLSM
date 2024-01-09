@@ -2,7 +2,7 @@ import React from 'react'
 
 function Review() {
   return (
-    <div>Review</div>
+    <h4 className='text-center my-4'>No information added!</h4>
   )
 }
 

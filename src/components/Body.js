@@ -33,7 +33,7 @@ export default function Body() {
           {
             products?.map(item => (
               <div className="conter-content">
-                <div className="photo-container ">
+                <div className="photo-container">
                   <div className="defaultVisible">
                     <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
                     {/* <div>

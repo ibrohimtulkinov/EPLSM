@@ -107,7 +107,7 @@ function SingleProduct() {
 
                         }
                     </div>
-                </div>
+                </div> 
             </div>
 
 
