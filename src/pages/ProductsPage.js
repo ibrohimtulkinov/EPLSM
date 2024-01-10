@@ -247,9 +247,9 @@ function ProductsPage() {
                                                     <h6 className="share"><AiOutlineShareAlt /> Share</h6>
                                                 </div>
                                             </div>
-                                            <div className='bg-light w-100 text-start' style={{ padding: "16px" }}>
-                                                <h3>{product.title}</h3>
-                                                <p className='mb-0'>{product.sub_title}</p>
+                                            <div className="card card-header w-100">
+                                                <h5 class="body-title text-start">{product?.title}</h5>
+                                                <p class="body-text text-start">{product?.sub_title}</p>
                                             </div>
                                         </div>
                                     </div>

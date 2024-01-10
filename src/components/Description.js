@@ -1,7 +1,4 @@
 import React from 'react'
-
-import singleproductt from '../assets/img/single-productt.png';
-import singleproducttt from '../assets/img/single-producttt.png';
 function Description({ product }) {
     return (
         <div>

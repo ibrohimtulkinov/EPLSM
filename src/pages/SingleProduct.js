@@ -57,7 +57,7 @@ function SingleProduct() {
     setSelectedImage(image)
   }
 
-  const [activeTab, setActiveTab] = useState("Description");
+  const [activeTab, setActiveTab] = useState("Review");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -83,7 +83,7 @@ function SingleProduct() {
       <div className='d-flex sofa__background'>
         <Link to="/" className='singleProduct_home'  ><c className='sofa__ '>Home</c><AiOutlineRight className='icon-right' /></Link>
         <Link to="/products" className='singleProduct_Product' ><c className='sofa___ '>Product</c><AiOutlineRight className='icon-right' /></Link>
-        <Link to="/SingleProduct" className='singleProduct_Asgaard '><c className='sofa__sofa '>{product?.title}</c></Link>
+        <Link to={''} className='singleProduct_Asgaard '><c className='sofa__sofa'>{product?.title}</c></Link>
       </div>
       <div className='row mx-auto overflow-x-hidden '>
         <div className="single-product-image">
@@ -101,13 +101,13 @@ function SingleProduct() {
               smallImage: {
                 alt: 'Product',
                 src: selectedImage,
-                width: 423,
+                width: 370,
                 height: 450,
               },
               largeImage: {
                 src: selectedImage,
-                width: 550,
-                height: 500,
+                width: 650,
+                height: 600,
               }
             }} />
           </div>
@@ -121,52 +121,48 @@ function SingleProduct() {
       </div>
       <div className='border-top border-product'> </div>
       <div>
-        <div className='container'>
+        <div className='container overflow-x-hidden'>
           <div className='text-center d-flex mt-5'>
-            <button onClick={() => handleTabClick("Review")} className='singleproduct-info col-md-4'>Specification</button>
-            <button onClick={() => handleTabClick("Description")} className='singleproduct-description col-md-4'>Description</button>
-            <button onClick={() => handleTabClick("AddtiotionalInformation")} className='singleproduct-info col-md-8'>Additional Information</button>
+            <button onClick={() => handleTabClick("Review")} className={activeTab === `Review` ? `singleproduct-info-active col-md-4` : `singleproduct-info col-md-4`}>Specification</button>
+            <button onClick={() => handleTabClick("Description")} className={activeTab === `Description` ? `singleproduct-info-active col-md-4` : `singleproduct-info col-md-4`}>Description</button>
+            <button onClick={() => handleTabClick("AddtiotionalInformation")} className={activeTab === `AddtiotionalInformation` ? `singleproduct-info-active col-md-6` : `singleproduct-info col-md-6 col-6`}>Additional Information</button>
           </div>
-
         </div>
         {renderTabs()}
       </div>
-
-
-
 
       <section className='overflow-x-hidden'>
         <div className='text-center mt-5 '>
           <p className='border-top'></p>
           <p className='mt-5 mb-4 related0'>Related Products</p>
         </div>
-        <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
-          {
-            products?.length > 0 ?
-              (products?.map(item => (
-                <div className="conter-content">
-                  <div className="photo-container ">
-                    <div className="defaultVisible">
-                      <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
-                      {/* <div>
-                        <p className="number">-30%</p>
-                      </div> */}
-                      <div className="body-container">
-                        <h3 className="body-title ">{item?.title}</h3>
-                        <p className="body-text">{item?.sub_title}</p>
+        <div className="row justify-content-center overflow-x-hidden">
+
+          <div className="row justify-content-center gap-5  ">
+            {products?.length === 0 && "Nothing was found!"}
+            {
+              products?.map(item => (
+                <div className="col-md-2 col-sm-5 card-div">
+                  <div className="conter-content">
+                    <div className="photo-container ">
+                      <div className="defaultVisible mx-auto">
+                        <img src={item?.images?.[0]?.photo_medium} class="body-photos" alt="..." />
+                        <div class="card card-header mx-auto">
+                          <h5 class="body-title text-start">{item?.title}</h5>
+                          <p class="body-text text-start">{item?.sub_title}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="onHoverVisible position-absolute">
-                      <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
-                      <br />
-                      <h6 className="share"><AiOutlineShareAlt />Share</h6>
+                      <div className="onHoverVisible position-absolute mx-auto">
+                        <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
+                        <br />
+                        <h6 className="share"><AiOutlineShareAlt />Share</h6>
+                      </div>
                     </div>
                   </div>
                 </div>
-              )))
-              :
-              (<h3 className='text-center my-4'>No information added!</h3>)
-          }
+              ))
+            }
+          </div>
         </div>
 
 

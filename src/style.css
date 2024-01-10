@@ -1,3 +1,10 @@
+/* .truncate {
+  width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
 .photo-container {
   position: relative;
   text-align: center;
@@ -124,9 +131,14 @@ nav {
 .nav--icon {
   height: 35px;
 }
+.card-height {
+  height: 450px !important;
+}
 
 .card-body {
   background: #f4f5f7;
+  width: auto;
+  height: auto;
 }
 
 .card {
@@ -251,85 +263,36 @@ nav ul {
   float: right;
 }
 
-@media only screen and (max-width: 576px) {
+@media (max-width: 575.98px) {
   .card-header {
     font-size: 40px !important;
   }
-}
 
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-header {
-    font-size: 45px !important;
-  }
-}
-
-@media only screen and (max-width: 576px) {
   .card-title {
     font-size: 13px !important;
   }
-}
 
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-title {
-    font-size: 13px !important;
-  }
-}
-
-@media only screen and (max-width: 576px) {
   .card-text {
     font-size: 18px !important;
   }
-}
 
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-text {
-    font-size: 18px !important;
-  }
-}
-
-@media only screen and (max-width: 576px) {
   .card-title {
     font-size: 10px !important;
   }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-title {
-    font-size: 13px !important;
-  }
-}
-
-@media only screen and (max-width: 576px) {
   .card-img-top {
     width: 250px !important;
     height: 250px !important;
     border-color: #b88e2f;
   }
-}
-
-@media only screen and (max-width: 576px) {
   .card-body {
-    width: 250px !important;
-    height: 120px !important;
+    /* width: 250px !important;
+    height: 120px !important; */
     border-color: #b88e2f;
   }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
   .card-img-top {
     width: 320px !important;
     height: 450px !important;
   }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-body {
-    width: 320px;
-    height: 140px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
   .under-card {
     width: 90% !important;
     /* height: 600px !important; */
@@ -340,12 +303,51 @@ nav ul {
     border-radius: 10px;
     padding: 30px 30px;
   }
+  .card-button {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    background: rgba(184, 142, 47, 1);
+    padding: 20px 65px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
+  .card-header {
+    font-size: 45px !important;
+  }
+  .card-title {
+    font-size: 13px !important;
+  }
+
+  .card-text {
+    font-size: 18px !important;
+  }
+
+  .card-title {
+    font-size: 13px !important;
+  }
+  .card-body {
+    /* width: 320px;
+    height: 140px; */
+  }
   .under-card {
     width: 431px !important;
     /* height: 570px !important; */
+  }
+
+  .card-button {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    background: rgba(184, 142, 47, 1);
+    padding: 20px 67px;
+    margin-top: 10px;
+    cursor: pointer;
   }
 }
 
@@ -364,33 +366,6 @@ nav ul {
     margin-right: 8%;
   }
 }
-
-@media only screen and (max-width: 576px) {
-  .card-button {
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    background: rgba(184, 142, 47, 1);
-    padding: 20px 65px;
-    margin-top: 20px;
-    cursor: pointer;
-  }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-  .card-button {
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    background: rgba(184, 142, 47, 1);
-    padding: 20px 67px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-}
-
 section {
   text-align: center;
   justify-content: center;
@@ -459,12 +434,6 @@ section {
   color: rgba(58, 58, 58, 1);
 }
 
-.body-photos {
-  height: 400px;
-  width: 100%;
-  object-fit: cover;
-}
-
 .cardPhotoStyle {
   /* height: 446px; */
   width: 100%;
@@ -497,11 +466,6 @@ section {
 }
 
 .body-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 1; /* Number of lines you want to display */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 24px;
   font-family: "Poppins", sans-serif;
   color: rgba(58, 58, 58, 1);
@@ -1023,6 +987,49 @@ section {
   justify-content: center;
 }
 
+.card-div {
+}
+
+.body-photos {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 576px) {
+  .body-photos {
+    width: 70% !important;
+    height: 300px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .body-photos {
+    height: 350px !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+}
+
+.card-header {
+  height: 100px !important;
+}
+
+
+@media only screen and (max-width: 576px) {
+  .card-header {
+    width: 70% !important;
+    height: 100px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .card-header {
+    height: 150px !important;
+    width: 100% !important;
+  }
+}
+
 .clicked-image {
   max-width: 80%;
   max-height: 80%;
@@ -1196,6 +1203,29 @@ section {
 @media (min-width: 577px) and (max-width: 768px) {
   .rad-1 {
     margin-left: 15px !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .body-title {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .body-title {
+    font-size: 20px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1010px) {
+  .body-title {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1010px) {
+  .body-text {
+    font-size: 10px;
   }
 }
 
@@ -1494,11 +1524,39 @@ ul {
   margin-left: 100px;
 }
 
+@media only screen and (max-width: 576px) {
+  .sofa__ {
+    font-size: 13px;
+    margin-left: 20px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .sofa__ {
+    margin-left: 30px;
+    font-size: 14px;
+  }
+}
+
 .sofa___ {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   opacity: 0.4;
   margin-left: 30px;
+}
+
+@media only screen and (max-width: 576px) {
+  .sofa___ {
+    font-size: 13px;
+    margin-left: 20px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .sofa___ {
+    margin-left: 30px;
+    font-size: 14px;
+  }
 }
 
 .icon-right {
@@ -1528,6 +1586,18 @@ ul {
   font-family: "Roboto", sans-serif;
   color: rgba(0, 0, 0, 1);
   text-decoration: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .singleProduct_Asgaard {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .singleProduct_Asgaard {
+    font-size: 14px;
+  }
 }
 
 .sofa__background {
@@ -1619,17 +1689,27 @@ ul {
   }
 }
 
-.singleproduct-description {
+/* .singleproduct-description {
   font-family: "Roboto", sans-serif;
   font-size: 24px;
   color: rgba(159, 159, 159, 1);
   margin-right: 7%;
   border: 0;
   background-color: white;
+} */
+
+@media only screen and (max-width: 576px) {
+  .singleproduct-description {
+    font-size: 16px;
+    margin-right: 1%;
+  }
 }
 
-.singleproduct-description:focus {
-  color: #000;
+@media (min-width: 577px) and (max-width: 768px) {
+  .singleproduct-description {
+    font-size: 20px;
+    margin-right: 1%;
+  }
 }
 
 .singleproduct-description:hover {
@@ -1637,8 +1717,13 @@ ul {
   transition: 0.5s ease;
 }
 
-.singleproduct-info:focus {
+.singleproduct-info-active {
   color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 7%;
+  border: 0;
+  background-color: white;
 }
 .singleproduct-info:active {
   color: #000;
@@ -1658,10 +1743,36 @@ ul {
   background-color: white;
 }
 
+@media only screen and (max-width: 576px) {
+  .singleproduct-info {
+    font-size: 16px;
+    margin-right: 1%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .singleproduct-info {
+    font-size: 20px;
+    margin-right: 1%;
+  }
+}
+
 .text-of-singleproduct {
   font-family: "Roboto", sans-serif;
   color: rgba(159, 159, 159, 1);
   font-size: 16px;
+}
+
+@media only screen and (max-width: 576px) {
+  .text-of-singleproduct {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .text-of-singleproduct {
+    font-size: 14px;
+  }
 }
 
 .contacts-un {
@@ -2392,7 +2503,6 @@ ul {
 
 .conter-content:hover {
   cursor: pointer;
-
   .onHoverVisible {
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
@@ -2430,4 +2540,41 @@ ul {
 
 .borderRadiusZoom img {
   border-radius: 5px !important;
+  object-fit: cover;
 }
+
+td {
+  cursor: pointer;
+}
+
+td:hover {
+  opacity: 0.6;
+}
+
+/* @media only screen and (max-width: 576px) {
+  .borderRadiusZoom {
+    width: 300px !important;
+    height: 350px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .borderRadiusZoom {
+    width: 350px !important;
+    height: 380px !important;
+  }
+} */
+
+/* @media only screen and (max-width: 576px) {
+  .zoom-size {
+    width: 300px !important;
+    height: 350px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .zoom-size {
+    width: 350px !important;
+    height: 380px !important;
+  }
+} */

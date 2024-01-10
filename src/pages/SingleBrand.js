@@ -87,7 +87,7 @@ function SingleProduct() {
             <div className='d-flex sofa__background'>
                 <Link to="/" className='singleProduct_home'  ><c className='sofa__ '>Home</c><AiOutlineRight className='icon-right' /></Link>
                 <Link to="/brands" className='singleProduct_Product' ><c className='sofa___ '>Brands</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to="/singlebrand" className='singleProduct_Asgaard '><c className='sofa__sofa '>{brandDetail?.title}</c></Link>
+                <Link to={''} className='singleProduct_Asgaard '><c className='sofa__sofa '>{brandDetail?.title}</c></Link>
             </div>
 
             <div className='row m-auto'>
@@ -107,38 +107,40 @@ function SingleProduct() {
 
                         }
                     </div>
-                </div> 
+                </div>
             </div>
 
 
-            <section className="mx-auto">
+            <section className="mx-auto overflow-x-hidden">
                 <h1 className="body-header mb-4 mt-5">Related Products</h1>
 
-                <div className="d-inline-flex flex-wrap justify-content-center px-3 gap-5">
-                    {products?.length === 0 && "Nothing was found!"}
-                    {
-                        products?.map(item => (
-                            <div className="conter-content">
-                                <div className="photo-container ">
-                                    <div className="defaultVisible">
-                                        <img className="body-photos" src={item?.images?.[0]?.photo_medium} alt="Фото 1" />
-                                        {/* <div>
-                                            <p className="number">-30%</p>
-                                        </div> */}
-                                        <div className="body-container">
-                                            <h3 className="body-title ">{item?.title}</h3>
-                                            <p className="body-text">{item?.sub_title}</p>
+                <div className="row justify-content-center overflow-x-hidden">
+
+                    <div className="row justify-content-center gap-5  ">
+                        {products?.length === 0 && "Nothing was found!"}
+                        {
+                            products?.map(item => (
+                                <div className="col-md-2 col-sm-5 card-div">
+                                    <div className="conter-content">
+                                        <div className="photo-container ">
+                                            <div className="defaultVisible mx-auto">
+                                                <img src={item?.images?.[0]?.photo_medium} class="body-photos" alt="..." />
+                                                <div class="card card-header mx-auto">
+                                                    <h5 class="body-title text-start">{item?.title}</h5>
+                                                    <p class="body-text text-start">{item?.sub_title}</p>
+                                                </div>
+                                            </div>
+                                            <div className="onHoverVisible position-absolute mx-auto">
+                                                <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
+                                                <br />
+                                                <h6 className="share"><AiOutlineShareAlt />Share</h6>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="onHoverVisible position-absolute">
-                                        <Button className="btn btn-light rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
-                                        <br />
-                                        <h6 className="share"><AiOutlineShareAlt />Share</h6>
-                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
                 <div>
                     <button className="body-button" type='button' onClick={handleShowMore}>Show More</button>
