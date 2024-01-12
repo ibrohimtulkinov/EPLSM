@@ -85,9 +85,9 @@ function SingleProduct() {
 
 
             <div className='d-flex sofa__background'>
-                <Link to="/" className='singleProduct_home'  ><c className='sofa__ '>Home</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to="/brands" className='singleProduct_Product' ><c className='sofa___ '>Brands</c><AiOutlineRight className='icon-right' /></Link>
-                <Link to={''} className='singleProduct_Asgaard '><c className='sofa__sofa '>{brandDetail?.title}</c></Link>
+                <Link to="/" className='singleProduct_home'  ><c className='sofa__'>Home</c><AiOutlineRight className='icon-right' /></Link>
+                <Link to="/brands" className='singleProduct_Product' ><c className='sofa___'>Brands</c><AiOutlineRight className='icon-right' /></Link>
+                <Link to={''} className='singleProduct_Asgaard '><c className='sofa__sofa'>{brandDetail?.title}</c></Link>
             </div>
 
             <div className='row m-auto'>
@@ -104,7 +104,6 @@ function SingleProduct() {
                             brandDetail?.catalogs?.map((catalog) => (
                                 <div onClick={() => handleAdd(brandDetail?.guid, catalog.id)} href={catalog?.catalog_file} className='pdf mt-4 '><AiOutlineFileText className='text-white bg-danger me-2 blog-icon' />{catalog?.catalog_file?.split('/', 6)[5]}</div>
                             ))
-
                         }
                     </div>
                 </div>

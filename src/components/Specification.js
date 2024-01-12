@@ -1,63 +1,63 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import { url } from '../pages/SingleProduct';
 
 function Review() {
+  const [groupedData, setGroupedData] = useState({});
+
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const getList = async () => {
+    try {
+      const response = await axios.get(url + '/product-specification-list/');
+      groupData(response.data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
+  const groupData = (data) => {
+    const grouped = {};
+
+    data.forEach(item => {
+      const { id, title } = item.group;
+      if (!grouped[id]) {
+        grouped[id] = { title, rows: [] };
+      }
+
+      if (!grouped[id].rows[item.order_id - 1]) {
+        grouped[id].rows[item.order_id - 1] = [];
+      }
+
+      grouped[id].rows[item.order_id - 1].push(...item.specification_rows.map(row => row.value));
+    });
+
+    setGroupedData(grouped);
+  };
+
   return (
-    <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4 mx-auto container">
-      <table class="table table-bordered table-striped mb-0 mx-auto">
-        <thead>
-          <tr>
-            <th colspan="3" class="text-center">Title</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th colspan="1" class="text-center">Name</th>
-            <th colspan="1" class="text-center">Size</th>
-            <th colspan="1" class="text-center">Load</th>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>12mm</td>
-            <td>23kg</td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>32mm</td>
-            <td>35kg</td>
-          </tr>
-          <tr>
-            <td>Mark</td>
-            <td>1mm</td>
-            <td>45kg</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>223mm</td>
-            <td>67kg</td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>3255mm</td>
-            <td>89kg</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="container d-block">
+      {Object.keys(groupedData).length === 0 && <div>Nothing was found!</div>}
+      {Object.values(groupedData).map((group, index) => (
+        <div key={index}>
+          <h5 className="text-center my-4">{group.title}</h5>
+          <table className="table table-bordered table-striped mb-0 mx-auto">
+            <tbody>
+              {group.rows.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex}>{cell != null ? cell : ''}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default Review
-
-
-
-
-// <div>
-//        {
-//          product && product?.description?.length > 0 ?
-//            (
-
-//            )
-//            :
-//            (<h4 className='text-center my-4'>No information added!</h4>)
-//        }
-//      </div>
+export default Review;

@@ -1015,7 +1015,6 @@ section {
   height: 100px !important;
 }
 
-
 @media only screen and (max-width: 576px) {
   .card-header {
     width: 70% !important;
@@ -1725,6 +1724,52 @@ ul {
   border: 0;
   background-color: white;
 }
+
+.singleproduct-info-add {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 5%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-add {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 5%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-info-description {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 4%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-info-data {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 1%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-info-active {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-right: 6%;
+  border: 0;
+  background-color: white;
+}
+
 .singleproduct-info:active {
   color: #000;
 }
@@ -1738,7 +1783,25 @@ ul {
   font-family: "Roboto", sans-serif;
   color: rgba(159, 159, 159, 1);
   font-size: 24px;
-  margin-right: 7%;
+  margin-right: 6%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-data {
+  font-family: "Roboto", sans-serif;
+  color: rgba(159, 159, 159, 1);
+  font-size: 24px;
+  margin-right: 1%;
+  border: 0;
+  background-color: white;
+}
+
+.singleproduct-description {
+  font-family: "Roboto", sans-serif;
+  color: rgba(159, 159, 159, 1);
+  font-size: 24px;
+  margin-right: 4%;
   border: 0;
   background-color: white;
 }
@@ -2549,6 +2612,48 @@ td {
 
 td:hover {
   opacity: 0.6;
+}
+
+@media only screen and (max-width: 576px) {
+  .singleproduct-info {
+    font-size: 15px;
+  }
+  .singleproduct-info-data {
+    font-size: 15px;
+  }
+  .singleproduct-info-description {
+    font-size: 15px;
+  }
+  .singleproduct-info-active {
+    font-size: 15px;
+  }
+  .singleproduct-data {
+    font-size: 15px;
+  }
+  .singleproduct-description {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .singleproduct-info {
+    font-size: 17px;
+  }
+  .singleproduct-info-data {
+    font-size: 17px;
+  }
+  .singleproduct-info-description {
+    font-size: 17px;
+  }
+  .singleproduct-info-active {
+    font-size: 17px;
+  }
+  .singleproduct-data {
+    font-size: 17px;
+  }
+  .singleproduct-description {
+    font-size: 17px;
+  }
 }
 
 /* @media only screen and (max-width: 576px) {

@@ -25,7 +25,11 @@ import {
 import Description from '../components/Description';
 import AdditionalInformation from '../components/AdditionalInformation';
 import Review from '../components/Specification';
+import Features from '../components/Features';
 import axios from 'axios';
+
+export const url = 'https://api.eplsm.uz/api';
+
 
 function SingleProduct() {
   const [selectedImage, setSelectedImage] = useState();
@@ -35,7 +39,6 @@ function SingleProduct() {
   const [products, setProducts] = useState();
   const [limit, setLimit] = useState(4);
 
-  const url = 'https://api.eplsm.uz/api';
 
   const { guid } = useParams();
 
@@ -73,7 +76,8 @@ function SingleProduct() {
 
       case "Review":
         return <Review />
-
+      case "Features":
+        return <Features />
     }
   };
 
@@ -123,9 +127,10 @@ function SingleProduct() {
       <div>
         <div className='container overflow-x-hidden'>
           <div className='text-center d-flex mt-5'>
-            <button onClick={() => handleTabClick("Review")} className={activeTab === `Review` ? `singleproduct-info-active col-md-4` : `singleproduct-info col-md-4`}>Specification</button>
-            <button onClick={() => handleTabClick("Description")} className={activeTab === `Description` ? `singleproduct-info-active col-md-4` : `singleproduct-info col-md-4`}>Description</button>
-            <button onClick={() => handleTabClick("AddtiotionalInformation")} className={activeTab === `AddtiotionalInformation` ? `singleproduct-info-active col-md-6` : `singleproduct-info col-md-6 col-6`}>Additional Information</button>
+            <button onClick={() => handleTabClick("Review")} className={activeTab === `Review` ? `singleproduct-info-active col-md-2` : `singleproduct-info col-md-2`}>Specification</button>
+            <button onClick={() => handleTabClick("Features")} className={activeTab === `Features` ? `singleproduct-info-data col-md-3` : `singleproduct-data col-md-3`}>Features</button>
+            <button onClick={() => handleTabClick("Description")} className={activeTab === `Description` ? `singleproduct-info-description col-md-2` : `singleproduct-description col-md-2`}>Description</button>
+            <button onClick={() => handleTabClick("AddtiotionalInformation")} className={activeTab === `AddtiotionalInformation` ? `singleproduct-info-active col-md-5` : `singleproduct-info col-md-5 col-5`}>Additional Information</button>
           </div>
         </div>
         {renderTabs()}

@@ -28,7 +28,6 @@ export default function Main() {
     };
 
 
-
     return (
         <>
             <section className="main-div my-4 mx-auto ">
