@@ -14,6 +14,7 @@ import {
 } from 'react-icons/ai';
 import { useEffect } from "react";
 import axios from 'axios';
+import LoadingSpinner from '../components/common/Loading';
 
 
 function Brands() {
@@ -21,6 +22,7 @@ function Brands() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(16);
   const [count, setCount] = useState(2);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     getBrands();
@@ -28,6 +30,7 @@ function Brands() {
 
   const getBrands = async () => {
     const offset = (page - 1) * limit;
+    setLoading(true)
     axios
       .get('https://api.eplsm.uz/api/brand-list/', {
         params: { limit, p: true, offset },
@@ -35,7 +38,9 @@ function Brands() {
       .then((r) => {
         setCount(r?.data?.count);
         setBrands(r?.data?.results);
-      });
+      }).finally(f => {
+        setLoading(false)
+      })
   };
 
   const handlePageChange = (newPage) => {
@@ -154,6 +159,9 @@ function Brands() {
     </section>
 
     <section className='overflow-x-hidden'>
+      {
+        loading && <LoadingSpinner />
+      }
 
 
       <div class="row  mt-3 p-5">

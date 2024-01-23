@@ -1,25 +1,65 @@
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState } from "react";
+import Navbar from "./Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import {
   AiOutlineDownCircle,
   AiOutlineTrophy,
   AiOutlineCustomerService,
   AiOutlineException,
-  AiOutlineShareAlt,
-  AiOutlineRight,
-  AiOutlineAndroid,
+  AiOutlineFileText,
+  AiOutlineAndroid
 } from "react-icons/ai";
-import Navbar from "../components/Navbar";
-import { Button } from "react-bootstrap";
-import End from "../components/End";
+import End from "./End";
+import Body from "./Body";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import ProductCard from "../components/common/ProductCard";
-import LoadingSpinner from "../components/common/Loading";
+import ProductCard from "./common/ProductCard";
+import CategoriesSwiper from "./CategoriesSwiper";
+import { useQuery } from "@tanstack/react-query";
+import instance from "../utils/axios";
+import LoadingSpinner from "./common/Loading";
 
-function ProductsPage() {
+function CategoriesDetail() {
+  const [categoryDetail, setCategoryDetail] = useState();
+  const { guid } = useParams();
+  // const [limit, setLimit] = useState(8);
+  // const [products, setProducts] = useState([]);
+  const url = "https://api.eplsm.uz/api";
+  const navigate = useNavigate();
+
+  const getCategoryDetail = async () => {
+    const response = await fetch(
+      `https://api.eplsm.uz/api/product-category-detail/${guid}`
+    );
+    const data = await response.json();
+    setCategoryDetail(data);
+    axios
+      .get(url + "/product-list/", {
+        params: { p: true, limit: limit, category: data?.id },
+      })
+      .then((r) => {
+        setProducts(r.data.results);
+      });
+  };
+
+  useEffect(() => {
+    getCategoryDetail();
+  }, [guid]);
+
+  const handleShowMore = () => {
+    setLimit(limit + 4);
+  };
+  // console.log({ products });
+
+  const { data: categories, isLoading } = useQuery({
+    queryFn: () =>
+      instance.get("product-category-list").then((res) => res.data),
+    queryKey: ["categories/all"],
+  });
+
+
   const [brands, setBrands] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
@@ -27,27 +67,27 @@ function ProductsPage() {
   const [limit, setLimit] = useState(16);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [page, setPage] = useState(1);
   const [showMore, setShowMore] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getBrands();
-    getCategories();
+    // getCategories();
   }, []);
 
   useEffect(() => {
     getProducts();
   }, [limit, page]);
 
-  const getCategories = async () => {
-    const response = await fetch(
-      "https://api.eplsm.uz/api/product-category-list/"
-    );
-    const data = await response.json();
-    setCategories(data);
-  };
+  // const getCategories = async () => {
+  //   const response = await fetch(
+  //     "https://api.eplsm.uz/api/product-category-list/"
+  //   );
+  //   const data = await response.json();
+  //   setCategories(data);
+  // };
 
   const getProducts = async () => {
     setLoading(true);
@@ -69,7 +109,6 @@ function ProductsPage() {
     });
   };
 
-  const navigate = useNavigate();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -165,27 +204,81 @@ function ProductsPage() {
       });
   };
 
+
   return (
     <>
       <Navbar />
-      <div className="bg-image">
-        <div className="products-important  ">
-          <h1 className="products--products ">Products</h1>
-          <p>
-            <Link to="/" className="singleProduct_home">
-              {" "}
-              <c className="home-products ">
-                Home <AiOutlineRight />
-              </c>{" "}
-            </Link>
-            <Link to="/products" className="singleProduct_home">
-              <c className="products-products">Products</c>
-            </Link>
-          </p>
+      <div style={{ height: "fit-content" }} className="bg-image py-5">
+        <div className="py-5 ">
+          <h1 className="text-center fs-3 ">{categoryDetail?.title}</h1>
+          <p className="text-center fs-4">Browse The Range</p>
         </div>
       </div>
 
-      <section className="sofaaa__background">
+      <div className="globContainer categories-wrapper-container">
+        <div className="card-wrapper m-2">
+          <CategoriesSwiper categories={categories} />
+        </div>
+      </div>
+
+      {/* <div className="d-flex sofa__background">
+        <Link to="/" className="singleProduct_home">
+          <c className="sofa__ ">Home</c>
+          <AiOutlineRight className="icon-right" />
+        </Link>
+        <Link to="/categories" className="singleProduct_Product">
+          <c className="sofa___ ">Categories</c>
+          <AiOutlineRight className="icon-right" />
+        </Link>
+        <Link to={""} className="singleProduct_Asgaard ">
+          <c className="sofa__sofa ">{categoryDetail?.title}</c>
+        </Link>
+      </div>
+
+      <div className="row m-auto">
+        <div className=" col-md-3 text-center">
+          <img
+            src={categoryDetail?.photo_medium}
+            alt=""
+            className="col-7 mt-5"
+          />
+        </div>
+        <div className="col-md-5 mt-5">
+          <p className="single-brand-main">{categoryDetail?.title}</p>
+        </div>
+      </div> */}
+
+      {/* <section className="mx-auto overflow-x-hidden">
+        <h1 className="body-header mb-4 mt-5">Category Products</h1>
+
+        <div className="row justify-content-center overflow-x-hidden">
+          <div className="row justify-content-center gap-5  ">
+            {products?.length === 0 && "Nothing was found!"}
+            {products?.map((item) => (
+              <ProductCard
+                className={"col-md-2 col-sm-5"}
+                guid={item?.guid}
+                id={item?.id}
+                image={item?.images?.[0]?.photo_medium}
+                subTitle={item?.sub_title}
+                title={item?.title}
+                key={item?.id}
+              />
+            ))}
+          </div>
+        </div>
+        <div>
+          <button
+            className="body-button"
+            type="button"
+            onClick={handleShowMore}
+          >
+            Show More
+          </button>
+        </div>
+      </section> */}
+
+<section className="sofaaa__background">
         <div className="row mx-auto">
           <div className="text-start inline justify-content-between">
             {" "}
@@ -441,4 +534,4 @@ function ProductsPage() {
   );
 }
 
-export default ProductsPage;
+export default CategoriesDetail;

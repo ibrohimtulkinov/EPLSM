@@ -14,12 +14,14 @@ import {
 import { useEffect } from "react";
 import axios from 'axios';
 import Pagination from '../components/Pagination';
+import LoadingSpinner from '../components/common/Loading';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(16);
     const [count, setCount] = useState(2);
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         getCategories();
@@ -27,6 +29,7 @@ const Categories = () => {
 
     const getCategories = async () => {
         const offset = (page - 1) * limit;
+        setLoading(true)
         axios
             .get('https://api.eplsm.uz/api/product-category-list/', {
                 params: { limit, p: true, offset },
@@ -34,7 +37,9 @@ const Categories = () => {
             .then((r) => {
                 setCount(r?.data?.count);
                 setCategories(r?.data?.results);
-            });
+            }).finally(f => {
+                setLoading(false)
+            })
     };
 
     const handlePageChange = (newPage) => {
@@ -152,6 +157,7 @@ const Categories = () => {
             </section>
 
             <section >
+                {loading && <LoadingSpinner />}
 
                 <div class="row  mt-5 mx-auto ">
                     {count > 0 ?

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import { url } from '../pages/SingleProduct';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { url } from "../pages/SingleProduct";
 
 function Review() {
   const [groupedData, setGroupedData] = useState({});
@@ -11,7 +11,7 @@ function Review() {
 
   const getList = async () => {
     try {
-      const response = await axios.get(url + '/product-specification-list/');
+      const response = await axios.get(url + "/product-specification-list/");
       groupData(response.data);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -20,9 +20,10 @@ function Review() {
 
   const groupData = (data) => {
     const grouped = {};
+    console.log(data, "data");
 
-    data.forEach(item => {
-      const { id, title } = item.group;
+    data.forEach((item) => {
+      const { id, title } = item;
       if (!grouped[id]) {
         grouped[id] = { title, rows: [] };
       }
@@ -31,8 +32,14 @@ function Review() {
         grouped[id].rows[item.order_id - 1] = [];
       }
 
-      grouped[id].rows[item.order_id - 1].push(...item.specification_rows.map(row => row.value));
+      grouped[id].rows[item.order_id - 1].push(
+        ...item?.specification_groups?.map((row) => [
+          ...row?.specification_rows?.map((el) => el?.value),
+        ])
+      );
     });
+
+    console.log(grouped, "grouped");
 
     setGroupedData(grouped);
   };
@@ -48,7 +55,7 @@ function Review() {
               {group.rows.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell != null ? cell : ''}</td>
+                    <td key={cellIndex}>{cell != null ? cell : ""}</td>
                   ))}
                 </tr>
               ))}

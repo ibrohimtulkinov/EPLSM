@@ -1,20 +1,23 @@
 import { Button } from "react-bootstrap";
-import React from "react"
-import { AiOutlineShareAlt } from 'react-icons/ai';
+import React from "react";
+import { AiOutlineShareAlt } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import ProductCard from "./common/ProductCard";
 
 export default function Body() {
   const navigate = useNavigate();
-  const [products, setProducts] = useState()
+  const [products, setProducts] = useState();
   const [limit, setLimit] = useState(8);
 
   const getProducts = async (param1) => {
-    const response = await fetch(`https://api.eplsm.uz/api/product-list/?${param1}`);
-    const data = await response.json()
-    setProducts(data.results)
-  }
+    const response = await fetch(
+      `https://api.eplsm.uz/api/product-list/?${param1}`
+    );
+    const data = await response.json();
+    setProducts(data.results);
+  };
 
   useEffect(() => {
     getProducts(`limit=${limit}&p=true`);
@@ -26,33 +29,21 @@ export default function Body() {
 
   return (
     <>
-      <section className="mx-auto overflow-x-hidden">
+      <section className="mx-auto ">
         <h1 className="body-header mb-4 mt-5">Our Products</h1>
-        <div className="row justify-content-center overflow-x-hidden">
-
+        <div className="row justify-content-center">
           <div className="row justify-content-center gap-5  ">
-            {
-              products?.map(item => (
-                <div className="col-md-2 col-sm-5 card-div">
-                  <div className="conter-content">
-                    <div className="photo-container ">
-                      <div className="defaultVisible mx-auto">
-                        <img src={item?.images?.[0]?.photo_medium} class="body-photos" alt="..." />
-                        <div class="card card-header mx-auto">
-                          <h5 class="body-title text-start">{item?.title}</h5>
-                          <p class="body-text text-start">{item?.sub_title}</p>
-                        </div>
-                      </div>
-                      <div className="onHoverVisible position-absolute mx-auto">
-                        <Button className="btn btn-light  rounded-0 w-50 rad-0" onClick={() => navigate(`/single-product/${item.guid}`)}>{item?.title}</Button>
-                        <br />
-                        <h6 className="share"><AiOutlineShareAlt />Share</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
+            {products?.map((item) => (
+              <ProductCard
+                guid={item?.guid}
+                id={item?.id}
+                subTitle={item?.sub_title}
+                title={item?.title}
+                image={item?.images?.[0]?.photo_medium}
+                className={"col-md-2 col-sm-5"}
+                key={item?.id}
+              />
+            ))}
           </div>
         </div>
         {/* 
@@ -78,32 +69,19 @@ export default function Body() {
             ))
           }
         </div> */}
-
-
-
-
-
-
-
-
-
       </section>
       <div className="div-block">
-        <button className="body-button" type='button' onClick={handleShowMore}>Show More</button>
+        <button className="body-button" type="button" onClick={handleShowMore}>
+          Show More
+        </button>
       </div>
       {/* <MyCarousel /> */}
     </>
-
-  )
+  );
 }
 
-
-
-
-
-
-
-{/* <div className="col-md-2 col-sm-10">
+{
+  /* <div className="col-md-2 col-sm-10">
             <div class="card" >
               <img src="..." class="card-img-top" alt="..."></img>
               <div class="card-body">
@@ -132,4 +110,5 @@ export default function Body() {
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-          </div> */}
+          </div> */
+}

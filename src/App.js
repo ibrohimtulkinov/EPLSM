@@ -1,34 +1,61 @@
-import React from "react"
-import Navbar from "./components/Navbar"
-import Card from "./components/Card"
-import Body from "./components/Body"
-import Main from "./components/Main"
-import End from "./components/End"
-import Image from "./components/Furniture"
-import Explore from "./components/Explore more"
-import "./style.css"
-import "bootstrap/dist/css/bootstrap.min.css";
-import Galleries from "./components/Gallery";
-// import MyCarousel from "./components/sofaa";
+import { RouterProvider, createBrowserRouter, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductsPage from "./pages/ProductsPage";
+import SingleProduct from "./pages/SingleProduct";
+import Brands from "./pages/Brands";
+import Categories from "./pages/Categories";
+import CategoriesDetail from "./components/CategoriesDetail";
+import Catalogs from "./pages/Catalogs";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import SingleBrand from "./pages/SingleBrand";
+import { useEffect } from "react";
 
-export default function App() {
-  return (
-    <div>
-      <Navbar />
-      <Card />
-      <Main />
-      <Body />
-      <Explore />
-      <Image />
-      <Galleries />
-      <End />
-      {/* <MyCarousel /> */}
-    </div>
-  )
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/products",
+    element: <ProductsPage />,
+  },
+  {
+    path: "/single-product/:guid",
+    element: <SingleProduct />,
+  },
+  {
+    path: "/brands",
+    element: <Brands />,
+  },
+  {
+    path: "/categories",
+    element: <Categories />,
+  },
+  {
+    path: "/categories/:guid",
+    element: <CategoriesDetail />,
+  },
+  {
+    path: "/catalogs",
+    element: <Catalogs />,
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
+    path: "/singlebrand/:guid",
+    element: <SingleBrand />,
+  },
+]);
+
+export const App = () => {
+
+
+  return <RouterProvider router={router} />
 }
-
-
-
-
-
-

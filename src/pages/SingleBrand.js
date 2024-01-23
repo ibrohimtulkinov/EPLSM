@@ -27,7 +27,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 
-function SingleProduct() {
+function SingleBrand() {
     const [brandDetail, setBrandDetail] = useState([])
     const { guid } = useParams();
     const [limit, setLimit] = useState(8);
@@ -197,4 +197,4 @@ function SingleProduct() {
 
 
 
-export default SingleProduct
+export default SingleBrand
