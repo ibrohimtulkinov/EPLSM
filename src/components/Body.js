@@ -1,16 +1,19 @@
 import { Button } from "react-bootstrap";
-import React from "react";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "./common/ProductCard";
 import Heading from "./common/Heading";
+import { content } from "../localization/content";
+import { LangContext } from "../context/langContext";
 
 export default function Body() {
   const navigate = useNavigate();
   const [products, setProducts] = useState();
   const [limit, setLimit] = useState(8);
+
+  const {lang} = useContext(LangContext)
+  console.log("lang");
 
   const getProducts = async (param1) => {
     const response = await fetch(
@@ -25,13 +28,17 @@ export default function Body() {
   }, [limit]);
 
   const handleShowMore = () => {
-    setLimit(limit + 4);
+    setLimit(limit + 8);
   };
 
   return (
     <>
       <section className="container">
-       <Heading className={"text-center mb-3"} >Products</Heading>
+       <Heading className={"text-center mb-3"}>
+          {
+           content[lang]?.product
+          }
+        </Heading>
         <div className="px-2">
           <div className="row justify-content-center   ">
             {products?.map((item) => (
@@ -73,7 +80,9 @@ export default function Body() {
       </section>
       <div className="div-block">
         <button className="body-button" type="button" onClick={handleShowMore}>
-          Show More
+        {
+           content[lang]?.show
+          }
         </button>
       </div>
       {/* <MyCarousel /> */}

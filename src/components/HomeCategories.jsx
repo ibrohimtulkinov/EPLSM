@@ -15,7 +15,7 @@ const HomeCategories = () => {
     queryKey: ["categories/all"],
   });
 
-const {lang, setLang} = useContext(LangContext)
+const {lang} = useContext(LangContext)
 console.log("lang");
 
   return (

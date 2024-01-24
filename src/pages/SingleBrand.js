@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import React, { useState } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import Navbar from '../components/Navbar'
 import { AiOutlineRight } from 'react-icons/ai';
 import singleProduct from '../assets/img/single_produc.png';
@@ -22,10 +22,11 @@ import {
 
 } from 'react-icons/ai';
 import End from "../components/End";
+
 import Body from "../components/Body";
-import { useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "../components/common/Loading";
+import { LangContext } from "../context/langContext";
 
 
 function SingleBrand() {
@@ -36,7 +37,9 @@ function SingleBrand() {
     const [products, setProducts] = useState([]);
     const url = 'https://api.eplsm.uz/api';
     const navigate = useNavigate();
+    const {lang} = useContext(LangContext)
 
+    console.log(lang, "lang");
 
     const getBrandDetail = async () => {
         setLoading(true)
