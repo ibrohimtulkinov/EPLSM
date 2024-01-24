@@ -232,11 +232,11 @@ if(window.innerWidth < 600) {
           <p className="border-top"></p>
           <p className="mt-5 mb-4 related0">Related Products</p>
         </div>
-        <div className="row w-100 justify-content-center gap-5">
+        <div className="row w-100 justify-content-center">
           {products?.length === 0 && "Nothing was found!"}
           {products?.map((item) => (
             <ProductCard
-              className={"col-md-2 col-sm-5"}
+              className={"col-md-4 col-xl-3 col-sm-6 mb-3"}
               guid={item?.guid}
               id={item?.id}
               image={item?.images?.[0]?.photo_medium}
