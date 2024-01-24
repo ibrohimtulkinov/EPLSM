@@ -171,10 +171,10 @@ const Categories = () => {
         </div>
       </section>
 
-      <section>
+      <section className="container" >
         {loading && <LoadingSpinner />}
 
-        <div class="row  mt-5 mx-auto ">
+        <div class="row  mt-5 ">
           {count > 0 ? (
             categories?.map((item) => {
               return (
@@ -219,9 +219,9 @@ const Categories = () => {
         </div>
       </section>
 
-      <div className="container justify-content-center">
-        <div className="conter-content mt-5 mb-5">
-          <div className="d-flex">
+      <div className="container">
+        <div className=" py-5">
+          <div className="d-flex justify-content-center">
             {page > 1 && (
               <button
                 className="col-md-4 number__prev"

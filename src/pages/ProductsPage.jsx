@@ -22,7 +22,9 @@ import LoadingSpinner from "../components/common/Loading";
 function ProductsPage() {
   const [brands, setBrands] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
+  const productGridClass = isOpen
+    ? "col-4 mb-3"
+    : "col-md-6 col-lg-4 col-xl-3 p-3";
   const productCardClass = isOpen ? "col-md-4" : "col-md-3";
   const [limit, setLimit] = useState(16);
   const [products, setProducts] = useState([]);
@@ -185,48 +187,50 @@ function ProductsPage() {
         </div>
       </div>
 
-      <section className="sofaaa__background">
-        <div className="row mx-auto">
-          <div className="text-start inline justify-content-between">
-            {" "}
-            {/* Flex container */}
-            {/* ... other elements ... */}
-            <div>
+      <section className="sofaaa__background mb-4">
+        <div className="container">
+          <div className="row mx-auto">
+            <div className="text-start inline justify-content-between">
               {" "}
-              {/* This div contains all your existing elements */}
-              <div
-                onClick={toggleSidebar}
-                className={isOpen ? "filterOpen" : "filterClosed"}
-              >
-                <FontAwesomeIcon
-                  icon={faSlidersH}
-                  style={{ marginRight: "14px" }}
-                  color={isOpen ? "warning" : "dark"}
-                />
-                <span className="ml-2">{isOpen ? "Filter" : "Filter"}</span>
+              {/* Flex container */}
+              {/* ... other elements ... */}
+              <div>
+                {" "}
+                {/* This div contains all your existing elements */}
+                <div
+                  onClick={toggleSidebar}
+                  className={isOpen ? "filterOpen" : "filterClosed"}
+                >
+                  <FontAwesomeIcon
+                    icon={faSlidersH}
+                    style={{ marginRight: "14px" }}
+                    color={isOpen ? "warning" : "dark"}
+                  />
+                  <span className="ml-2">{isOpen ? "Filter" : "Filter"}</span>
+                </div>
+                <p className="show-text ms-5 ps-3">Show</p>
+                <p className="display-number">
+                  <input
+                    type="number"
+                    onChange={(e) => setLimit(e.target.value)}
+                    className="form-control w-px-60 rounded-0 ms-2"
+                    value={limit}
+                  />
+                </p>
+                <p className="rad-1 ms-4 mb-0">{`Showing 1–${products.length} of ${count} results`}</p>
               </div>
-              <p className="show-text ms-5 ps-3">Show</p>
-              <p className="display-number">
+              <div className="search-input mt-4 me-4">
+                {" "}
+                {/* Input container */}
                 <input
-                  type="number"
-                  onChange={(e) => setLimit(e.target.value)}
-                  className="form-control w-px-60 rounded-0 ms-2"
-                  value={limit}
+                  type="search"
+                  onChange={(e) => handleSearch(e.target.value)}
+                  className="form-control rounded w-px-250"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
                 />
-              </p>
-              <p className="rad-1 ms-4 mb-0">{`Showing 1–${products.length} of ${count} results`}</p>
-            </div>
-            <div className="search-input mt-4 me-4">
-              {" "}
-              {/* Input container */}
-              <input
-                type="search"
-                onChange={(e) => handleSearch(e.target.value)}
-                className="form-control rounded w-px-250"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-              />
+              </div>
             </div>
           </div>
         </div>
@@ -365,10 +369,10 @@ function ProductsPage() {
       </div>
       <div className="container justify-content-center">
         <div className="conter-content mt-5 mb-5">
-          <div className="d-flex">
+          <div className="d-flex justify-content-center">
             {page > 1 && (
               <button
-                className="col-md-4 number__prev"
+                className="number__prev"
                 onClick={() => handlePageChange(page - 1)}
               >
                 Previous
@@ -377,7 +381,7 @@ function ProductsPage() {
             {renderPagination()}
             {page < Math.ceil(count / limit) && (
               <button
-                className="col-md-4 number__next"
+                className="number__next"
                 onClick={() => handlePageChange(page + 1)}
               >
                 Next
@@ -387,8 +391,8 @@ function ProductsPage() {
         </div>
       </div>
 
-      <div className="mt-5 mb-5 icons__background">
-        <div className="d-flex flex-wrap justify-content-around ms-5">
+      <div className=" mt-5 mb-5 icons__background">
+        <div className="container d-flex flex-wrap justify-content-around">
           <div className="col-lg-3 col-md-4 col-sm-6 col-12 my-2">
             <div className="d-flex align-items-center">
               <span className="icons me-3">

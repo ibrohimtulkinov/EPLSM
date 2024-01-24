@@ -195,12 +195,13 @@ function Catalogs() {
               <div className="row mx-auto mt-4">
                 <div className="catolog_cursor col-md-3 col-4">
                   <img
+                  
                     onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)}
                     src={brandDetail?.photo}
                     alt=""
                   />
                 </div>
-                <div className="col-md-6 text-start ">
+                <div className="col-md-6 text-start border-bottom">
                   <Link
                     to={`/singlebrand/${brandDetail.guid}`}
                     className="catalog-vng "
@@ -221,7 +222,6 @@ function Catalogs() {
                   ) : (
                     <div className="pdf mt-4 ">Catalogs not added</div>
                   )}
-                  <div className="border-top catalog-border"></div>
                 </div>
               </div>
             );
@@ -234,7 +234,7 @@ function Catalogs() {
         )}
       </section>
 
-      <div className="container justify-content-center mt-5">
+      <div className="container d-flex justify-content-center mt-5">
         {/* <div className="conter-content mt-5 mb-5">
                     <div className="d-flex">
                         {page > 1 && (

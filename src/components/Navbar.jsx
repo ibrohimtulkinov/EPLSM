@@ -42,7 +42,7 @@ export default function App() {
         light
         style={{ backgroundColor: "#e3f2fd" }}
       >
-        <MDBContainer fluid>
+        <MDBContainer>
           <div>
             <MDBNavbarBrand href="/">
               <img src={navLogo} alt="" className="nav--icon" />
@@ -143,7 +143,7 @@ export default function App() {
                   content[lang]?.contact
                 }
               </Link>
-              <select className="" value={lang} onChange={(e) => {setLang(e.target.value)}}  > 
+              <select className="lang-select" value={lang} onChange={(e) => {setLang(e.target.value)}}  > 
                 <option value="en">en</option>
                 <option value="ru">ru</option>
                 <option value="uz">uz</option>

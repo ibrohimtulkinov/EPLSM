@@ -83,10 +83,10 @@ function Contact() {
         </div>
       </div>
 
-      <div>
+      <div className="mb-5" >
         <Heading className={"text-center mb-4"}>Get In Touch With Us</Heading>
 
-        <dir className="container text-center contact-under">
+        <dir className="container text-center contact-under ">
           <p>
             For More Information About Our Product & Services. Please Feel Free
             To Drop Us <br /> An Email. Our Staff Always Be There To Help You

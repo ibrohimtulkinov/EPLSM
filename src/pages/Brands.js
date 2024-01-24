@@ -166,7 +166,7 @@ function Brands() {
         </div>
       </section>
 
-      <section className="overflow-x-hidden">
+      <section className="container">
         {loading && <LoadingSpinner />}
 
         <div class="row  mt-3 p-5">

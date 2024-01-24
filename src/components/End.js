@@ -27,7 +27,7 @@ export default function End() {
     return (
         <>
             <div className="eplsm-main mt-5">
-                <div className="my-5 mx-5">
+                <div className="my-5 container">
                     <div className="row ">
                         <div className="col-md-3 text-start ">
                             <h1 className="eplsm">EPLSM</h1>
