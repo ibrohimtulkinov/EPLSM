@@ -170,7 +170,7 @@ function Brands() {
             return <div className='col-12 col-sm-12  col-md-6  col-lg-4  col-xl-3 px-3 '>
 
               <div class="  div_shadow  mt-4 w-100" style={{ padding: "22px 40px", paddingBottom: "30px" }}>
-                <Link to={`/singlebrand/${item.guid}`}><img src={item?.photo_medium} class="photoofbrands " alt="Photo 1 " /></Link>
+                <Link to={`/singlebrand/${item.guid}`}><img src={item?.photo} class="photoofbrands " alt="Photo 1 " /></Link>
                 <div class="d-flex justify-content-between " style={{ marginTop: "21px" }}>
                   <Link className='brand_link' to="/singlebrand"><span className='brand_text'>{item?.title}</span></Link>
                   <Link to={`/singlebrand/${item.guid}`}><span className='brans_icon'><AiOutlineArrowRight /></span></Link>

@@ -29,7 +29,7 @@ export default function Body() {
 
   return (
     <>
-      <section className="mx-auto ">
+      <section className="mx-auto">
         <h1 className="body-header mb-4 mt-5">Our Products</h1>
         <div className="row justify-content-center">
           <div className="row justify-content-center gap-5  ">

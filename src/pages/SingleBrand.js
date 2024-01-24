@@ -92,11 +92,11 @@ function SingleBrand() {
 
             <div className='row m-auto'>
                 <div className=' col-md-3 text-center'>
-                    <img src={brandDetail?.photo_medium} alt="" className='col-7 mt-5' />
+                    <img src={brandDetail?.photo} alt="" className='col-7 mt-5' />
                 </div>
                 <div className='col-md-5 mt-5'>
                     <p className='single-brand-main'>{brandDetail?.title}</p>
-                    <p className='single-brand-text mt-4'>{brandDetail?.description}</p>
+                    <p className='single-brand-text mt-4'><div dangerouslySetInnerHTML={{__html: brandDetail.description}} /></p>
                     <div className='text-start'>
                         <p className='singleBrand_'> Catalog</p>
                         {/* {brandDetail?.length === 0 && "Nothing was found!"} */}
@@ -123,7 +123,7 @@ function SingleBrand() {
                                     <div className="conter-content">
                                         <div className="photo-container ">
                                             <div className="defaultVisible mx-auto">
-                                                <img src={item?.images?.[0]?.photo_medium} class="body-photos" alt="..." />
+                                                <img src={item?.images?.[0]?.photo} class="body-photos" alt="..." />
                                                 <div class="card card-header mx-auto">
                                                     <h5 class="body-title text-start">{item?.title}</h5>
                                                     <p class="body-text text-start">{item?.sub_title}</p>

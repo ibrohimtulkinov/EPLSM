@@ -22,7 +22,7 @@ import instance from "../utils/axios";
 import LoadingSpinner from "./common/Loading";
 
 function CategoriesDetail() {
-  const [categoryDetail, setCategoryDetail] = useState();
+  const [categoryDetail, setCategoryDetail] = useState([]);
   const { guid } = useParams();
   // const [limit, setLimit] = useState(8);
   // const [products, setProducts] = useState([]);
@@ -60,7 +60,7 @@ function CategoriesDetail() {
   });
 
 
-  const [brands, setBrands] = useState();
+  const [brands, setBrands] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
   const productCardClass = isOpen ? "col-md-4" : "col-md-3";
@@ -351,8 +351,9 @@ function CategoriesDetail() {
                   Categories
                 </h2>
               </li>
-
-              {categories?.map((information) => {
+              {categories?.length === 0 && "Nothing was found!"}
+              {
+              categories?.map((information) => {
                 return (
                   <Link
                     to=""
@@ -362,7 +363,8 @@ function CategoriesDetail() {
                     {information?.title}
                   </Link>
                 );
-              })}
+              })
+              }
 
               <li>
                 <h2 className="menu__itemm" href="#">

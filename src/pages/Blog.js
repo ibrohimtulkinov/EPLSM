@@ -78,7 +78,7 @@ function Blog() {
 
       <div className="bg-image  ">
         <div className="products-important text-start ">
-          <h1 className="products--products fw-bold">Blog</h1>
+          <h1 className="products--products">Blog</h1>
           <p>
             <Link to="/" className="singleProduct_home">
               {" "}

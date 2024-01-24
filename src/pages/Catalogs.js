@@ -196,7 +196,7 @@ function Catalogs() {
                 <div className="catolog_cursor col-md-3 col-4">
                   <img
                     onClick={() => navigate(`/singlebrand/${brandDetail.guid}`)}
-                    src={brandDetail?.photo_medium}
+                    src={brandDetail?.photo}
                     alt=""
                   />
                 </div>

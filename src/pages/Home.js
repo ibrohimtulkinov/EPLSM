@@ -13,6 +13,9 @@ import HomeCategories from "../components/HomeCategories"
 // import MyCarousel from "./components/sofaa";
 
 export default function Home() {
+
+  
+
   return (
     <div>
       <Navbar />  

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineAlignCenter } from "react-icons/ai";
 import navLogo from "../assets/img/nav-logo.png";
@@ -13,6 +13,9 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { Link, useLocation } from "react-router-dom";
+import { faDownLeftAndUpRightToCenter } from "@fortawesome/free-solid-svg-icons";
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content";
 
 export default function App() {
   const [openNavColorThird, setOpenNavColorThird] = useState(false);
@@ -25,6 +28,12 @@ export default function App() {
     });
   }, [pathname]);
   console.log({ pathname });
+
+
+  const {lang, setLang} = useContext(LangContext)
+
+  console.log(lang, "lang");
+
   return (
     <>
       <MDBNavbar
@@ -60,7 +69,9 @@ export default function App() {
                 aria-current="page"
                 to="/"
               >
-                Home
+                {
+                  content[lang]?.home
+                }
               </Link>
               <Link
                 className={
@@ -70,7 +81,9 @@ export default function App() {
                 }
                 to="/products"
               >
-                Products
+                {
+                  content[lang]?.product
+                }
               </Link>
               <Link
                 className={
@@ -80,7 +93,9 @@ export default function App() {
                 }
                 to="/brands"
               >
-                Brands
+                {
+                  content[lang]?.brands
+                }
               </Link>
               <Link
                 className={
@@ -90,7 +105,9 @@ export default function App() {
                 }
                 to="/categories"
               >
-                Categories
+               {
+                  content[lang]?.categories
+                }
               </Link>
               <Link
                 className={
@@ -100,7 +117,9 @@ export default function App() {
                 }
                 to="/catalogs"
               >
-                Catalogs
+                {
+                  content[lang]?.catalogs
+                }
               </Link>
               <Link
                 className={
@@ -108,7 +127,9 @@ export default function App() {
                 }
                 to="/blog"
               >
-                Blog
+                {
+                  content[lang]?.blog
+                }
               </Link>
               <Link
                 className={
@@ -118,8 +139,15 @@ export default function App() {
                 }
                 to="/contact"
               >
-                Contact
+                {
+                  content[lang]?.contact
+                }
               </Link>
+              <select className="" value={lang} onChange={(e) => {setLang(e.target.value)}}  > 
+                <option value="en">en</option>
+                <option value="ru">ru</option>
+                <option value="uz">uz</option>
+              </select>
             </MDBNavbarNav>
             <MDBNavbarItem className="div-icon">
               <MDBNavbarLink
