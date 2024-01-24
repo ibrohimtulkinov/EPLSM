@@ -190,7 +190,9 @@ function Brands() {
                       style={{ marginTop: "21px" }}
                     >
                       <Link className="brand_link" to="/singlebrand">
-                        <span className="brand_text line-clamp-1">{item?.title}</span>
+                        <span className="brand_text line-clamp-1">
+                          {item?.title}
+                        </span>
                       </Link>
                       <Link to={`/singlebrand/${item.guid}`}>
                         <span className="brans_icon">
@@ -213,7 +215,7 @@ function Brands() {
 
       <div className="container justify-content-center">
         <div className="conter-content mt-5 mb-5">
-          <div className="d-flex">
+          <div className="d-flex justify-content-center gap-1 align-items-center">
             {page > 1 && (
               <button
                 className="col-md-4 number__prev"
