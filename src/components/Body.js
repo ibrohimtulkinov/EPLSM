@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./common/ProductCard";
+import Heading from "./common/Heading";
 
 export default function Body() {
   const navigate = useNavigate();
@@ -29,10 +30,10 @@ export default function Body() {
 
   return (
     <>
-      <section className="mx-auto">
-        <h1 className="body-header mb-4 mt-5">Our Products</h1>
+      <section className="container">
+       <Heading className={"text-center mb-3"} >Products</Heading>
         <div className="px-2">
-          <div className="row justify-content-center gap-5  ">
+          <div className="row justify-content-center   ">
             {products?.map((item) => (
               <ProductCard
                 guid={item?.guid}
@@ -40,7 +41,7 @@ export default function Body() {
                 subTitle={item?.sub_title}
                 title={item?.title}
                 image={item?.images?.[0]?.photo_medium}
-                className={"col-md-3 col-sm-5 col-lg-2"}
+                className={"col-md-4 col-lg-3 col-sm-6 mb-4"}
                 key={item?.id}
               />
             ))}

@@ -6,7 +6,7 @@ const ProductCard = ({ id, title, guid, subTitle, image, className }) => {
     <div className={className}>
       <div className={`product-card`}>
       <div className="product-card_shadow">
-        <Link className="product-card_link" to={`/single-product/${guid}`}>
+        <Link className="product-card_link line-clamp-2" to={`/single-product/${guid}`}>
           {title}
         </Link>
       </div>

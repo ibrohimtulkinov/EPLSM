@@ -2,7 +2,7 @@ import React from 'react'
 
 const Heading = ({className, children}) => {
   return (
-    <h2 className={`fs-2 fw-bold  ${className}`}>
+    <h2 className={` main-heading ${className}`}>
         {children}
     </h2>
   )

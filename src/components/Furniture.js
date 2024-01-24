@@ -1,4 +1,5 @@
 import React from "react"
+import Heading from "./common/Heading";
 
 const   Image = ({ src, alt }) => {
   const [isClicked, setIsClicked] = React.useState(false);
@@ -13,7 +14,7 @@ const   Image = ({ src, alt }) => {
       <div className="container">
         <div className="text-center">
           <p className="furniture-title">Share your set up with</p>
-          <h1 className="furniture-header">#FuniroFurniture</h1>
+          <Heading>#FuniroFurniture</Heading>
         </div>
       </div>
 

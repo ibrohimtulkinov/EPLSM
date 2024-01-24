@@ -409,12 +409,12 @@ section {
   opacity: 0.7;
   transition: 0.5s ease;
 }
-
+/* 
 .container {
   display: flex;
   text-align: center;
   justify-content: center;
-}
+} */
 
 .caption {
   text-align: center;
@@ -2040,46 +2040,23 @@ ul {
   color: white;
   font-family: "Poppins", sans-serif;
   background: rgba(184, 142, 47, 1);
-  padding: 15px 150px;
-  margin-top: 30px;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 576px) {
-  .contact-button {
-    text-align: center;
-    padding: 8px 120px;
-  }
-}
 
-@media (min-width: 577px) and (max-width: 768px) {
-  .contact-button {
-    text-align: center;
-    padding: 12px 140px;
-  }
-}
 
 .contact-input {
-  padding: 15px 100px;
+  padding: 15px;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid rgba(159, 159, 159, 1);
 }
 
-@media only screen and (max-width: 576px) {
-  .contact-input {
-    text-align: center;
-    padding: 5px 60px;
-  }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-  .contact-input {
-    text-align: center;
-    padding: 10px 80px;
-  }
-}
 
 .contact-name {
   padding: 15px 100px;
@@ -2163,6 +2140,7 @@ ul {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .blog-control {
@@ -2438,6 +2416,7 @@ ul {
 .photoofbrands {
   width: 100%;
   height: 250px;
+  object-fit: contain;
 }
 
 .div_shadow {
@@ -2690,6 +2669,12 @@ td:hover {
   --text-color: #222;
 }
 
+
+.main-heading {
+  font-size: 40px;
+  font-weight: 700;
+}
+
 .whitespace-pre-line {
   white-space: pre-line;
 }
@@ -2839,6 +2824,9 @@ td:hover {
 }
 
 @media (max-width: 780px) {
+  .main-heading {
+    font-size: 32px;
+  } 
   .category-item_title {
     font-style: 12px;
   }
@@ -2854,11 +2842,23 @@ td:hover {
     width: 38px;
     height: 38px;
   }
+  .product-card {
+    min-width: 230px;
+  }
+  .product-card_image {
+    height: 270px;
+  }
 }
 @media (max-width: 480px) {
   .category-item {
     width: 100px;
     height: 100px;
+  }
+  .product-card {
+    min-width: 200px;
+  }
+  .product-card_image {
+    height: 250px;
   }
 }
 
@@ -2867,6 +2867,8 @@ td:hover {
   position: relative;
   overflow: hidden;
   min-width: 260px;
+  box-shadow: 0px 3px 8px #00000022;
+  border-radius: 6px;
 }
 .product-card_shadow {
   position: absolute;
@@ -2879,6 +2881,7 @@ td:hover {
   top: 100%;
   left: 0;
   transition: 500ms all;
+ 
 }
 
 .product-card:hover .product-card_shadow {
@@ -2898,7 +2901,7 @@ td:hover {
 .product-card_image {
   width: 100%;
   height: 300px;
-  object-fit: cover!important;
+  object-fit: contain;
 }
 
 .product-card_info {
@@ -2908,7 +2911,7 @@ td:hover {
 }
 
 .product-card_title {
-  font-size: 22px;
+  font-size: 18px;
   line-height: 23px;
   height: 46px;
   font-weight: 600;
@@ -2936,6 +2939,10 @@ td:hover {
 }
 
 @media (max-width: 600px) {
+  .main-heading {
+    font-size: 26px;
+    font-weight: 700;
+  }
   
 .magnify_image { 
   width: 100% !important;
