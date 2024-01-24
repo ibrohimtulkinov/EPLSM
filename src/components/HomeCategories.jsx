@@ -27,7 +27,7 @@ console.log("lang");
                   content[lang]?.categories
                 }
           </Heading>
-        <div className="">
+        <div className="card-wrapper">
           <CategoriesSwiper isDouble categories={categories} />
         </div>
       </div>

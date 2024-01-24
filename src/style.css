@@ -2764,6 +2764,7 @@ td:hover {
   height: 140px;
   border-radius: 50%;
   border: 2px solid #eaeaea;
+  overflow: hidden;
   text-decoration: none;
   margin: 0 auto;
 }
@@ -2838,6 +2839,9 @@ td:hover {
 }
 
 @media (max-width: 780px) {
+  .category-item_title {
+    font-style: 12px;
+  }
   .swiper-nav-button {
     width: 40px;
     height: 40px;
@@ -2942,6 +2946,9 @@ td:hover {
   width: 100% !important;
   height: 280px !important;
   object-fit: contain;
+}
+.category-item_title {
+  font-size: 10px;
 }
 }
 

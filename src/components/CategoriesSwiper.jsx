@@ -115,7 +115,7 @@ const CategoryItem = ({ title, image, guid }) => {
       <Link to={`/categories/${guid}`} className="category-item">
         <div className="category-item_content">
           <img src={image} alt="" className="category-item_image" />
-          <p className="category-item_title mt-2">{title}</p>
+          <p className="category-item_title line-clamp-2 mt-2">{title}</p>
         </div>
       </Link>
     );
