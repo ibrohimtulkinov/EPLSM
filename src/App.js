@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import SingleBrand from "./pages/SingleBrand";
 import { useEffect } from "react";
+import { LangProvider } from "./context/langContext";
 
 const router = createBrowserRouter([
   {
@@ -57,5 +58,7 @@ const router = createBrowserRouter([
 export const App = () => {
 
 
-  return <RouterProvider router={router} />
+  return <LangProvider>
+    <RouterProvider router={router} />
+  </LangProvider>
 }

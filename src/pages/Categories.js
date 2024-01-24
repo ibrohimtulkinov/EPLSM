@@ -11,17 +11,24 @@ import {
     AiOutlineDownCircle,
     AiOutlineAndroid
 } from 'react-icons/ai';
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import axios from 'axios';
 import Pagination from '../components/Pagination';
 import LoadingSpinner from '../components/common/Loading';
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content";
+
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(16);
     const [count, setCount] = useState(2);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+
+    const {lang, setLang} = useContext(LangContext)
+
+    console.log(lang, "lang");
 
     useEffect(() => {
         getCategories();
@@ -116,13 +123,17 @@ const Categories = () => {
             setCount(r.data.count);
         })
     }
-
+    
     return (
         <div>
             <Navbar />
             <div className="bg-image">
                 <div className="products-important text-start ">
-                    <h1 className='products--products '>Categories</h1>
+                    <h1 className='products--products '>
+                    {
+                  content[lang]?.categories
+                }
+                        </h1>
                     <p>
                         <Link to="/" className='singleProduct_home'> <c className="home-products ">Home <AiOutlineRight /></c> </Link>
                         <Link to="/categories" className="singleProduct_home"><c className="products-products">Categories</c></Link>

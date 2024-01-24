@@ -22,7 +22,7 @@ import instance from "../utils/axios";
 import LoadingSpinner from "./common/Loading";
 
 function CategoriesDetail() {
-  const [categoryDetail, setCategoryDetail] = useState();
+  const [categoryDetail, setCategoryDetail] = useState([]);
   const { guid } = useParams();
   // const [limit, setLimit] = useState(8);
   // const [products, setProducts] = useState([]);
@@ -349,8 +349,9 @@ function CategoriesDetail() {
                   Categories
                 </h2>
               </li>
-
-              {categories?.map((information) => {
+              {categories?.length === 0 && "Nothing was found!"}
+              {
+              categories?.map((information) => {
                 return (
                   <Link
                     to={`/categories/${information?.guid}`}
@@ -360,7 +361,8 @@ function CategoriesDetail() {
                     {information?.title}
                   </Link>
                 );
-              })}
+              })
+              }
 
               <li>
                 <h2 className="menu__itemm" href="#">
