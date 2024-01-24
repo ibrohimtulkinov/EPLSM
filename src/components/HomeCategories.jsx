@@ -18,7 +18,7 @@ const HomeCategories = () => {
       {isLoading && <LoadingSpinner />}
       <div className="globContainer">
         <Heading className={"mb-4 text-center"}>Categories</Heading>
-        <div className="">
+        <div className="card-wrapper">
           <CategoriesSwiper isDouble categories={categories} />
         </div>
       </div>

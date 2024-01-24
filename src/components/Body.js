@@ -31,7 +31,7 @@ export default function Body() {
     <>
       <section className="mx-auto ">
         <h1 className="body-header mb-4 mt-5">Our Products</h1>
-        <div className="row justify-content-center">
+        <div className="px-2">
           <div className="row justify-content-center gap-5  ">
             {products?.map((item) => (
               <ProductCard
@@ -40,7 +40,7 @@ export default function Body() {
                 subTitle={item?.sub_title}
                 title={item?.title}
                 image={item?.images?.[0]?.photo_medium}
-                className={"col-md-2 col-sm-5"}
+                className={"col-md-3 col-sm-5 col-lg-2"}
                 key={item?.id}
               />
             ))}

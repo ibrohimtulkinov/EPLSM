@@ -9,7 +9,7 @@ import {
   AiOutlineCustomerService,
   AiOutlineException,
   AiOutlineFileText,
-  AiOutlineAndroid
+  AiOutlineAndroid,
 } from "react-icons/ai";
 import End from "./End";
 import Body from "./Body";
@@ -59,9 +59,8 @@ function CategoriesDetail() {
     queryKey: ["categories/all"],
   });
 
-
   const [brands, setBrands] = useState();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const productGridClass = isOpen ? "col-3" : "col-md-6 col-lg-4 col-xl-3 p-3";
   const productCardClass = isOpen ? "col-md-4" : "col-md-3";
   const [limit, setLimit] = useState(16);
@@ -204,7 +203,6 @@ function CategoriesDetail() {
       });
   };
 
-
   return (
     <>
       <Navbar />
@@ -215,7 +213,7 @@ function CategoriesDetail() {
         </div>
       </div>
 
-      <div className="globContainer categories-wrapper-container">
+      <div className="globContainer categories-wrapper-container mb-3">
         <div className="card-wrapper m-2">
           <CategoriesSwiper categories={categories} />
         </div>
@@ -278,7 +276,7 @@ function CategoriesDetail() {
         </div>
       </section> */}
 
-<section className="sofaaa__background">
+      <section className="sofaaa__background">
         <div className="row mx-auto">
           <div className="text-start inline justify-content-between">
             {" "}
@@ -355,9 +353,9 @@ function CategoriesDetail() {
               {categories?.map((information) => {
                 return (
                   <Link
-                    to=""
-                    className="filter-texts"
-                    onClick={() => getProductsByCategory(information.id)}
+                    to={`/categories/${information?.guid}`}
+                    className={`filter-texts ${information?.guid == guid && "color-primary"}`}
+                    // onClick={() => getProductsByCategory(information.id)}
                   >
                     {information?.title}
                   </Link>

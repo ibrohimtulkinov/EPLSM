@@ -25,10 +25,12 @@ import End from "../components/End";
 import Body from "../components/Body";
 import { useEffect } from "react";
 import axios from "axios";
+import LoadingSpinner from "../components/common/Loading";
 
 
 function SingleBrand() {
     const [brandDetail, setBrandDetail] = useState([])
+    const [loading, setLoading] = useState(false)
     const { guid } = useParams();
     const [limit, setLimit] = useState(8);
     const [products, setProducts] = useState([]);
@@ -37,12 +39,14 @@ function SingleBrand() {
 
 
     const getBrandDetail = async () => {
+        setLoading(true)
         const response = await fetch(`https://api.eplsm.uz/api/brand-detail/${guid}`)
         const data = await response.json()
         setBrandDetail(data);
         axios.get(url + '/product-list/', { params: { p: true, limit: limit, brand: data?.id } }).then((r) => {
             setProducts(r.data.results);
         })
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -96,7 +100,7 @@ function SingleBrand() {
                 </div>
                 <div className='col-md-5 mt-5'>
                     <p className='single-brand-main'>{brandDetail?.title}</p>
-                    <p className='single-brand-text mt-4'>{brandDetail?.description}</p>
+                    <p className='single-brand-text mt-4 whitespace-pre-line' dangerouslySetInnerHTML={{__html: brandDetail?.description ?? ""}} ></p>
                     <div className='text-start'>
                         <p className='singleBrand_'> Catalog</p>
                         {/* {brandDetail?.length === 0 && "Nothing was found!"} */}
@@ -148,6 +152,7 @@ function SingleBrand() {
 
 
             <div className='mt-5 mb-5 icons__background'>
+                {loading && <LoadingSpinner  />}
                 <div className='d-flex flex-wrap justify-content-around ms-5'>
                     <div className='col-lg-3 col-md-4 col-sm-6 col-12 my-2'>
                         <div className='d-flex align-items-center'>
