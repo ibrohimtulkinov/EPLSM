@@ -36,6 +36,7 @@ function SingleBrand() {
   const [products, setProducts] = useState([]);
   const url = "https://api.eplsm.uz/api";
   const navigate = useNavigate();
+  
   const { lang } = useContext(LangContext);
 
   console.log(lang, "lang");
@@ -43,13 +44,21 @@ function SingleBrand() {
   const getBrandDetail = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://api.eplsm.uz/api/brand-detail/${guid}`
+      `https://api.eplsm.uz/api/brand-detail/${guid}`, {
+        headers:{
+            'Accept-Language':lang
+        }
+      }
     );
     const data = await response.json();
     setBrandDetail(data);
     axios
       .get(url + "/product-list/", {
         params: { p: true, limit: limit, brand: data?.id },
+        headers: {
+            'Accept-Language':lang
+        }
+        
       })
       .then((r) => {
         setProducts(r.data.results);
@@ -59,7 +68,7 @@ function SingleBrand() {
 
   useEffect(() => {
     getBrandDetail();
-  }, [guid]);
+  }, [guid, lang]);
 
   const handleShowMore = () => {
     setLimit(limit + 4);

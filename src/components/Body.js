@@ -17,7 +17,11 @@ export default function Body() {
 
   const getProducts = async (param1) => {
     const response = await fetch(
-      `https://api.eplsm.uz/api/product-list/?${param1}`
+      `https://api.eplsm.uz/api/product-list/?${param1}`,{
+        headers:{
+          'Accept-Language':lang
+      }
+      }
     );
     const data = await response.json();
     setProducts(data.results);
@@ -25,7 +29,7 @@ export default function Body() {
 
   useEffect(() => {
     getProducts(`limit=${limit}&p=true`);
-  }, [limit]);
+  }, [limit, lang]);
 
   const handleShowMore = () => {
     setLimit(limit + 8);

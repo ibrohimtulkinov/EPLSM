@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   AiOutlineDownCircle,
   AiOutlineTrophy,
@@ -18,6 +18,7 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import ProductCard from "../components/common/ProductCard";
 import LoadingSpinner from "../components/common/Loading";
+import { LangContext } from "../context/langContext";
 
 function ProductsPage() {
   const [brands, setBrands] = useState();
@@ -51,12 +52,19 @@ function ProductsPage() {
     setCategories(data);
   };
 
+  const { lang } = useContext(LangContext);
+
+  console.log(lang, "lang");
+
   const getProducts = async () => {
     setLoading(true);
     const offset = (page - 1) * limit;
     axios
       .get("https://api.eplsm.uz/api/product-list/", {
         params: { limit, p: true, offset },
+        headers: {
+          'Accept-Language':lang
+      }
       })
       .then((r) => {
         setCount(r?.data?.count);

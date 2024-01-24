@@ -26,6 +26,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "../components/common/Loading";
 import ProductCard from "../components/common/ProductCard";
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content";
 
 function SingleBrand() {
   const [brandDetail, setBrandDetail] = useState([]);
@@ -35,6 +37,10 @@ function SingleBrand() {
   const [products, setProducts] = useState([]);
   const url = "https://api.eplsm.uz/api";
   const navigate = useNavigate();
+
+  const {lang} = useContext(LangContext)
+
+  console.log(lang, "lang");
 
   const getBrandDetail = async () => {
     setLoading(true);
