@@ -33,7 +33,7 @@ export default function Body() {
 
   return (
     <>
-      <section className="container">
+      <section className="container py-5">
        <Heading className={"text-center mb-3"}>
           {
            content[lang]?.product
@@ -77,14 +77,13 @@ export default function Body() {
             ))
           }
         </div> */}
-      </section>
-      <div className="div-block">
-        <button className="body-button" type="button" onClick={handleShowMore}>
+         <button className="body-button" type="button" onClick={handleShowMore}>
         {
            content[lang]?.show
           }
         </button>
-      </div>
+      </section>
+
       {/* <MyCarousel /> */}
     </>
   );

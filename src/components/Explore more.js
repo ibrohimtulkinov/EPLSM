@@ -30,25 +30,26 @@ export default function Explore() {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    
     autoplay: true
   };
   return (
-    <section className="explore">
-      <div className='carousel-container '>
-        <div className='carousel-slide '>
-          <div className="row mx-auto">
-            <div className="col-md-5 align-middle text-start mx-auto">
+    <section className="sofaaa__background py-5">
+      <div className='container'>
+        <div className=' '>
+          <div className="row">
+            <div className="col-md-5 text-start">
               <h3 className="text-explore">50+ Beautiful rooms <br /> inspiration</h3>
               <p className="explore-text">Our designer already made a lot of beautiful <br /> prototipe of rooms that inspire you</p>
               <button className="explore-button  ">Explore More</button>
             </div>
-            <div className="col-md-6 me-auto">
+            <div className="col-md-7">
               <Slider {...settings}>
 
                 {
                   products?.map(item => {
-                    return <div>
-                      <img src={item?.photo} alt="Room 1" className="col-md-4 col-4 shadow carousel-photo" />
+                    return <div className="px-3" >
+                      <img src={item?.photo} alt="Room 1" className="shadow carousel-photo" />
                     </div>
                   })
                 }
