@@ -2909,8 +2909,6 @@ td:hover {
   left: 0;
 }
 .product-card_link {
-  display: block;
-  width: fit-content;
   padding: 10px;
   background-color: #fff;
   color: var(--primary-color);
@@ -2918,6 +2916,7 @@ td:hover {
   font-weight: 600;
   width: 200px;
   text-align: center;
+  overflow: hidden;
 }
 .product-card_image {
   width: 100%;
