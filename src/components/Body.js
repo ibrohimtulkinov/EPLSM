@@ -48,7 +48,7 @@ export default function Body() {
                 subTitle={item?.sub_title}
                 title={item?.title}
                 image={item?.images?.[0]?.photo_medium}
-                className={"col-md-4 col-lg-3 col-sm-6 mb-4"}
+                className={"col-md-4 col-lg-3 col-sm-6 col-9 mb-4"}
                 key={item?.id}
               />
             ))}

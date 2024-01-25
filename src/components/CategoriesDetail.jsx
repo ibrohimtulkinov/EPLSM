@@ -62,8 +62,8 @@ function CategoriesDetail() {
   const [brands, setBrands] = useState();
   const [isOpen, setIsOpen] = useState(true);
   const productGridClass = isOpen
-    ? "col-4 mb-3"
-    : "col-md-6 col-lg-4 col-xl-3 p-3";
+    ? "col-lg-4 col-md-6  mb-3"
+    : "col-md-4 col-lg-3 col-sm-6 col-9 mb-3";
   const productCardClass = isOpen ? "col-md-4" : "col-md-3";
   const [limit, setLimit] = useState(16);
   const [products, setProducts] = useState([]);
@@ -396,7 +396,7 @@ function CategoriesDetail() {
           </div>
 
           <div className={isOpen ? "d-none d-md-block w-100" : "container"}>
-            <div className="row w-100">
+            <div className="row w-100 justify-content-center">
               {loading ? (
                 <LoadingSpinner />
               ) : count > 0 ? (
