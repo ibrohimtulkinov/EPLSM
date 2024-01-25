@@ -21,7 +21,7 @@ export default function Galleries() {
 
     return (
         <>
-            <div className="ps-5 pt-5 overflow-x-hidden">
+            <div className="pt-5 container">
                 <ImageViewer images={images} />
             </div>
         </>

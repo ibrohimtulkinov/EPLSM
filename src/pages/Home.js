@@ -10,6 +10,7 @@ import "../style.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Galleries from "../components/Gallery";
 import HomeCategories from "../components/HomeCategories"
+import HomeBrands from "../components/HomeBrands"
 // import MyCarousel from "./components/sofaa";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       {/* <Main /> */}
       <Body />
       <Explore />
+      <HomeBrands />
       <Image />
       <Galleries />
       <End />

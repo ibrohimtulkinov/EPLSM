@@ -16,10 +16,9 @@ const HomeCategories = () => {
   });
 
 const {lang} = useContext(LangContext)
-console.log("lang");
 
   return (
-    <section className="globSection">
+    <section className="globSection sofaaa__background">
       {isLoading && <LoadingSpinner />}
       <div className="globContainer">
         <Heading className={"mb-4 text-center"}>
