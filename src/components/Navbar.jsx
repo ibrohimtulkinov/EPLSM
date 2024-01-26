@@ -88,7 +88,7 @@ export default function App() {
                   content[lang]?.product
                 }
               </Link>
-              <Link
+              {/* <Link
                 className={
                   pathname.includes("brands")
                     ? "navigationActive"
@@ -99,7 +99,7 @@ export default function App() {
                 {
                   content[lang]?.brands
                 }
-              </Link>
+              </Link> */}
               <Link
                 className={
                   pathname.includes("categories")

@@ -368,7 +368,7 @@ function CategoriesDetail() {
                 );
               })}
 
-              <li>
+              {/* <li>
                 <h2 className="menu__itemm" href="#">
                   Brand
                 </h2>
@@ -384,14 +384,14 @@ function CategoriesDetail() {
                     {brand?.title}
                   </Link>
                 );
-              })}
+              })} */}
 
-              <div
+              {/* <div
                 className="mt-3 open-button w-px-60 text-center"
                 onClick={() => setShowMore(!showMore)}
               >
                 {showMore ? "Less" : "More"}{" "}
-              </div>
+              </div> */}
             </ul>
           </div>
 

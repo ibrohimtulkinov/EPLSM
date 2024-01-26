@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import End from "../components/End";
 import { Link } from "react-router-dom";
@@ -16,6 +16,8 @@ import {
 import { useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "../components/common/Loading";
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content";
 
 function Blog() {
   const url = "https://api.eplsm.uz/api";
@@ -27,7 +29,10 @@ function Blog() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
   const [loading, setLoading] = useState(false);
+  const {lang} = useContext(LangContext);
 
+  console.log("lang");
+   
   useEffect(() => {
     if (search) getBlogBySearch(search);
   }, [search]);
@@ -78,16 +83,16 @@ function Blog() {
 
       <div className="bg-image  ">
         <div className="products-important text-start ">
-          <h1 className="products--products">Blog</h1>
+          <h1 className="products--products">{content[lang]?.blog}</h1>
           <p>
             <Link to="/" className="singleProduct_home">
               {" "}
-              <c className="home-products ">
-                Home <AiOutlineRight />
+              <c className="home-products">
+              {content[lang]?.home} <AiOutlineRight />
               </c>{" "}
             </Link>
             <Link to="/blog" className="singleProduct_home ">
-              <c className="products-products">Blog</c>
+              <c className="products-products">{content[lang]?.blog}</c>
             </Link>
           </p>
         </div>

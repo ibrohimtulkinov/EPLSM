@@ -130,11 +130,12 @@ const Categories = () => {
             <Link to="/" className="singleProduct_home">
               {" "}
               <c className="home-products ">
-                Home <AiOutlineRight />
+              {content[lang]?.home}
+              <AiOutlineRight />
               </c>{" "}
             </Link>
             <Link to="/categories" className="singleProduct_home">
-              <c className="products-products">Categories</c>
+              <c className="products-products">{content[lang]?.categories}</c>
             </Link>
           </p>
         </div>
