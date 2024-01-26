@@ -19,6 +19,7 @@ import axios from "axios";
 import ProductCard from "../components/common/ProductCard";
 import LoadingSpinner from "../components/common/Loading";
 import { LangContext } from "../context/langContext";
+import { content } from "../localization/content"
 
 function ProductsPage() {
   const [brands, setBrands] = useState();
@@ -180,16 +181,32 @@ function ProductsPage() {
       <Navbar />
       <div className="bg-image">
         <div className="products-important  ">
-          <h1 className="products--products ">Products</h1>
+          <h1 className="products--products ">
+            
+               {
+                content[lang]?.product
+               }
+            </h1>
           <p>
             <Link to="/" className="singleProduct_home">
               {" "}
               <c className="home-products ">
-                Home <AiOutlineRight />
+
+               {
+                content[lang]?.home
+               }
+
+                 <AiOutlineRight />
               </c>{" "}
             </Link>
             <Link to="/products" className="singleProduct_home">
-              <c className="products-products">Products</c>
+              <c className="products-products">
+
+              {
+                content[lang]?.product
+               }
+
+                </c>
             </Link>
           </p>
         </div>
@@ -283,7 +300,7 @@ function ProductsPage() {
                 );
               })}
 
-              <li>
+              {/* <li>
                 <h2 className="menu__itemm" href="#">
                   Brand
                 </h2>
@@ -299,14 +316,14 @@ function ProductsPage() {
                     {brand?.title}
                   </Link>
                 );
-              })}
+              })} */}
 
-              <div
+              {/* <div
                 className="mt-3 open-button w-px-60 text-center"
                 onClick={() => setShowMore(!showMore)}
               >
                 {showMore ? "Less" : "More"}{" "}
-              </div>
+              </div> */}
             </ul>
           </div>
 

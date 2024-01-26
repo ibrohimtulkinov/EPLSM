@@ -12,10 +12,12 @@ import {
   AiOutlineAndroid,
 } from "react-icons/ai";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import LoadingSpinner from "../components/common/Loading";
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content"
 
 function Catalogs() {
   const [page, setPage] = useState(1);
@@ -25,7 +27,8 @@ function Catalogs() {
 
   const navigate = useNavigate();
   const [brandDetail, setBrandDetail] = useState([]);
-
+  const {lang} = useContext(LangContext)
+  console.log("lang");
   useEffect(() => {
     getBrandDetail();
   }, [limit, page]);
@@ -141,15 +144,16 @@ function Catalogs() {
 
       <div className="bg-image ">
         <div className="products-important text-start ">
-          <h1 className="products--products">Catalogs</h1>
+          <h1 className="products--products">{content[lang]?.catalogs}</h1>
           <p>
             <Link to="/" className="singleProduct_home">
               <c className="home-products ">
-                Home <AiOutlineRight />
+              {content[lang]?.home}
+              <AiOutlineRight />
               </c>
             </Link>
             <Link to="/catalogs" className="singleProduct_home">
-              <c className="products-products">Catalogs</c>
+              <c className="products-products">{content[lang]?.catalogs}</c>
             </Link>
           </p>
         </div>

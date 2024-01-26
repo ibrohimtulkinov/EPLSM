@@ -24,10 +24,10 @@ export default function Home() {
       <HomeCategories  />
       {/* <Main /> */}
       <Body />
-      <Explore />
+       <Explore /> 
       <HomeBrands />
       <Image />
-      <Galleries />
+      <Galleries /> 
       <End />
       {/* <MyCarousel /> */}
     </div>

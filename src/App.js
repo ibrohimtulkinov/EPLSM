@@ -25,10 +25,10 @@ const router = createBrowserRouter([
     path: "/single-product/:guid",
     element: <SingleProduct />,
   },
-  {
-    path: "/brands",
-    element: <Brands />,
-  },
+  // {
+  //   path: "/brands",
+  //   element: <Brands />,
+  // },
   {
     path: "/categories",
     element: <Categories />,

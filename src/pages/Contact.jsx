@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Button } from "react-bootstrap";
 import End from "../components/End";
@@ -19,6 +19,8 @@ import {
 } from "react-icons/ai";
 import Heading from "../components/common/Heading";
 import { ContactInput } from "../components/ContactInput";
+import { LangContext } from "../context/langContext";
+import { content } from "../localization/content";
 
 function Contact() {
   const [formData, setFormData] = React.useState({
@@ -62,22 +64,25 @@ function Contact() {
       });
   };
 
+  const{lang} = useContext(LangContext);
+  console.log("lang");
+
   return (
     <>
       <Navbar />
 
       <div className="bg-image">
         <div className="products-important  ">
-          <h1 className="products--products ">Contact</h1>
+          <h1 className="products--products ">{content[lang]?.contact}</h1>
           <p>
             <Link to="/" className="singleProduct_home">
               {" "}
               <c className="home-products ">
-                Home <AiOutlineRight />
+              {content[lang]?.home} <AiOutlineRight />
               </c>{" "}
             </Link>
             <Link to="/contact" className="singleProduct_home">
-              <c className="products-products">Contact</c>
+              <c className="products-products">{content[lang]?.contact}</c>
             </Link>
           </p>
         </div>
