@@ -102,7 +102,7 @@ if(window.innerWidth < 600) {
       
           <div className="globContainer">
             <div className="d-md-flex gap-5">
-              <div className="d-flex gap-3  mt-5">
+              <div className="d-flex flex-column-reverse flex-md-row gap-3  mt-5">
                 <div className="d-flex flex-column  sp-imagemap gap-3 ">
                   {product?.images?.map((image) => (
                     <div className="rounded-3 overflow-hidden ">
@@ -227,7 +227,7 @@ if(window.innerWidth < 600) {
             {renderTabs()}
           </div>
 
-      <section className="">
+      <section className="container">
         <div className="text-center mt-5 ">
           <p className="border-top"></p>
           <p className="mt-5 mb-4 related0">Related Products</p>

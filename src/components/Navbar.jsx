@@ -43,9 +43,12 @@ export default function App() {
         style={{ backgroundColor: "#e3f2fd" }}
       >
         <MDBContainer>
-          <div>
+          <div className="d-flex align-items-center justfy-content-center" >
             <MDBNavbarBrand href="/">
-              <img src={navLogo} alt="" className="nav--icon" />
+              <div className="d-flex align-items-center gap-1">
+              <img src={"/logo-2.png"} alt="" className="nav--icon" />
+              <span className="nav--text">eplsm</span>
+              </div>
             </MDBNavbarBrand>
           </div>
           <MDBNavbarToggler
