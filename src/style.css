@@ -3031,6 +3031,9 @@ td:hover {
 .category-item_title {
   font-size: 10px;
 }
+.home-product { 
+  width: 220px !important;
+}
 }
 
 @media (max-width: 480px) {
@@ -3039,8 +3042,12 @@ td:hover {
     height: 100px;
   }
   .product-card_image {
-    height: 250px;
+    height: 230px;
   }
+  .home-product { 
+    width: 250px !important;
+  }
+  
 }
 
 
@@ -3075,3 +3082,4 @@ td:hover {
   border-radius: 8px;
   text-transform: uppercase;
 }
+
